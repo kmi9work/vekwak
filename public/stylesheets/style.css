@@ -38,6 +38,7 @@ A:hover {text-decoration: underline; color: #ff2fa3; }
 
 .post{
 	display: inline-block;
+  vertical-align: top;
 	margin-top:1%;
 	height: 350px;
 	width:28%;

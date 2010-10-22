@@ -1,0 +1,19 @@
+<% if @topics[0]!=nil %>
+  <% k = 0 %>
+  <% strok = 3 %>
+  <% strok.times do %>    
+    <% for i in 0...strok %>
+      <div class="post">
+      <% if @topics[strok*k+i]!=nil %>      
+       <%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %>
+        <br>
+       <%= @topics[strok*k+i][:annotation] %>      
+      <%end%>
+      </div>
+    <% end %>
+    <% k+=1 %>
+  <% end %>
+  <% end %>
+    <div class="grey-block grey-bg">
+<%= link_to 'Написать ещё', new_topic_path %>
+</div>

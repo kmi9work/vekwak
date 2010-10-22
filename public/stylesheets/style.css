@@ -1,0 +1,64 @@
+body{
+	background-image:url('img/bg.gif');
+	margin:0%;
+  color:white;
+}
+
+A:link {text-decoration: none; color:white;}
+A:visited { text-decoration: none; color:white; } 
+A:active { text-decoration: none; color:white; }
+A:hover {text-decoration: underline; color: #ff2fa3; } 
+
+#top{
+	height:103px;
+	width:100%;
+	background-image:url('img/head.png');
+}
+
+.student{
+	height:100px;
+	width:100px;
+	background-image:url('img/noavatar.gif');
+}
+
+#top_shadow{
+	height:9px;
+	width:100%;
+	background-image:url('img/top_shadow.png');
+}
+
+.info{
+	display: inline-block;
+	margin-top:1%;
+	height: 150px;
+	width:31.3%;
+	margin-left:1.525%;
+	background-image:url('img/info.png');
+}
+
+.post{
+	display: inline-block;
+	margin-top:1%;
+	height: 350px;
+	width:28%;
+	margin-left:3%;
+  background-color: #3c3c3c;
+}
+
+.inline{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.grey-bg{
+  background-color: #3c3c3c;
+}
+
+.grey-block{
+  padding-left:10%;
+  margin-top:10%;
+  border-right:1px solid #fff;
+  border-top:1px solid #fff;
+  border-bottom:1px solid #fff;
+  width:40%;
+}

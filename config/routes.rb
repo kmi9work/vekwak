@@ -1,6 +1,7 @@
 Vekwak::Application.routes.draw do
   resources :students
   resources :topics   
+  resources :comments   
 
   resource :session, :only => [:new, :create, :destroy]
 

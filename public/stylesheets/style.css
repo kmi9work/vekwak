@@ -3,10 +3,11 @@ body{
 	margin:0%;
   color:#BBB;
   font-family:Georgia;
+  text-shadow: black 1px 1px 2px;
 }
 
-A:link {text-decoration: none; color:white;}
-A:visited { text-decoration: none; color:white; } 
+A:link {text-decoration: none; color:white; text-shadow: black 1px 1px 2px;}
+A:visited { text-decoration: none; color:white; text-shadow: black 0px 0px 2px;} 
 A:active { text-decoration: none; color:white; }
 A:hover {text-decoration: underline; color: #ff2fa3; } 
 
@@ -61,6 +62,7 @@ A:hover {text-decoration: underline; color: #ff2fa3; }
 .post_content{  
   height: 285px;
   background-color: #3c3c3c;  
+  text-align: center;
 }
 
 .w20{

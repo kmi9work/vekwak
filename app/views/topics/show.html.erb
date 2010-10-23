@@ -5,7 +5,7 @@
   <%= h @topic.voting %>
 </p>
 <% end %>
-
+<div class="grey-bg">
 <p>
   <%= textilize( h @topic.content) %>
 </p>
@@ -20,14 +20,16 @@
       else
         "red"
       end
-     %>"> <%= link_to :remote =>true, h(@topic.rating), :url => {:action => :topic_raters, :id => @topic.id}, :update => 'topic_raters' %></font>
+     %>"> <%= link_to h(@topic.rating), :url => {:action => :topic_raters, :id => @topic.id}, :remote =>true, :update => 'topic_raters' %></font>
    </div> 
    <div id="topic_raters"></div>
-  <div class="plus"><%= link_to_remote image_tag("up.png"), 
-                          :update => "topic_rating", 
+  <div class="plus"><%= link_to image_tag("up.png"), 
+                          :update => "topic_rating",
+                          :remote =>true,
                           :url => {:action => :plus, :id => @topic.id}%></div> 
-  <div class="plus"><%= link_to_remote image_tag("down.png"), 
+  <div class="plus"><%= link_to image_tag("down.png"), 
                           :update => "topic_rating", 
+                          :remote =>true,
                           :url => {:action => :minus, :id => @topic.id}%></div>
 </p>
   
@@ -54,3 +56,4 @@
 <%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
 <%= link_to 'Назад', topics_path %>
 
+</div>

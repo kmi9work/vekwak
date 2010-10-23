@@ -33,8 +33,8 @@ class Student < ActiveRecord::Base
   has_many :messages_sent, :class_name => 'Message'
   has_many :topic_rating_students, :dependent => :delete_all
   has_attached_file :avatar, 
-                    :styles => { :medium => "300x300>",
-                                 :thumb => "100x100>"  }
+                    :styles => { :small => "50x50>",
+                                 :medium => "60x60>"  }
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

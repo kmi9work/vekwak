@@ -2,18 +2,29 @@
   <% k = 0 %>
   <% strok = 3 %>
   <% strok.times do %>    
-    <% for i in 0...strok %>
-      <div class="post">
-      <% if @topics[strok*k+i]!=nil %>      
-       <%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %>
-        <br>
-       <%= @topics[strok*k+i][:annotation] %>      
-      <%end%>
+  <% for i in 0...strok %>
+    <% if @topics[strok*k+i]!=nil %>  
+  <div class="post inline">
+    <div class="post_content">
+      <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
+      <br>
+      <%= @topics[strok*k+i][:annotation] %>      
+    </div>
+    <div class="post_bottom">
+    <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
+      <div class="section_red inline">
+        <%= @topics[strok*k+i].created_at %>
+        <div class="my_h1">Флуд</div>
       </div>
-    <% end %>
-    <% k+=1 %>
+      <div class="w20 inline my_h1">13</div>
+    </div>
+    </div>
+ <%end%>  
+  <% end %>
+  <% k+=1 %>
   <% end %>
   <% end %>
-    <div class="grey-block grey-bg">
-<%= link_to 'Написать ещё', new_topic_path %>
-</div>
+  <div class="grey-block grey-bg">
+    <%= link_to 'Написать ещё', new_topic_path %>
+  </div>
+  

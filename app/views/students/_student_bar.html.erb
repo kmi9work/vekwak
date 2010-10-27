@@ -3,7 +3,7 @@
   <div id="student-bar-greeting"><%= @student[:name]%> <%= @student[:second_name]%> </div>
   <div id="student-bar-greeting"><%= @student[:last_name]%> </div>
   <div id="student-bar-greeting">Рейтинг <%= @student[:rating]%></div>
-  <div id="student-bar-action"  >(<%= link_to "Выйти", logout_path, { :title => "Log out" }    %>)</div>
+  <div id="student-bar-action"  ><%= link_to "Выйти", logout_path, { :title => "Log out" }    %></div>
 <% else -%>
   <div id="student-bar-greeting"><%= link_to_login_with_IP 'Not logged in', :style => 'border: none;' %></div>
   <div id="student-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %> /

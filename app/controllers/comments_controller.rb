@@ -3,20 +3,12 @@ class CommentsController < ApplicationController
   # GET /comments.xml
   def list
     @comments = Comment.find_all_by_topic_id(params[:topic_ix])
-    respond_to do |format|
-      format.html # list.html.erb
-      format.xml  { render :xml => @comments }
-    end
   end
 
   # GET /comments/new
   # GET /comments/new.xml
   def new
     @comment = Comment.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
   end
 
   # GET /comments/1/edit
@@ -29,7 +21,7 @@ class CommentsController < ApplicationController
       end
       @topic = comment.topic
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end
 
@@ -48,27 +40,20 @@ class CommentsController < ApplicationController
         @comment.topic = topic
         topic.comments << @comment
       end
-      respond_to do |format|
-        if @comment.save
-          flash[:notice] = 'Comment was successfully created.'
-          format.html { redirect_to topic }
-          format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+      if @comment.save
+        flash[:notice] = 'Comment was successfully created.'
+        redirect_to topic
+      else
+        if params[:comment_id]
+          comment.comments.pop
         else
-          if params[:comment_id]
-            comment.comments.pop
-          else
-            topic.comments.pop
-          end
-          flash[:notice] = 'Error.'
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+          topic.comments.pop
         end
+        flash[:notice] = 'Error.'
+        render :action => "new"
       end
     else
-      respond_to do |format|
-        format.html { redirect_to topic }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      end
+      redirect_to topic
     end
   end
 
@@ -82,18 +67,14 @@ class CommentsController < ApplicationController
         comment = comment.comment
       end
       topic = comment.topic 
-      respond_to do |format|
-        if @comment.update_attributes(params[:comment])
-          flash[:notice] = 'Comment was successfully updated.'
-          format.html { redirect_to(topic) }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-        end
+      if @comment.update_attributes(params[:comment])
+        flash[:notice] = 'Comment was successfully updated.'
+        redirect_to topic
+      else
+        render :action => "edit"
       end
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end
 
@@ -104,13 +85,9 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
       topic = @comment.topic
       @comment.destroy
-    
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.xml  { head :ok }
-      end
+      redirect_to :back
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end
 end

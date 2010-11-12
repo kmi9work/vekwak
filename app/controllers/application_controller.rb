@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :login_required, :stud, :new_message
+  before_filter :login_required, :stud, :new_message, :headman_msg
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
     @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
+  end
+  def headman_msg
+    @headman_msg = HeadmanAul.order('created_at asc').last
   end
   
 end

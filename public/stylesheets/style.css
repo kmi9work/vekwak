@@ -120,6 +120,14 @@ h2{
   vertical-align: top;
 }
 
+.topic_show{
+  background-color: #3c3c3c;
+}
+
+.topic_show_content{
+  padding: 10px;
+}
+
 .grey-bg{
   background-color: #3c3c3c;
 }
@@ -131,4 +139,11 @@ h2{
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
+}
+
+.comment_top{
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin: 10px 3px;
+  padding: 5px;
 }

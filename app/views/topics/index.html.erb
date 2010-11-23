@@ -1,9 +1,9 @@
-<% if @topics[0]!=nil %>
+<% if @topics[0] != nil %>
   <% k = 0 %>
   <% strok = 3 %>
   <% strok.times do %>    
   <% for i in 0...strok %>
-    <% if @topics[strok*k+i]!=nil %>  
+    <% if @topics[strok*k+i] != nil %>  
     <div class="post inline">
     <div class="post_content">
       <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
@@ -25,7 +25,7 @@
     </div>
  <%end%>  
   <% end %>
-  <% k+=1 %>
+  <% k += 1 %>
   <% end %>
   <% end %>
   <div class="grey-block grey-bg">

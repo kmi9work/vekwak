@@ -16,13 +16,7 @@
   <div class="info inline"><h2>Календарь</h2></div>
   <div class="info inline">
     <h2>Староста</h2>
-      <% if @headman_msg %>
-        <%= @headman_msg.content %>
-      <% end %>
-      <% if @student and @student.headman %>
-        <%= link_to "Написать новенькое", aul_new_path -%> |  
-      <% end %>
-      <%= link_to "Просмотреть старенькое", aul_list_path %>
+      <%= render :partial => 'headman_aul/headman_msg' %>
   </div>
   <div class="info inline"><h2>Новости</h2></div>
 </div>

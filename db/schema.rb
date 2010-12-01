@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712111757) do
+ActiveRecord::Schema.define(:version => 20101112161227) do
 
   create_table "comments", :force => true do |t|
     t.integer  "topic_id"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(:version => 20100712111757) do
     t.integer  "comment_id"
     t.text     "content"
     t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "headman_auls", :force => true do |t|
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100712111757) do
   end
 
   create_table "sections", :force => true do |t|
-    t.integer  "title"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20100712111757) do
     t.integer  "rating"
     t.string   "title"
     t.text     "annotation", :limit => 256
-    t.string   "section"
+    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

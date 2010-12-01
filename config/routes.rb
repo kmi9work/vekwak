@@ -15,6 +15,12 @@ Vekwak::Application.routes.draw do
 
   match '/activate/:activation_code' => 'students#activate', :as => :activate, :activation_code => nil
   
+  match 'new_aul' => 'headman_aul#new', :as => :aul_new
+
+  match 'list_aul' => 'headman_aul#list', :as => :aul_list
+  
+  match 'create_aul' => 'headman_aul#create', :as => :headman_aul_create
+  
   root :to => "topics#index"
 
   # The priority is based upon order of creation:

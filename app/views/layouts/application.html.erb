@@ -14,7 +14,10 @@
 <div id="top_shadow"></div>
 <div>
   <div class="info inline"><h2>Календарь</h2></div>
-  <div class="info inline"><h2>Староста</h2></div>
+  <div class="info inline">
+    <h2>Староста</h2>
+      <%= render :partial => 'headman_aul/headman_msg' %>
+  </div>
   <div class="info inline"><h2>Новости</h2></div>
 </div>
 <%= yield %>

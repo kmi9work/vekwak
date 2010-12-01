@@ -10,6 +10,12 @@ class StudentsController < ApplicationController
   def create
     logout_keeping_session!
     @student = Student.create(params[:student])
+    if params[:student][:headman]
+      @student[:headman] = true
+    end
+    if params[:student][:admin]
+      @student[:admin] = true
+    end
     success = @student && @student.save
     if success && @student.errors.empty?
       # Protects against session fixation attacks, causes request forgery

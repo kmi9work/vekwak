@@ -12,9 +12,9 @@
           </div>
           <div class="post_bottom">
             <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
-            <div class="section_red inline">
+            <div class="section_red inline" style="background-color: #<%= (@topics[strok*k+i].section.title.hash % 16777216).to_s(16) %>">
               <%= @topics[strok*k+i].created_at %>
-              <div class="my_h1">Флуд</div>
+              <div class="my_h1"><%= @topics[strok*k+i].section.title %></div>
             </div>
             <div class="w20 inline">
               <a href="" class="rating_plus"></a>

@@ -7,7 +7,7 @@
 <% end %>
 <div class="grey-bg">
 <p>
-  <%= textilize( h @topic.content) %>
+  <%= textilize(h @topic.content).html_safe %>
 </p>
 
 <p>

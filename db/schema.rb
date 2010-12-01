@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20100712111757) do
   end
 
   create_table "sections", :force => true do |t|
-    t.integer  "title"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20100712111757) do
     t.integer  "rating"
     t.string   "title"
     t.text     "annotation", :limit => 256
-    t.string   "section"
+    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

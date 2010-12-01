@@ -5,20 +5,17 @@
   <div class="comment_bottom", style="margin-left: 20px">
 <% end %>
   <div class="comment_content">
-  <b><%= comment.student.login %></b>: <%= textilize (comment.content) %> <br>
+  <b><%= comment.student.login %></b>: <%= comment.content %>
 	</div>
 	<% if @student.admin %>
     <%= link_to 'Edit', :controller => :comments, :action => :edit, :id => comment.id %> |
   	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id, :confirm => 'Are you sure?', :method => :delete %><br>
 	<% end %>
-	<% if top_level %>
-	
-  <% end %>
   
 
 <% if top_level %>
 <%= render :partial => "comment", :collection => comment.comments, :locals => {:top_level => nil} %>
-<%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id, :comment_id => comment.id %>
+<font size="2"><%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id, :comment_id => comment.id %></font>
 </div>
 <% else %>
 </div>

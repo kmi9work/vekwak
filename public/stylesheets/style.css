@@ -55,18 +55,18 @@ h2{
 
 .post{  
 	margin-top:1%;
-	height: 350px;
-	width:28%;
-	margin-left:4%;
+	height: 400px;
+	width:32%;
+	margin-left:1%;
 }
 
 .post_bottom{  
   height: 65px;    
-  background-image:url('img/post_type_blue.png'); 
+  background-image:url('img/post_type_orange.png'); 
 }
 
 .post_content{  
-  height: 285px;
+  height: 335px;
   background-color: #3c3c3c;  
   text-align: center;
 }
@@ -74,7 +74,7 @@ h2{
 .r20{
   padding-top:1px;
   float:right;
-  width:18%;
+  width:65px;
   height:65px;
   text-align: center;
 }
@@ -97,16 +97,14 @@ h2{
   right: 0px;
   color:white;
   font-size:18pt;
-  width:100%;
   height:27px;
   background-image:url('img/rating.gif'); 
 }
 
 .rating_plus{
   display:block;
-  width:65px;
   height:16px;
-  background-image:url('img/button_plus.png'); 
+  background-image:url('img/button_plus.png');
 }
 .rating_plus:hover{  
   background-image:url('img/button_plus_a.png'); 
@@ -114,9 +112,8 @@ h2{
 
 .rating_minus{
   display:block;
-  width:100%;
   height:16px;
-  background-image:url('img/button_minus.png'); 
+  background-image:url('img/button_minus.png');
 }
 .rating_minus:hover{
   background-image:url('img/button_minus_a.png'); 
@@ -140,10 +137,3 @@ h2{
   width:40%;
 }
 
-.left{
-  float:left;
-}
-
-.right{
-  float:right;
-}

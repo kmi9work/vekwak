@@ -2,16 +2,16 @@
   <% k = 0 %>
   <% strok = 3 %>
   <% strok.times do %>    
-  <% for i in 0...strok %>
+    <% for i in 0...strok %>
     <% if @topics[strok*k+i]!=nil %>  
-    <div class="post inline">
-    <div class="post_content">
+      <div class="post inline">
+      <div class="post_content">
       <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
       <br>
       <%= @topics[strok*k+i][:annotation] %>      
-    </div>
-    <div class="post_bottom">
-    <div class="l20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
+      </div>
+      <div class="post_bottom">
+      <div class="l20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
       <div class="section_red inline">
         <%= @topics[strok*k+i].created_at %>
         <div class="my_h1">Флуд</div>

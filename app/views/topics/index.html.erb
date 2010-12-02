@@ -2,33 +2,34 @@
   <% k = 0 %>
   <% strok = 3 %>
   <% strok.times do %>    
-  <% for i in 0...strok %>
-    <% if @topics[strok*k+i] != nil %>  
-    <div class="post inline">
-      <div class="post_content">
-        <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
-        <br>
-        <%= @topics[strok*k+i][:annotation] %>      
-      </div>
-      <div class="post_bottom">
-        <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
-        <div class="section_red inline">
-          <%= @topics[strok*k+i].created_at %>
-          <div class="my_h1">Флуд</div>
+    <% for i in 0...strok %>
+      <% if @topics[strok*k+i]!=nil %>  
+        <div class="post inline">
+          <div class="post_content">
+            <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
+            <br>
+            <%= @topics[strok*k+i][:annotation] %>      
+          </div>
+          <div class="post_bottom">
+            <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
+            <div class="section_red inline" style="background-color: #<%= (s = (@topics[strok*k+i].section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
+              <%= @topics[strok*k+i].created_at %>
+              <div class="my_h1"><%= @topics[strok*k+i].section.title %></div>
+            </div>
+            <div class="w20 inline">
+              <a href="" class="rating_plus"></a>
+              <div class="rating">13</div>
+              <a href="" class="rating_minus"></a>
+            </div>
+          </div>
         </div>
-        <div class="w20 inline">
-          <a href="" class="rating_plus"></a>
-          <div class="rating">13</div>
-          <a href="" class="rating_minus"></a>
-        </div>
-      </div>
-    </div>
-    <%end%>  
-  <% end %>
-  <% k += 1 %>
+      <%end%>  
+    <% end %>
+    <% k+=1 %>
   <% end %>
 <% end %>
-  <div class="grey-block grey-bg">
-    <%= link_to 'Написать ещё', new_topic_path %>
-  </div>
+<div class="grey-block grey-bg">
+  <%= link_to 'Написать ещё', new_topic_path %>
+</div>
+<hr>
   

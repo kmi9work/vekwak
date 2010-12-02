@@ -3,6 +3,20 @@
   <% strok = 3 %>
   <% strok.times do %>    
 <<<<<<< HEAD
+  <% for i in 0...strok %>
+    <% if @topics[strok*k+i] != nil %>  
+    <div class="post inline">
+      <div class="post_content">
+        <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
+        <br>
+        <%= @topics[strok*k+i][:annotation] %>      
+      </div>
+      <div class="post_bottom">
+        <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
+        <div class="section_red inline">
+          <%= @topics[strok*k+i].created_at %>
+          <div class="my_h1">Флуд</div>
+=======
     <% for i in 0...strok %>
       <% if @topics[strok*k+i]!=nil %>  
         <div class="post inline">
@@ -13,9 +27,9 @@
           </div>
           <div class="post_bottom">
             <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
-            <div class="section_red inline">
+            <div class="section_red inline" style="background-color: #<%= (@topics[strok*k+i].section.title.hash % 16777216).to_s(16) %>">
               <%= @topics[strok*k+i].created_at %>
-              <div class="my_h1">Флуд</div>
+              <div class="my_h1"><%= @topics[strok*k+i].section.title %></div>
             </div>
             <div class="w20 inline">
               <a href="" class="rating_plus"></a>
@@ -23,45 +37,21 @@
               <a href="" class="rating_minus"></a>
             </div>
           </div>
+>>>>>>> sections
         </div>
-      <%end%>  
-    <% end %>
-    <% k+=1 %>
-  <% end %>
-<% end %>
-<div class="grey-block grey-bg">
-  <%= link_to 'Написать ещё', new_topic_path %>
-</div>
-<hr>
-=======
-  <% for i in 0...strok %>
-    <% if @topics[strok*k+i] != nil %>  
-    <div class="post inline">
-    <div class="post_content">
-      <h2><%= link_to @topics[strok*k+i][:title], @topics[strok*k+i] %></h2>
-      <br>
-      <%= @topics[strok*k+i][:annotation] %>      
-    </div>
-    <div class="post_bottom">
-    <div class="w20 inline"><%= image_tag @topics[strok*k+i].student.avatar.url(:small) %></div>
-      <div class="section_red inline">
-        <%= @topics[strok*k+i].created_at %>
-        <div class="my_h1">Флуд</div>
-      </div>
-      <div class="w20 inline">
-        <a href="" class="rating_plus"></a>
-        <div class="rating">13</div>
-        <a href="" class="rating_minus"></a>
+        <div class="w20 inline">
+          <a href="" class="rating_plus"></a>
+          <div class="rating">13</div>
+          <a href="" class="rating_minus"></a>
+        </div>
       </div>
     </div>
-    </div>
- <%end%>  
+    <%end%>  
   <% end %>
   <% k += 1 %>
   <% end %>
-  <% end %>
+<% end %>
   <div class="grey-block grey-bg">
     <%= link_to 'Написать ещё', new_topic_path %>
   </div>
->>>>>>> headman_aul
   

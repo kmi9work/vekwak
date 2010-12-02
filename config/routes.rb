@@ -2,8 +2,10 @@ Vekwak::Application.routes.draw do
   resources :students
   resources :topics   
   resources :comments   
+  resources :sections
 
   resource :session, :only => [:new, :create, :destroy]
+  
 
   match 'signup' => 'students#new', :as => :signup
 

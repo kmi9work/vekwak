@@ -7,6 +7,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
+    <%= f.label "Раздел:" %><br />
+    <%= f.select 'section_id', @sections %>
+  </p>
+  <p>
     <%= f.label "Аннотация" %><br />
     <%= f.text_area :annotation, :cols => 100, :rows => 5 %>
   </p>

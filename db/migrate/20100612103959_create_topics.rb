@@ -6,7 +6,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :rating
       t.string :title
       t.text :annotation, :limit => 256
-      t.string :section
+      t.integer :section_id
       
       t.timestamps
     end

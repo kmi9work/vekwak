@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
   end
 
   create_table "sections", :force => true do |t|
-    t.string   "title"
+    t.integer  "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "group",                     :limit => 40
+    t.datetime "last_visit"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
@@ -84,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.integer  "rating"
     t.string   "title"
     t.text     "annotation", :limit => 256
-    t.integer  "section_id"
+    t.string   "section"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

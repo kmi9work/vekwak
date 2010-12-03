@@ -39,6 +39,10 @@ h2{
 	background-image:url('img/noavatar.gif');
 }
 
+.online{
+  border-bottom:8px solid #11FF23;
+}
+
 #top_shadow{
 	height:9px;
 	width:100%;

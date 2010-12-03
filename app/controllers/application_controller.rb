@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :login_required, :stud, :new_message, :headman_msg
+  before_filter :login_required, :stud, :new_message, :headman_msg, :stud_online
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -11,8 +11,13 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password  
   def stud
     @student = current_student
+    @students= Student.all
   end
 
+  def stud_online
+    @students_online=Student.find(:all, :conditions => ["last_visit >=?",5.minutes.ago])
+  end
+  
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
     @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    

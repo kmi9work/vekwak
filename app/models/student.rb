@@ -55,6 +55,16 @@ class Student < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
+  
+  def record_last_visit
+    ActiveRecord::Base.connection.execute("update students set last_visit =
+    datetime() where id = #{id}")
+  end  
+  
+  def online?(max_delay=5.minutes)
+    last_visit && (Time.now - last_visit < max_delay)
+  end
+
 
   protected
     

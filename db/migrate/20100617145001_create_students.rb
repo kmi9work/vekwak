@@ -7,6 +7,7 @@ class CreateStudents < ActiveRecord::Migration
       t.column :crypted_password,          :string, :limit => 40
       t.column :salt,                      :string, :limit => 40
       t.column :group,                     :string, :limit => 40
+      t.column :last_visit,                :datetime      
       t.column :created_at,                :datetime
       t.column :updated_at,                :datetime
       t.column :remember_token,            :string, :limit => 40

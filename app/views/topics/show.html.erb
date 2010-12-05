@@ -1,13 +1,10 @@
+<div class="topic_show">
+<h2><%= h @topic.title %></h2>
 
-<%if nil and @topic.voting %>
+<div class="topic_show_content">
+  
 <p>
-  <b>Voting:</b>
-  <%= h @topic.voting %>
-</p>
-<% end %>
-<div class="grey-bg">
-<p>
-  <%= textilize( h @topic.content) %>
+  <%= @topic.content %>
 </p>
 
 <p>
@@ -20,22 +17,23 @@
       else
         "red"
       end
-     %>"> <%= link_to h(@topic.rating), :url => {:action => :topic_raters, :id => @topic.id}, :remote =>true, :update => 'topic_raters' %></font>
+     %>"> <%= link_to h(@topic.rating), {:url => {:action => :topic_raters, :id => @topic.id}, :update => 'topic_raters'}, :remote =>true  %></font>
+     <%= link_to "+", #image_tag("up.png") ? image_tag("up.png") : "+",
+                             { :update => "topic_rating",
+                             :url => {:action => :plus, :id => @topic.id}},
+                             :remote =>true -%> |
+     <%= link_to "-",#image_tag("down.png"), 
+                             {:update => "topic_rating", 
+                             :url => {:action => :minus, :id => @topic.id}},
+                             :remote =>true -%>
    </div> 
    <div id="topic_raters"></div>
-  <div class="plus"><%= link_to image_tag("up.png"), 
-                          :update => "topic_rating",
-                          :remote =>true,
-                          :url => {:action => :plus, :id => @topic.id}%></div> 
-  <div class="plus"><%= link_to image_tag("down.png"), 
-                          :update => "topic_rating", 
-                          :remote =>true,
-                          :url => {:action => :minus, :id => @topic.id}%></div>
+  
 </p>
   
 <div class = "under_topic">
-  Автор: <%= h @topic.student.login %>
-  <% if @topic.student.rating %>
+  Автор: <%= h @topic.student.login -%>
+  <% if @topic.student.rating -%>
   (<font color="<%= 
   if @topic.student.rating > 0
     "green"
@@ -44,14 +42,14 @@
   else
     "red"
   end
-  %>"><%= h @topic.student.rating %></font>)
-  <% end %>
+  %>"><%= h @topic.student.rating -%></font>)
+  <% end -%>
 </div>
 <br>
 <p>
-  <% depth = 0 %>
-  
+  <%= render :partial => "comment", :collection => @topic.comments, :locals => {:top_level => true} %>
 </p>
+</div>
 
 <%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
 <%= link_to 'Назад', topics_path %>

@@ -33,10 +33,10 @@
   <%= f.file_field :avatar %>
   
   <p><%= label_tag 'Админ?' %><br/>
-  <%= f.check_box :admin %>
+  <%= f.check_box :admin, {}, true, false %>
   
   <p><%= label_tag 'Староста?' %><br/>
-  <%= f.check_box :headman %>
+  <%= f.check_box :headman, {}, true, false %>
 
   <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

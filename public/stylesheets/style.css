@@ -39,6 +39,10 @@ h2{
 	background-image:url('img/noavatar.gif');
 }
 
+.online{
+  border-bottom:8px solid #11FF23;
+}
+
 #top_shadow{
 	height:9px;
 	width:100%;
@@ -55,14 +59,14 @@ h2{
 
 .post{  
 	margin-top:1%;
-	height: 400px;
-	width:32%;
-	margin-left:1%;
+	height: 350px;
+	width:28%;
+	margin-left:4%;
 }
 
 .post_bottom{  
   height: 65px;    
-  background-image:url('img/post_type_orange.png'); 
+  background-image:url('img/post_bottom.png');  
 }
 
 .post_content{  
@@ -90,19 +94,21 @@ h2{
   text-align:center;
   width:60%;
   height:65px;
-  
+  background-image:url('img/post_type_blue.png'); 
 }
 
 .rating{
   right: 0px;
   color:white;
   font-size:18pt;
+  width:100%;
   height:27px;
   background-image:url('img/rating.gif'); 
 }
 
 .rating_plus{
   display:block;
+  width:65px;
   height:16px;
   background-image:url('img/button_plus.png');
 }
@@ -112,6 +118,7 @@ h2{
 
 .rating_minus{
   display:block;
+  width:100%;
   height:16px;
   background-image:url('img/button_minus.png');
 }
@@ -122,6 +129,14 @@ h2{
 .inline{
   display: inline-block;
   vertical-align: top;
+}
+
+.topic_show{
+  background-color: #3c3c3c;
+}
+
+.topic_show_content{
+  padding: 10px;
 }
 
 .grey-bg{
@@ -135,5 +150,12 @@ h2{
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
+}
+
+.comment_top{
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin: 10px 3px;
+  padding: 5px;
 }
 

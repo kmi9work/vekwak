@@ -1,20 +1,12 @@
 class SectionsController < ApplicationController
   def list
     @sections = Section.find(:all)
-    respond_to do |format|
-      format.html # list.html.erb
-      format.xml  { render :xml => @sections }
-    end
   end
 
   # GET /sections/new
   # GET /sections/new.xml
   def new
     @section = Section.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @section }
-    end
   end
 
   # GET /sections/1/edit
@@ -22,7 +14,7 @@ class SectionsController < ApplicationController
     if @student.admin
       @section = Section.find(params[:id])
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end
 
@@ -31,16 +23,12 @@ class SectionsController < ApplicationController
   def create
     if @student.admin or @student.headman
       @section = Section.new(params[:section])
-      respond_to do |format|
-        if @section.save
-          flash[:notice] = 'Section was successfully created.'
-          format.html { redirect_to topic }
-          format.xml  { render :xml => @section, :status => :created, :location => @section }
-        else
-          flash[:notice] = 'Error.'
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
-        end
+      if @section.save
+        flash[:notice] = 'Section was successfully created.'
+        redirect_to topic
+      else
+        flash[:notice] = 'Error.'
+        render :action => "new"
       end
     end
   end
@@ -55,18 +43,14 @@ class SectionsController < ApplicationController
         section = section.section
       end
       topic = section.topic 
-      respond_to do |format|
-        if @section.update_attributes(params[:section])
-          flash[:notice] = 'Section was successfully updated.'
-          format.html { redirect_to(topic) }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
-        end
+      if @section.update_attributes(params[:section])
+        flash[:notice] = 'Section was successfully updated.'
+        redirect_to(topic)
+      else
+        render :action => "edit"
       end
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end
 
@@ -77,13 +61,9 @@ class SectionsController < ApplicationController
       @section = Section.find(params[:id])
       topic = @section.topic
       @section.destroy
-    
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.xml  { head :ok }
-      end
+      redirect_back_or_default('/') 
     else
-      redirect_to :back or render :status => 403
+      render :status => 403
     end
   end  
   

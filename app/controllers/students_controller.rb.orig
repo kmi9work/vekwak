@@ -1,5 +1,11 @@
 class StudentsController < ApplicationController
+<<<<<<< HEAD
+  # Be sure to include AuthenticationSystem in Application Controller instead
   skip_before_filter :login_required, :new_message
+  include AuthenticatedSystem
+=======
+  skip_before_filter :login_required, :new_message
+>>>>>>> qaa12
   
 
   # render new.rhtml
@@ -9,31 +15,45 @@ class StudentsController < ApplicationController
  
   def create
     logout_keeping_session!
+<<<<<<< HEAD
+    @student = Student.new(params[:student])
+    success = @student && @student.save
+    if success && @student.errors.empty?
+            # Protects against session fixation attacks, causes request forgery
+=======
     @student = Student.create(params[:student])
-    if params[:student][:headman]
-      @student[:headman] = true
-    end
-    if params[:student][:admin]
-      @student[:admin] = true
-    end
     success = @student && @student.save
     if success && @student.errors.empty?
       # Protects against session fixation attacks, causes request forgery
+>>>>>>> qaa12
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       self.current_student = @student # !! now logged in
+<<<<<<< HEAD
+      redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
+    else
+      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+=======
       redirect_back_or_default('/')
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+>>>>>>> qaa12
       render :action => 'new'
     end
   end
   
   def show
+<<<<<<< HEAD
+    @student_show = Student.find(params[:id])
+    @new_msg = @student.messages.collect{|p| p.new}.select{|x| x == true}.size 
+  end
+
+=======
     @student_show=Student.find_by_id(params[:id])
     @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size 
   end
   
+>>>>>>> qaa12
 end

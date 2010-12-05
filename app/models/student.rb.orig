@@ -4,6 +4,24 @@ class Student < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+<<<<<<< HEAD
+
+  set_table_name 'students'
+
+  validates :login, :presence   => true,
+                    :uniqueness => true,
+                    :length     => { :within => 3..40 },
+                    :format     => { :with => Authentication.login_regex, :message => Authentication.bad_login_message }
+
+  validates :name,  :format     => { :with => Authentication.name_regex, :message => Authentication.bad_name_message },
+                    :length     => { :maximum => 100 },
+                    :allow_nil  => true
+
+  validates :email, :presence   => true,
+                    :uniqueness => true,
+                    :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
+                    :length     => { :within => 6..100 }
+=======
   
 
   validates_presence_of     :login
@@ -18,12 +36,18 @@ class Student < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+>>>>>>> qaa12
 
   
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
+<<<<<<< HEAD
+  attr_accessible :login, :email, :name, :password, :password_confirmation
+
+
+=======
   attr_accessible :login, :email, :name, :password, :password_confirmation, :group, :last_name, :second_name, :karma, :rating, :avatar
 
   attr_accessor :mmarks
@@ -35,6 +59,7 @@ class Student < ActiveRecord::Base
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
                                  :medium => "60x60>"  }
+>>>>>>> qaa12
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -55,16 +80,6 @@ class Student < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-  
-  def record_last_visit
-    ActiveRecord::Base.connection.execute("update students set last_visit =
-    datetime() where id = #{id}")
-  end  
-  
-  def online?(max_delay=5.minutes)
-    last_visit && (Time.now - last_visit < max_delay)
-  end
-
 
   protected
     

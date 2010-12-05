@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
   # GET /topics/new.xml
   def new
     @topic = Topic.new
+    @sections = Section.all.collect {|s| [ s.title, s.id ] }
   end
 
   # GET /topics/1/edit

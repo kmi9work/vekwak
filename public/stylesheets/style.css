@@ -88,6 +88,13 @@ h2{
   height:65px;
   text-align: center;
 }
+.w20{
+  padding-top:1px;
+  width:18%;
+  height:65px;
+  text-align: center;
+}
+
 
 .section_red{
   color:white;
@@ -158,4 +165,5 @@ h2{
   margin: 10px 3px;
   padding: 5px;
 }
+
 

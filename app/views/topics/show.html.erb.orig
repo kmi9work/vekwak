@@ -2,9 +2,13 @@
 <h2><%= h @topic.title %></h2>
 
 <div class="topic_show_content">
-
+  
 <p>
+<<<<<<< HEAD
+  <%= @topic.content %>
+=======
   <%= textilize(h @topic.content).html_safe %>
+>>>>>>> sections
 </p>
 
 <p>

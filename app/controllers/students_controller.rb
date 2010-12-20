@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   skip_before_filter :login_required, :new_message
   
 
+
   # render new.rhtml
   def new
     @student = Student.new
@@ -10,12 +11,10 @@ class StudentsController < ApplicationController
   def create
     logout_keeping_session!
     @student = Student.create(params[:student])
-    if params[:student][:headman]
-      @student[:headman] = true
-    end
-    if params[:student][:admin]
-      @student[:admin] = true
-    end
+    puts "_________+++++++++++++++++++++++"
+    puts @student.admin
+    puts @student.headman
+    puts "fsaaaaaaaaaaaaa"
     success = @student && @student.save
     if success && @student.errors.empty?
       # Protects against session fixation attacks, causes request forgery

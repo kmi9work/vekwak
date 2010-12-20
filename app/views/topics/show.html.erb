@@ -52,6 +52,15 @@
 </div>
 
 <%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
-<%= link_to 'Назад', topics_path %>
+<%= link_to 'Назад', topics_path %> 
+<% if @student.admin or @student.id == @topic.student.id %>
+| 
+<%= link_to 'Удалить', :controller => :topics, :action => :destroy, :id => @topic.id %> 
+
+<% end %>
+
+<% if @student.id == @topic.student.id %>
+| <%= link_to 'Редактировать', :controller => :topics, :action => :edit, :id => @topic.id %> 
+<% end %>
 
 </div>

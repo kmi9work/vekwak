@@ -11,20 +11,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
-  def edit
-    if @student.admin
-      @comment = Comment.find(params[:id])
-      comment = @comment
-      while !comment.topic
-        comment = comment.comment
-      end
-      @topic = comment.topic
-    else
-      render :status => 403
-    end
-  end
-
   # POST /comments
   # POST /comments.xml
   def create
@@ -59,33 +45,15 @@ class CommentsController < ApplicationController
 
   # PUT /comments/1
   # PUT /comments/1.xml
-  def update
-    if @student.admin
-      @comment = Comment.find(params[:id])
-      comment = @comment
-      while !comment.topic
-        comment = comment.comment
-      end
-      topic = comment.topic 
-      if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Comment was successfully updated.'
-        redirect_to topic
-      else
-        render :action => "edit"
-      end
-    else
-      render :status => 403
-    end
-  end
 
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    if @student.admin
-      @comment = Comment.find(params[:id])
-      topic = @comment.topic
+    @comment = Comment.find(params[:id])
+    if @student.admin or @comment.student.id == @student.id
+      topic = @comment.topic or topic = @comment.comment.topic
       @comment.destroy
-      redirect_to :back
+      redirect_to topic
     else
       render :status => 403
     end

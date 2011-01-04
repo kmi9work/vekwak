@@ -22,7 +22,17 @@ Vekwak::Application.routes.draw do
   match 'list_aul' => 'headman_aul#list', :as => :aul_list
   
   match 'create_aul' => 'headman_aul#create', :as => :headman_aul_create
-  
+
+  match 'delete_comment/:id' => 'comments#destroy', :as => :delete_comment
+  match 'new_comment' => 'comments#new', :as => :new_comment
+  match 'create_comment' => 'comments#create', :as => :create_comment
+
+  match 'delete_topic/:id' => 'topics#destroy', :as => :delete_topic
+  match 'new_topic' => 'topics#new', :as => :new_topic
+  match 'create_topic' => 'topics#create', :as => :create_topic
+  match 'edit_topic' => 'topics#edit', :as => :edit_topic
+  resources :topics
+
   root :to => "topics#index"
 
   # The priority is based upon order of creation:

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "group",                     :limit => 40
+    t.datetime "last_visit"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40

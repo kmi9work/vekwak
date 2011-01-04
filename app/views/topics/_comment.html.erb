@@ -7,9 +7,8 @@
   <div class="comment_content">
   <b><%= comment.student.login %></b>: <%= comment.content %>
 	</div>
-	<% if @student.admin %>
-    <%= link_to 'Edit', :controller => :comments, :action => :edit, :id => comment.id %> |
-  	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id, :confirm => 'Are you sure?', :method => :delete %><br>
+	<% if @student.admin or @student.id == comment.student.id%>
+  	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id %><br>
 	<% end %>
   
 

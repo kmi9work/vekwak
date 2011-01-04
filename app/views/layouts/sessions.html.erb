@@ -10,7 +10,7 @@
   <div class="grey-block grey-bg">    
   <h1>Добро пожаловать!</h1>
   
-  <% form_tag session_path do -%>
+  <%= form_tag session_path do -%>
   <br>
   <p><%= label_tag 'login', 'Логин :' %>
   <%= text_field_tag 'login', @login %></p>

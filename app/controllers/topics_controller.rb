@@ -64,7 +64,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     if @student.admin or @student.id == @topic.student.id
       @topic.destroy
-      redirect_to(topics_url)
+      redirect_back_or_default("/")
     else
       render :status => 403
     end

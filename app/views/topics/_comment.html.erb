@@ -1,10 +1,10 @@
 
 <% if top_level %>
-<div class="comment_top">
+<div id="comment_top_<%= comment.id %>" class="comment_top">
 <% else %>
-  <div class="comment_bottom", style="margin-left: 20px">
+  <div id="comment_bottom_<%= comment.id %>" class="comment_bottom", style="margin-left: 20px">
 <% end %>
-  <div class="comment_content">
+  <div id="comment_content_<%= comment.id %>" class="comment_content">
   <b><%= comment.student.login %></b>: <%= comment.content %>
 	</div>
 	<% if @student.admin or @student.id == comment.student.id%>
@@ -14,13 +14,10 @@
 
 <% if top_level %>
 <%= render :partial => "comment", :collection => comment.comments, :locals => {:top_level => nil} %>
-<div id="write_comment"> hjjh
+<div id="write_comment_<%= comment.id %>"> hjjh
 </div>
-<font size="2"><%= link_to 'Комментировать', #new_comment_comment_path(comment.id), 
-                            :update => "write_comment",
-                            :url => {:action => 'new', :controller => "comments", :comment_id => comment.id},
-                            :remote => true
-                            #:complete => visual_effect(:appear)}, 
+<font size="2"><%= link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js),
+                            :remote => true, :id => "lol#{comment.id}"
                             %></font>
 
 </div>

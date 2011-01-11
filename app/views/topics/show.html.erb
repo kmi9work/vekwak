@@ -4,7 +4,7 @@
 <div class="topic_show_content">
 
 <p>
-  <%= textilize(h @topic.content).html_safe %>
+  <%= @topic.content %>
 </p>
 
 <p>
@@ -51,16 +51,16 @@
 </p>
 </div>
 
-<%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id %> |
+<%= link_to 'Комментировать', new_topic_comment_path(@topic.id) %> |
 <%= link_to 'Назад', topics_path %> 
 <% if @student.admin or @student.id == @topic.student.id %>
 | 
-<%= link_to 'Удалить', :controller => :topics, :action => :destroy, :id => @topic.id %> 
+<%= link_to 'Удалить', topic_path(@topic.id), :method => :delete %> 
 
 <% end %>
 
 <% if @student.id == @topic.student.id %>
-| <%= link_to 'Редактировать', :controller => :topics, :action => :edit, :id => @topic.id %> 
+| <%= link_to 'Редактировать', edit_topic_path(@topic.id) %> 
 <% end %>
 
 </div>

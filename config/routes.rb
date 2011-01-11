@@ -1,37 +1,21 @@
 Vekwak::Application.routes.draw do
-  resources :students
-  resources :topics   
-  resources :comments   
-  resources :sections
 
   resource :session, :only => [:new, :create, :destroy]
-  
-
-  match 'signup' => 'students#new', :as => :signup
-
-  match 'register' => 'students#create', :as => :register
-
-  match 'login' => 'sessions#new', :as => :login
-
-  match 'logout' => 'sessions#destroy', :as => :logout
-
   match '/activate/:activation_code' => 'students#activate', :as => :activate, :activation_code => nil
+  match 'signup' => 'students#new', :as => :signup
+  match 'register' => 'students#create', :as => :register
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
   
-  match 'new_aul' => 'headman_aul#new', :as => :aul_new
-
-  match 'list_aul' => 'headman_aul#list', :as => :aul_list
-  
-  match 'create_aul' => 'headman_aul#create', :as => :headman_aul_create
-
-  match 'delete_comment/:id' => 'comments#destroy', :as => :delete_comment
-  match 'new_comment' => 'comments#new', :as => :new_comment
-  match 'create_comment' => 'comments#create', :as => :create_comment
-
-  match 'delete_topic/:id' => 'topics#destroy', :as => :delete_topic
-  match 'new_topic' => 'topics#new', :as => :new_topic
-  match 'create_topic' => 'topics#create', :as => :create_topic
-  match 'edit_topic' => 'topics#edit', :as => :edit_topic
-  resources :topics
+  resources :students, :only => [:new, :create, :show]
+  resources :topics do
+    resources :comments, :only => [:new, :create, :destroy]
+  end
+  resources :comments, :only => [:new, :create, :destroy] do
+    resources :comments, :only => [:new, :create, :destroy]
+  end
+  resources :sections
+  resources :headman_auls, :only => [:index, :new, :create]
 
   root :to => "topics#index"
 

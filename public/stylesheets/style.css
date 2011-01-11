@@ -1,3 +1,7 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
 body{
 	background-image:url('img/bg.gif');
 	margin:0%;
@@ -23,6 +27,7 @@ h2{
   background-color: #222;
   border-bottom:1px solid #000;
   text-align:center;
+  margin: 5px 0px;
 }
 
 /*============================================*/
@@ -51,10 +56,11 @@ h2{
 
 .info{  
 	margin-top:1%;
+  padding: 0px 1%;
 	height: 150px;
-	width:31.3%;
+	width:29.3%;
 	margin-left:1.525%;
-	background-image:url('img/info.png');
+	background-image: url('img/info.png');
 }
 
 .post{  
@@ -62,6 +68,7 @@ h2{
 	height: 350px;
 	width:28%;
 	margin-left:4%;
+	padding-top: 4%;
 }
 
 .post_bottom{  

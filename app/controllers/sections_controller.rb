@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
   before_filter :admin_check, :only => [:new, :edit, :create, :destroy, :update]
-  def list
-    @sections = Section.find(:all)
+  def index
+    @sections = Section.all
   end
 
   def new

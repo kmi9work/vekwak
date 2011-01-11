@@ -8,13 +8,21 @@
   <b><%= comment.student.login %></b>: <%= comment.content %>
 	</div>
 	<% if @student.admin or @student.id == comment.student.id%>
-  	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id %><br>
+  	<%= link_to 'Destroy', topic_comment_path((comment.topic_id or comment.comment_id), comment.id), :method => :delete %><br>
 	<% end %>
   
 
 <% if top_level %>
 <%= render :partial => "comment", :collection => comment.comments, :locals => {:top_level => nil} %>
-<font size="2"><%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id, :comment_id => comment.id %></font>
+<div id="write_comment"> hjjh
+</div>
+<font size="2"><%= link_to 'Комментировать', #new_comment_comment_path(comment.id), 
+                            :update => "write_comment",
+                            :url => {:action => 'new', :controller => "comments", :comment_id => comment.id},
+                            :remote => true
+                            #:complete => visual_effect(:appear)}, 
+                            %></font>
+
 </div>
 <% else %>
 </div>

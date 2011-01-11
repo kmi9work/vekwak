@@ -69,6 +69,10 @@ class TopicsController < ApplicationController
       render :status => 403
     end
   end
+#AJAX
+  def write_comment
+    render :text => "lalala", :layout => false
+  end
   
   def plus
     respond_to do |wants|

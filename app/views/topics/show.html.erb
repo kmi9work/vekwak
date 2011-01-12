@@ -4,7 +4,7 @@
 <div class="topic_show">
 
 <p>
-  <% if @topic.content and !@topic.content.strip.empty %>
+  <% if @topic.content and !@topic.content.strip.empty? %>
     <%= @topic.content.strip %>
   <% else %>
     <%= @topic.annotation.strip %>

@@ -19,15 +19,15 @@ class CommentsController < ApplicationController
         topic.comments << @comment
         if @comment.save
           #created.
-          respond_to do |rt|
-            rt.html{redirect_to topic}
-            rt.js{render 'create.js.erb', :locals => {:top_level => true}}
+          respond_to do |format|
+            format.html{redirect_to topic}
+            format.js{render 'create.js.erb', :locals => {:top_level => true}}
           end
         else
           # smth wrong with save :(
-          respond_to do |rt|
-            rt.html{redirect_to :action => :new}
-            rt.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
+          respond_to do |format|
+            format.html{redirect_to :action => :new}
+            format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
           end
         end
       elsif params[:comment_id]
@@ -37,40 +37,53 @@ class CommentsController < ApplicationController
         topic = comment.topic
         if @comment.save
           flash[:notice] = 'Comment was successfully created.'
-          respond_to do |rt|
-            rt.html{redirect_to topic}
-            rt.js{render 'create.js.erb', :locals => {:top_level => false}}
+          respond_to do |format|
+            format.html{redirect_to topic}
+            format.js{render 'create.js.erb', :locals => {:top_level => false}}
           end
         else
           flash[:notice] = 'smth wrong with save :('
-          respond_to do |rt|
-            rt.html{redirect_to :action => :new}
-            rt.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
+          respond_to do |format|
+            format.html{redirect_to :action => :new}
+            format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
           end
         end
       else
         flash[:notice] = 'Something wrong!'
-        respond_to do |rt|
-          rt.html{redirect_to :action => :new}
-          rt.js{render 'fail_create.js.erb', :locals => {:msg => "Wrong params!"}}
+        respond_to do |format|
+          format.html{redirect_to :action => :new}
+          format.js{render 'fail_create.js.erb', :locals => {:msg => "Wrong params!"}}
         end
       end
     else
-      respond_to do |rt|
-        rt.html{redirect_to :action => :new}
-        rt.js{render 'fail_create.js.erb', :locals => {:msg => "Empty!"}}
+      respond_to do |format|
+        format.html{redirect_to :action => :new}
+        format.js{render 'fail_create.js.erb', :locals => {:msg => "Empty!"}}
       end
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    if @student.admin or @comment.student.id == @student.id
-      topic = @comment.topic or topic = @comment.comment.topic
-      @comment.destroy
-      redirect_to topic
+    comment = Comment.find(params[:id])
+    if @student.admin or comment.student.id == @student.id
+      if comment.topic
+        topic = comment.topic
+        @top_level = true
+      else
+        topic = comment.comment.topic
+        @top_level = false
+      end
+      @id = params[:id]
+      comment.destroy
+      respond_to do |format| 
+        format.html{redirect_to topic} 
+        format.js 
+      end 
     else
-      render :status => 403
+      respond_to do |format| 
+        format.html{render :nothing, :status => 403} 
+        format.js{render 'fail_destroy.js.erb'}
+      end
     end
   end
 end

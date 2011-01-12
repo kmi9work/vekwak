@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.xml
   def show
     @topic = Topic.find(params[:id])
-    @comments = Comment.find_by_topic_id(params[:id]) or @comments = []
+    @comments = @topic.comments
   end
 
   # GET /topics/new

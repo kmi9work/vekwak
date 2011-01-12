@@ -7,21 +7,6 @@ class CommentsController < ApplicationController
     elsif params[:comment_id]
       @topic_id = Comment.find(params[:comment_id]).topic.id
     end
-    
-    # respond_to  do |t|
-    #       t.js do 
-    #         
-    #       end
-    #       t.html do
-    #         @comment = Comment.new
-    #         if params[:topic_id]
-    #           @topic_id = Topic.find(params[:topic_id]).id
-    #         elsif params[:comment_id]
-    #           @topic_id = Comment.find(params[:comment_id]).topic.id
-    #         end
-    #         render :new
-    #       end
-    #     end
   end
 
   def create
@@ -33,11 +18,17 @@ class CommentsController < ApplicationController
         @comment.topic = topic
         topic.comments << @comment
         if @comment.save
-          flash[:notice] = 'Comment was successfully created.'
-          redirect_to topic
+          #created.
+          respond_to do |rt|
+            rt.html{redirect_to topic}
+            rt.js{render 'create.js.erb', :locals => {:top_level => true}}
+          end
         else
-          flash[:notice] = 'smth wrong with save :('
-          redirect_to :action => :new
+          # smth wrong with save :(
+          respond_to do |rt|
+            rt.html{redirect_to :action => :new}
+            rt.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
+          end
         end
       elsif params[:comment_id]
         comment = Comment.find(params[:comment_id])
@@ -46,18 +37,29 @@ class CommentsController < ApplicationController
         topic = comment.topic
         if @comment.save
           flash[:notice] = 'Comment was successfully created.'
-          redirect_to topic
+          respond_to do |rt|
+            rt.html{redirect_to topic}
+            rt.js{render 'create.js.erb', :locals => {:top_level => false}}
+          end
         else
           flash[:notice] = 'smth wrong with save :('
-          redirect_to :action => :new
+          respond_to do |rt|
+            rt.html{redirect_to :action => :new}
+            rt.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
+          end
         end
       else
         flash[:notice] = 'Something wrong!'
-        redirect_to :action => :new
+        respond_to do |rt|
+          rt.html{redirect_to :action => :new}
+          rt.js{render 'fail_create.js.erb', :locals => {:msg => "Wrong params!"}}
+        end
       end
     else
-      flash[:notice] = 'Do not empty!'
-      redirect_to :action => :new
+      respond_to do |rt|
+        rt.html{redirect_to :action => :new}
+        rt.js{render 'fail_create.js.erb', :locals => {:msg => "Empty!"}}
+      end
     end
   end
 

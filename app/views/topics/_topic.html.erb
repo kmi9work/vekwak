@@ -11,9 +11,13 @@
       <div class="my_h1"><%= topic.section.title %></div>
     </div>
     <div class="w20 inline">
-      <a href="" class="rating_plus"></a>
-      <div class="rating">13</div>
-      <a href="" class="rating_minus"></a>
+      <%= link_to "", topic_plus_path(:topic_id => topic.id, :format => :js), 
+                      :remote => true, 
+                      :class => "rating_plus" %>
+      <div id="topic_rating_<%= topic.id %>"class="rating"><!--ffont color="<%= font_color(topic.rating) %>"><%= topic.rating %></font--><%= topic.rating %></div>
+      <%= link_to "", topic_minus_path(:topic_id => topic.id, :format => :js), 
+                      :remote => true, 
+                      :class => "rating_minus" %>
     </div>
   </div>
 </div>

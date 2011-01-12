@@ -79,57 +79,53 @@ class TopicsController < ApplicationController
   end
   
   def plus
-    respond_to do |wants|
-      wants.js do 
-        topic = Topic.find(params[:id])
-        if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
-          topic_rating_student.mark += 1
-          topic_rating_student.save
-          render :text => topic[:rating].to_s
-        else
-          topic_rating_student = TopicRatingStudent.new
-          topic[:rating] +=1
-          topic_rating_student.mark = 1
-          topic.topic_rating_students << topic_rating_student
-          topic.save
-          @student.topic_rating_students << topic_rating_student
-          @student.save
-          render :text => topic[:rating].to_s
-        end
+    topic = Topic.find(params[:topic_id])
+    if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
+      topic_rating_student.mark += 1
+      topic_rating_student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render :nothing => true}
       end
-      wants.html do
-        topic = Topic.find(params[:id])
-        topic[:rating] +=1
-        topic.save
-        render :refresh
+    else
+      topic_rating_student = TopicRatingStudent.new
+      topic[:rating] +=1
+      @rating = topic[:rating]
+      @id = topic.id
+      topic_rating_student.mark = 1
+      topic.topic_rating_students << topic_rating_student
+      topic.save
+      @student.topic_rating_students << topic_rating_student
+      @student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render 'ch_rating.js.erb'}
       end
     end
   end
   
   def minus
-    respond_to do |wants|
-      wants.js do 
-        topic = Topic.find(params[:id])
-        if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
-          topic_rating_student.mark -= 1
-          topic_rating_student.save
-          render :text => topic[:rating].to_s
-        else
-          topic_rating_student = TopicRatingStudent.new
-          topic[:rating] -=1
-          topic_rating_student.mark = -1
-          topic.topic_rating_students << topic_rating_student
-          topic.save
-          @student.topic_rating_students << topic_rating_student
-          @student.save
-          render :text => topic[:rating].to_s
-        end
+    topic = Topic.find(params[:topic_id])
+    if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
+      topic_rating_student.mark -= 1
+      topic_rating_student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render :nothing => true}
       end
-      wants.html do
-        topic = Topic.find(params[:id])
-        topic[:rating] -=1
-        topic.save
-        render :refresh
+    else
+      topic_rating_student = TopicRatingStudent.new
+      topic[:rating] -=1
+      @rating = topic[:rating]
+      @id = topic.id
+      topic_rating_student.mark = -1
+      topic.topic_rating_students << topic_rating_student
+      topic.save
+      @student.topic_rating_students << topic_rating_student
+      @student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render 'ch_rating.js.erb'}
       end
     end
   end

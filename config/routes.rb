@@ -16,6 +16,9 @@ Vekwak::Application.routes.draw do
   end
   resources :sections
   resources :headman_auls, :only => [:index, :new, :create]
+  
+  match 'topics/:topic_id/plus(.:format)' => 'topics#plus', :as => :topic_plus
+  match 'topics/:topic_id/minus(.:format)' => 'topics#minus', :as => :topic_minus
 
   root :to => "topics#index"
 

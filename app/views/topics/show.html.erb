@@ -1,24 +1,23 @@
 <div class="grey-bg">
 <h2><%= h @topic.title %></h2>
 
-<div class="topic_show">
+<div class="grey-bg-padding">
 
 <p>
   <% if @topic.content and !@topic.content.strip.empty? %>
-    <%= @topic.content.strip %>
+    <%= @topic.content %>
   <% else %>
-    <%= @topic.annotation.strip %>
+    <%= @topic.annotation %>
   <% end %>
 </p>
 
 <p>
   <div id="topic_rating">
   <b>Рейтинг:</b><font color="<%= font_color(@topic.rating) %>"> <%= link_to h(@topic.rating), {:url => {:action => :topic_raters, :id => @topic.id}, :update => 'topic_raters'}, :remote =>true  -%></font>
-     <%= link_to image_tag("up.png") || "+",
-                             { :update => "topic_rating",
-                             :url => {:action => :plus, :id => @topic.id}},
-                             :remote =>true -%> |
-     <%= link_to image_tag("down.png") || "-", 
+     <%= link_to "+" || image_tag("up.png") || "+",
+                             { :url => {:action => :plus, :id => @topic.id}},
+                               :remote => true -%> |
+     <%= link_to "-" || image_tag("down.png") || "-", 
                              {:update => "topic_rating", 
                              :url => {:action => :minus, :id => @topic.id}},
                              :remote =>true -%>

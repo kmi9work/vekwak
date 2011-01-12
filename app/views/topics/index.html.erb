@@ -1,8 +1,10 @@
 <% if @topics[0] != nil %>
-  <%= render :partial => "topic", :collection => @topics %>
+  <div id="topics">
+    <%= render :partial => "topic", :collection => @topics %>
+  </div>
 <% end %>
-<div class="grey-block grey-bg">
-  <%= link_to 'Написать ещё', new_topic_path %>
+<div id="topic_button" class="grey-block grey-bg">
+  <%= link_to 'Написать ещё', new_topic_path(:format => :js), :remote => true %>
 </div>
 <hr>
   

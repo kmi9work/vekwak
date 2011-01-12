@@ -61,6 +61,7 @@ h2{
 	width:29.3%;
 	margin-left:1.525%;
 	background-image: url('img/info.png');
+	text-align: center;
 }
 
 .post{  
@@ -145,11 +146,7 @@ h2{
   vertical-align: top;
 }
 
-.topic_show{
-  background-color: #3c3c3c;
-}
-
-.topic_show_content{
+.grey-bg-padding{
   padding: 10px;
 }
 

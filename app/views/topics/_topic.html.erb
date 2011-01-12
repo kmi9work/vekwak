@@ -1,9 +1,8 @@
-<div class="post inline">
+<div id="topic_<%= topic.id %>" class="post inline">
   <div class="post_content">
     <h2><%= link_to topic[:title], topic %></h2>
     <br>
     <%= topic[:annotation] %>
-    <%= topic.id %>
   </div>
   <div class="post_bottom">
     <div class="w20 inline"><%= image_tag topic.student.avatar.url(:small) %></div>

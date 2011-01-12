@@ -21,12 +21,12 @@
 </div>
 <div id="top_shadow"></div>
 <div>
-  <div class="info inline"><h2>Календарь</h2></div>
-  <div class="info inline">
-    <h2>Староста</h2>
-      <%= render :partial => 'headman_auls/headman_msg' %>
+  <div id="calendar" class="info inline"><h2>Календарь</h2></div>
+  <div id="headman_aul" class="info inline">
+    <h2><%= link_to "Староста", headman_auls_path %></h2>
+      <%= render :partial => 'headman_auls/headman_aul' %>
   </div>
-  <div class="info inline"><h2>Новости</h2></div>
+  <div id="news" class="info inline"><h2>Новости</h2></div>
 </div>
 <%= yield %>
 

@@ -1,10 +1,14 @@
-<div class="topic_show">
+<div class="grey-bg">
 <h2><%= h @topic.title %></h2>
 
-<div class="topic_show_content">
+<div class="topic_show">
 
 <p>
-  <%= @topic.content %>
+  <% if @topic.content and !@topic.content.strip.empty %>
+    <%= @topic.content.strip %>
+  <% else %>
+    <%= @topic.annotation.strip %>
+  <% end %>
 </p>
 
 <p>

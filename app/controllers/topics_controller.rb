@@ -34,11 +34,15 @@ class TopicsController < ApplicationController
     @topic.student = @student
     @topic.rating = 0
     if @topic.save
-
-      flash[:notice] = 'Topic was successfully created.'
-      redirect_to(@topic)
+      respond_to do |rt|
+        rt.html {redirect_to(@topic)}
+        rt.js
+      end
     else
-      render :action => "new"
+      respond_to do |rt|
+        rt.html {render :action => "new"}
+        rt.js {render 'fail_create.js.erb'}
+      end
     end
   end
 

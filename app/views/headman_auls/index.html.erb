@@ -1,4 +1,3 @@
-<% @auls.each do |aul| %>
-  <%= aul.content %>
-  <br>
-<% end %>
+<div id="auls" class="grey-bg grey-bg-padding">
+<%= render :partial => "aul", :collection => @auls %>
+</div>

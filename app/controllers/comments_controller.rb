@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.student = @student
-    unless @comment.content.empty?
+    unless @comment.content.strip.empty?
       if params[:topic_id]
         topic = Topic.find(params[:topic_id]) 
         @comment.topic = topic

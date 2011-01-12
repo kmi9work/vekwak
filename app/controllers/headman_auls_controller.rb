@@ -12,11 +12,16 @@ class HeadmanAulsController < ApplicationController
     @headman_aul = HeadmanAul.create(params[:headman_aul])
     success = @headman_aul && @headman_aul.save
     if success and @headman_aul.errors.empty?
-      redirect_back_or_default('/')
-      flash[:notice] = 'ready'#"Готово ёма."
+      respond_to do |rt|
+        rt.html {redirect_back_or_default('/')}
+        rt.js
+      end
     else
-      flash[:error]  = 'error'#"Эй! Ты что-то накосячил! Ну или это у нас проблемы... Попробуй ещё разок."
-      render :action => 'new'
+      respond_to do |rt|
+        rt.html {render :action => 'new'}
+        rt.js {render 'fail_create.js.erb'}
+      end
+      
     end
   end
   

@@ -1,41 +1,32 @@
-class TopicsController < ApplicationController
-  # GET /topics
-  # GET /topics.xml
+class PostsController < ApplicationController
   def index
-    @topics = Topic.find(:all, :limit => 10, :order => 'rating desc')
+    @posts = Post.find(:all, :limit => 10, :order => 'rating desc')
   end
 
-  # GET /topics/1
-  # GET /topics/1.xml
   def show
-    @topic = Topic.find(params[:id])
-    @comments = @topic.comments
+    @post = Post.find(params[:id])
+    @comments = @post.comments
   end
 
-  # GET /topics/new
-  # GET /topics/new.xml
   def new
-    @topic = Topic.new
+    @post = Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
   end
 
-  # GET /topics/1/edit
   def edit
-    @topic = Topic.find(params[:id])
-    unless @student.admin or @student.id == @topic.student.id
+    @post = Post.find(params[:id])
+    unless @student.admin or @student.id == @post.student.id
       render :status => 403
     end
   end
 
-  # POST /topics
-  # POST /topics.xml
   def create
-    @topic = Topic.new(params[:topic])
-    @topic.student = @student
-    @topic.rating = 0
-    if @topic.save
+    @post = Post.new(params[:post])
+    @post.student = @student
+    @post.rating = 0
+    if @post.save
       respond_to do |rt|
-        rt.html {redirect_to(@topic)}
+        rt.html {redirect_to(@post)}
         rt.js
       end
     else
@@ -46,14 +37,11 @@ class TopicsController < ApplicationController
     end
   end
 
-  # PUT /topics/1
-  # PUT /topics/1.xml
   def update
-    @topic = Topic.find(params[:id])
-    if @student.admin or @student.id == @topic.student.id
-      if @topic.update_attributes(params[:topic])
-        flash[:notice] = 'Topic was successfully updated.'
-        redirect_to @topic
+    @post = Post.find(params[:id])
+    if @student.admin or @student.id == @post.student.id
+      if @post.update_attributes(params[:post])
+        redirect_to @post
       else
         render :action => "edit"
       end
@@ -62,12 +50,10 @@ class TopicsController < ApplicationController
     end
   end
 
-  # DELETE /topics/1
-  # DELETE /topics/1.xml
   def destroy
-    @topic = Topic.find(params[:id])
-    if @student.admin or @student.id == @topic.student.id
-      @topic.destroy
+    @post = Post.find(params[:id])
+    if @student.admin or @student.id == @post.student.id
+      @post.destroy
       redirect_back_or_default("/")
     else
       render :status => 403
@@ -79,23 +65,23 @@ class TopicsController < ApplicationController
   end
   
   def plus
-    topic = Topic.find(params[:topic_id])
-    if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
-      topic_rating_student.mark += 1
-      topic_rating_student.save
+    post = Post.find(params[:post_id])
+    if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
+      post_rating_student.mark += 1
+      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
       end
     else
-      topic_rating_student = TopicRatingStudent.new
-      topic[:rating] +=1
-      @rating = topic[:rating]
-      @id = topic.id
-      topic_rating_student.mark = 1
-      topic.topic_rating_students << topic_rating_student
-      topic.save
-      @student.topic_rating_students << topic_rating_student
+      post_rating_student = PostRatingStudent.new
+      post[:rating] +=1
+      @rating = post[:rating]
+      @id = post.id
+      post_rating_student.mark = 1
+      post.post_rating_students << post_rating_student
+      post.save
+      @student.post_rating_students << post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -105,23 +91,23 @@ class TopicsController < ApplicationController
   end
   
   def minus
-    topic = Topic.find(params[:topic_id])
-    if topic_rating_student = TopicRatingStudent.where(:topic_id => topic.id, :student_id => @student.id).first
-      topic_rating_student.mark -= 1
-      topic_rating_student.save
+    post = Post.find(params[:post_id])
+    if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
+      post_rating_student.mark -= 1
+      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
       end
     else
-      topic_rating_student = TopicRatingStudent.new
-      topic[:rating] -=1
-      @rating = topic[:rating]
-      @id = topic.id
-      topic_rating_student.mark = -1
-      topic.topic_rating_students << topic_rating_student
-      topic.save
-      @student.topic_rating_students << topic_rating_student
+      post_rating_student = PostRatingStudent.new
+      post[:rating] -=1
+      @rating = post[:rating]
+      @id = post.id
+      post_rating_student.mark = -1
+      post.post_rating_students << post_rating_student
+      post.save
+      @student.post_rating_students << post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -129,10 +115,10 @@ class TopicsController < ApplicationController
       end
     end
   end
-  def topic_raters
-    topic = Topic.find(params[:id])
-    @topic_raters = topic.topic_rating_students
-    render :template => 'topics/topic_raters', :layout => false
+  def post_raters
+    post = Post.find(params[:id])
+    @post_raters = post.post_rating_students
+    render :template => 'posts/post_raters', :layout => false
   end
   
   def sections

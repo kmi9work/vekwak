@@ -28,10 +28,10 @@ class Student < ActiveRecord::Base
 
   attr_accessor :mmarks
   has_many :marks, :dependent => :delete_all
-  has_many :topics
+  has_many :posts
   has_many :messages, :dependent => :delete_all
   has_many :messages_sent, :class_name => 'Message'
-  has_many :topic_rating_students, :dependent => :delete_all
+  has_many :post_rating_students, :dependent => :delete_all
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
                                  :medium => "60x60>"  }

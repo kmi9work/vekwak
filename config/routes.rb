@@ -8,7 +8,7 @@ Vekwak::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   
   resources :students, :only => [:new, :create, :show]
-  resources :topics do
+  resources :posts do
     resources :comments, :only => [:new, :create, :destroy]
   end
   resources :comments, :only => [:new, :create, :destroy] do
@@ -17,10 +17,10 @@ Vekwak::Application.routes.draw do
   resources :sections
   resources :headman_auls, :only => [:index, :new, :create]
   
-  match 'topics/:topic_id/plus(.:format)' => 'topics#plus', :as => :topic_plus
-  match 'topics/:topic_id/minus(.:format)' => 'topics#minus', :as => :topic_minus
+  match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
+  match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
 
-  root :to => "topics#index"
+  root :to => "posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

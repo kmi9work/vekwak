@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    if params[:topic_id]
-      @topic_id = Topic.find(params[:topic_id]).id
+    if params[:post_id]
+      @post_id = Post.find(params[:post_id]).id
     elsif params[:comment_id]
-      @topic_id = Comment.find(params[:comment_id]).topic.id
+      @post_id = Comment.find(params[:comment_id]).post.id
     end
   end
 
@@ -13,14 +13,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.student = @student
     unless @comment.content.strip.empty?
-      if params[:topic_id]
-        topic = Topic.find(params[:topic_id]) 
-        @comment.topic = topic
-        topic.comments << @comment
+      if params[:post_id]
+        post = Post.find(params[:post_id]) 
+        @comment.post = post
+        post.comments << @comment
         if @comment.save
           #created.
           respond_to do |format|
-            format.html{redirect_to topic}
+            format.html{redirect_to post}
             format.js{render 'create.js.erb', :locals => {:top_level => true}}
           end
         else
@@ -34,11 +34,11 @@ class CommentsController < ApplicationController
         comment = Comment.find(params[:comment_id])
         comment.comments << @comment
         @comment.comment = comment
-        topic = comment.topic
+        post = comment.post
         if @comment.save
           flash[:notice] = 'Comment was successfully created.'
           respond_to do |format|
-            format.html{redirect_to topic}
+            format.html{redirect_to post}
             format.js{render 'create.js.erb', :locals => {:top_level => false}}
           end
         else
@@ -66,17 +66,17 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     if @student.admin or comment.student.id == @student.id
-      if comment.topic
-        topic = comment.topic
+      if comment.post
+        post = comment.post
         @top_level = true
       else
-        topic = comment.comment.topic
+        post = comment.comment.post
         @top_level = false
       end
       @id = params[:id]
       comment.destroy
       respond_to do |format| 
-        format.html{redirect_to topic} 
+        format.html{redirect_to post} 
         format.js 
       end 
     else

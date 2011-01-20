@@ -1,6 +1,6 @@
 class CreateTopics < ActiveRecord::Migration
   def self.up
-    create_table :topics do |t|
+    create_table :posts do |t|
       t.integer :student_id
       t.text :content
       t.integer :rating
@@ -13,6 +13,6 @@ class CreateTopics < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :topics
+    drop_table :posts
   end
 end

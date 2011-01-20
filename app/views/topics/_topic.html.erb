@@ -1,21 +1,21 @@
-<div id="topic_<%= topic.id %>" class="post inline">
+<div id="post_<%= post.id %>" class="post inline">
   <div class="post_content">
-    <h2><%= link_to topic[:title], topic %></h2>
+    <h2><%= link_to post[:title], post %></h2>
     <br>
-    <%= topic[:annotation] %>
+    <%= post[:annotation] %>
   </div>
   <div class="post_bottom">
-    <div class="w20 inline"><%= image_tag topic.student.avatar.url(:small) %></div>
-    <div class="section_red inline" style="background-color: #<%= (s = (topic.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
-      <%= topic.created_at.strftime("%d.%m %H:%M") %>
-      <div class="my_h1"><%= topic.section.title %></div>
+    <div class="w20 inline"><%= image_tag post.student.avatar.url(:small) %></div>
+    <div class="section_red inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
+      <%= post.created_at.strftime("%d.%m %H:%M") %>
+      <div class="my_h1"><%= post.section.title %></div>
     </div>
     <div class="w20 inline">
-      <%= link_to "", topic_plus_path(:topic_id => topic.id, :format => :js), 
+      <%= link_to "", post_plus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_plus" %>
-      <div id="topic_rating_<%= topic.id %>"class="rating"><!--ffont color="<%= font_color(topic.rating) %>"><%= topic.rating %></font--><%= topic.rating %></div>
-      <%= link_to "", topic_minus_path(:topic_id => topic.id, :format => :js), 
+      <div id="post_rating_<%= post.id %>"class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= post.rating %></div>
+      <%= link_to "", post_minus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_minus" %>
     </div>

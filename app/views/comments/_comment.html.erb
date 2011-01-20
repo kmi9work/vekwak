@@ -7,7 +7,7 @@
   <div id="comment_content_<%= comment.id %>" class="comment_content">
   <b><%= comment.student.login %></b>: <%= comment.content -%> 
   <% if @student.admin or @student.id == comment.student.id%>
-  	<%= link_to 'x', topic_comment_path((comment.topic_id or comment.comment_id), comment.id), :method => :delete, :remote => true %><br>
+  	<%= link_to 'x', post_comment_path((comment.post_id or comment.comment_id), comment.id), :method => :delete, :remote => true %><br>
 	<% end %>
 	<% if top_level %>
   	<span id="comment_button_<%= comment.id %>"><font size="2">

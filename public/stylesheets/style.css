@@ -38,6 +38,10 @@ h2{
 	background-image:url('img/head.png');
 }
 
+#posts{
+  margin-bottom: 20px;
+}
+
 .student{
 	height:100px;
 	width:100px;
@@ -153,15 +157,20 @@ h2{
 
 .grey-bg{
   background-color: #3c3c3c;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .grey-block{
+  position: fixed;
+  bottom: 0px;
   padding-left:10%;
-  margin-top:10%;
   border-right:1px solid #fff;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
+  background-color: #3c3c3c;
 }
 
 .comment_top{

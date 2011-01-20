@@ -1,3 +1,3 @@
-module TopicsHelper
+module PostsHelper
   
 end

@@ -1,35 +1,35 @@
 <div class="grey-bg">
-<h2><%= h @topic.title %></h2>
+<h2><%= h @post.title %></h2>
 
 <div class="grey-bg-padding">
 
 <p>
-  <% if @topic.content and !@topic.content.strip.empty? %>
-    <%= @topic.content %>
+  <% if @post.content and !@post.content.strip.empty? %>
+    <%= @post.content %>
   <% else %>
-    <%= @topic.annotation %>
+    <%= @post.annotation %>
   <% end %>
 </p>
 
 <p>
-  <div id="topic_rating">
-  <b>Рейтинг:</b><font color="<%= font_color(@topic.rating) %>"> <%= link_to h(@topic.rating), {:url => {:action => :topic_raters, :id => @topic.id}, :update => 'topic_raters'}, :remote =>true  -%></font>
+  <div id="post_rating">
+  <b>Рейтинг:</b><font color="<%= font_color(@post.rating) %>"> <%= link_to h(@post.rating), {:url => {:action => :post_raters, :id => @post.id}, :update => 'post_raters'}, :remote =>true  -%></font>
      <%= link_to "+" || image_tag("up.png") || "+",
-                             { :url => {:action => :plus, :id => @topic.id}},
+                             { :url => {:action => :plus, :id => @post.id}},
                                :remote => true -%> |
      <%= link_to "-" || image_tag("down.png") || "-", 
-                             {:update => "topic_rating", 
-                             :url => {:action => :minus, :id => @topic.id}},
+                             {:update => "post_rating", 
+                             :url => {:action => :minus, :id => @post.id}},
                              :remote =>true -%>
    </div> 
-   <div id="topic_raters"></div>
+   <div id="post_raters"></div>
   
 </p>
   
-<div class = "under_topic">
-  Автор: <%= h @topic.student.login -%>
-  <% if @topic.student.rating -%>
-  (<font color="<%= font_color(@topic.student.rating) %>"><%= h @topic.student.rating -%></font>)
+<div class = "under_post">
+  Автор: <%= h @post.student.login -%>
+  <% if @post.student.rating -%>
+  (<font color="<%= font_color(@post.student.rating) %>"><%= h @post.student.rating -%></font>)
   <% end -%>
 </div>
 <br>
@@ -38,16 +38,16 @@
   </div>
 </div>
 
-<span id="comment_button"><%= link_to 'Комментировать', new_topic_comment_path(@topic.id, :format => :js), :remote => true %> |
-<%= link_to 'Назад', topics_path %> 
-<% if @student.admin or @student.id == @topic.student.id %>
+<span id="comment_button"><%= link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true %> |
+<%= link_to 'Назад', posts_path %> 
+<% if @student.admin or @student.id == @post.student.id %>
 | 
-<%= link_to 'Удалить', topic_path(@topic.id), :method => :delete %> 
+<%= link_to 'Удалить', post_path(@post.id), :method => :delete %> 
 
 <% end %>
 
-<% if @student.id == @topic.student.id %>
-| <%= link_to 'Редактировать', edit_topic_path(@topic.id) %> 
+<% if @student.id == @post.student.id %>
+| <%= link_to 'Редактировать', edit_post_path(@post.id) %> 
 <% end %>
 </span>
 

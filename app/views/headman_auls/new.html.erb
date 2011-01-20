@@ -6,5 +6,8 @@
                                       }
                            } do |f| -%>
   <%= f.text_area :content, :cols => 40, :rows => 5, :maxlength => 256 %></p>
-  <p><%= submit_tag 'Готово' %></p>
+  <p>
+    <%= submit_tag 'Готово' %>
+    <a href="#" onclick="$('#new_headman_aul').slideUp(); $('#headman_aul_content').slideDown()">Нафиг</a>
+  </p>
 <% end -%>

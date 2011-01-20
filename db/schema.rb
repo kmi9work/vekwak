@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20101112161227) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "post_id"
     t.integer  "student_id"
     t.integer  "comment_id"
     t.text     "content"
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true
 
-  create_table "topic_rating_students", :force => true do |t|
-    t.integer  "topic_id"
+  create_table "post_rating_students", :force => true do |t|
+    t.integer  "post_id"
     t.integer  "student_id"
     t.integer  "mark"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "topics", :force => true do |t|
+  create_table "posts", :force => true do |t|
     t.integer  "student_id"
     t.text     "content"
     t.integer  "rating"

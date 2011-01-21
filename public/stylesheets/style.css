@@ -3,45 +3,158 @@
   padding: 0px;
 }
 body{
-	background-image:url('img/bg.gif');
-	margin:0%;
-  color:#BBB;
-  font-family:Georgia;
-  text-shadow: black 1px 1px 2px;
+  background-color: #DDD;  
+	margin: 0%;
+  color: #BBB;
+  font-family: Georgia, serif;
+  font-size: 1.2em;
+  background-image:url('img/bg.gif');
 }
 
-A:link {text-decoration: none; color:white; text-shadow: black 1px 1px 2px;}
-A:visited { text-decoration: none; color:white; text-shadow: black 0px 0px 2px;} 
+A:link {text-decoration: underline; color:#feab25}
+A:visited { text-decoration: none; color:#feab25} 
 A:active { text-decoration: none; color:white; }
 A:hover {text-decoration: underline; color: #ff2fa3; } 
 
-/* -------------------TEMP--------------------*/
-.my_h1{
-  font-size:30pt;
-  color:white;
+/*===================================================================================== GENERAL */
+.inline{
+  display: inline-block;
+  vertical-align: top;
 }
 
-
-h2{
-  font-size:18pt;
-  background-color: #222;
-  border-bottom:1px solid #000;
-  text-align:center;
-  margin: 5px 0px;
+h1{
+  font-family: Arial Black, Gadget, sans-serif;
+  text-shadow: #000 1px 1px 2px;
+  font-size: 1.2em;
 }
 
-/*============================================*/
+h3{
+  font-family: Arial Black, Gadget, sans-serif;
+  font-size: 1em;
+  display: inline-block;
+}
 
+h3-orange{
+  color: #feab25;
+  font-family: Arial Black, Gadget, sans-serif;
+  font-size: 1em;
+  display: inline-block;
+}
+
+.yellow-block{
+  padding-left: 10%;
+  margin-top: 10%;
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 40%;
+  background-color: #fcfebb;
+}
+
+/*_____________________________________________________________________________________ END GENERAL */
+
+/*===================================================================================== TOP  */
 #top{
-	height:103px;
-	width:100%;
-	background-image:url('img/head.png');
+	height: 120px;
+  width: 100%;  
 }
 
-#posts{
-  margin-bottom: 20px;
+#top_students{
+  position: absolute;
+  height: 108px;
+  width: 100%;
+  margin-top:8px;
+  text-align:center;
 }
 
+#top_line{
+  position: absolute;
+  top:10px;
+  height: 40px;
+  width: 100%;
+  background-color: #ffde00;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+
+/*____________________________________________________________________________________ END TOP  */
+
+
+/* ==================================================================================== INFO    */
+
+.wave_top{
+  width:100%;
+  height:15px;
+  background-image:url('img/wave_top.gif');
+}
+
+#info_center{
+  width:100%;
+  height:200px;
+  background-color: #fcfebb;
+  text-align: center;
+  
+}
+
+.wave_bottom{
+  width:100%;
+  height:15px;
+  background-image:url('img/wave_bottom.gif');
+}
+
+.info{
+  width:32.8%;
+  height:100%;
+  border-left: 1px solid #feab25;
+  color: #ffde00;
+}
+
+#headman_aul_content{
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+  color: #222;
+  font-size: 60%;
+  text-align: left;
+}
+
+#last_comments{
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+  color: #222;
+  font-size: 60%;
+  text-align: left;
+}
+
+/* ____________________________________________________________________________________ END INFO   */
+
+/* ==================================================================================== POST */
+
+.post{  
+	margin-top:1%;
+	margin-bottom: 5%;
+	height: 100%;
+	width:28%;
+  margin-left:4%;  
+}
+
+.post_bottom{  
+  height: 65px;    
+  background-image:url('img/post_bottom.png');  
+}
+
+.post_content{
+  height: 350px;
+  background-color: #fcfebb;
+  text-align: center;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+
+/*
 .student{
 	height:100px;
 	width:100px;
@@ -157,20 +270,15 @@ h2{
 
 .grey-bg{
   background-color: #3c3c3c;
-  padding-bottom: 10px;
-  margin-bottom: 50px;
-  border-radius: 0px 0px 10px 10px;
 }
 
 .grey-block{
-  position: fixed;
-  bottom: 0px;
   padding-left:10%;
+  margin-top:10%;
   border-right:1px solid #fff;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
-  background-color: #3c3c3c;
 }
 
 .comment_top{
@@ -180,4 +288,4 @@ h2{
   padding: 5px;
 }
 
-
+*/

@@ -1,11 +1,12 @@
 <div id="headman_aul_content">
 <% if @headman_msg %>
-  <%= @headman_msg.content %>
+ <% @headman_msg.each do |msg| %>
+  <h3><%= msg.created_at.strftime("%d.%m %H:%M") %></h3> <%= msg.content %>
+    </br>
+ <% end %>  
 <% end %>
 <br>
 <% if @student and @student.headman -%>
-  <div id="headman_aul_button">
-    <%= link_to "Написать", new_headman_aul_path(:format => :js), :remote => true -%>
-  </div>
+  <%= link_to "Написать", new_headman_aul_path(:format => :js), :remote => true -%>
 <% end -%>
 </div>

@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  skip_before_filter :login_required, :new_message
+  skip_before_filter :login_required, :new_message, :info_msg
   
 
 

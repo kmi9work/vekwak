@@ -1,10 +1,14 @@
 <div id="post_<%= post.id %>" class="post inline">
+  <div class="wave_top"></div>
   <div class="post_content">
     <h2><%= link_to post[:title], post %></h2>
     <br>
     <%= post[:annotation] %>
   </div>
-  <div class="post_bottom">
+  <div class="wave_bottom"></div>
+</div>
+<!--
+ <div class="post_bottom">
     <div class="w20 inline"><%= image_tag post.student.avatar.url(:small) %></div>
     <div class="section_red inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
       <%= post.created_at.strftime("%d.%m %H:%M") %>
@@ -20,4 +24,4 @@
                       :class => "rating_minus" %>
     </div>
   </div>
-</div>
+-->

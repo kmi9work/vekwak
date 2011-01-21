@@ -38,6 +38,25 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.datetime "updated_at"
   end
 
+  create_table "post_rating_students", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "student_id"
+    t.integer  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "student_id"
+    t.text     "content"
+    t.integer  "rating"
+    t.string   "title"
+    t.text     "annotation", :limit => 256
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sections", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -70,24 +89,5 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true
-
-  create_table "post_rating_students", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "student_id"
-    t.integer  "mark"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "posts", :force => true do |t|
-    t.integer  "student_id"
-    t.text     "content"
-    t.integer  "rating"
-    t.string   "title"
-    t.text     "annotation", :limit => 256
-    t.integer  "section_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

@@ -1,6 +1,6 @@
 
 <div id="new_post" class="post inline" style="display: none;">
-  <% form_for @post, :remote => true do |f| %>
+  <%= form_for @post, :remote => true do |f| %>
   <div class="post_content">
     <h2><%= f.text_field :title %></h2>
     <br>

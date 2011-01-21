@@ -1,4 +1,4 @@
-class Topic < ActiveRecord::Base
+class Post < ActiveRecord::Base
   belongs_to :student
   belongs_to :section
   has_many :comments, :dependent => :delete_all

@@ -180,4 +180,65 @@ h2{
   padding: 5px;
 }
 
+/*calendar*/
+
+.calendar_week{
+  padding-top: 20px;
+}
+
+.calendar_day{
+  border-bottom: 10px solid gray;
+  height: 40px;
+  width: 11%;
+  margin: 0px;
+  background-color: #0f0;
+}
+
+.calendar_day_full a{
+  color: red;
+}
+
+.calendar_day_full a:hover{
+  color: #ff2fa3;
+}
+
+.calendar_day_sunday{
+  background-color: #f00;
+}
+
+.calendar_day_today{
+  border-bottom: 10px solid blue;
+}
+
+.new_day{
+  position: absolute;
+/*  height: 50px;
+  width: 100px;*/  
+  background-color: yellow;
+  display: none;
+}
+
+.show_day{
+  position: absolute;
+  display: none;
+  background-color: #3c3c3c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

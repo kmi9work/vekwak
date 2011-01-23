@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :login_required, :stud, :new_message, :headman_msg, :stud_online
+  before_filter :login_required, :stud, :new_message, :headman_msg, :stud_online, :week
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def stud_online
-    @students_online=Student.find(:all, :conditions => ["last_visit >=?",5.minutes.ago])
+    @students_online=Student.find(:all, :conditions => ["last_visit >=?", 5.minutes.ago])
   end
   
   def new_message
@@ -24,6 +24,18 @@ class ApplicationController < ActionController::Base
   end
   def headman_msg
     @headman_msg = HeadmanAul.order('created_at asc').last
+  end
+  def week
+    t = Time.now - 1.day
+    @wdays = []
+    7.times do
+      if a = Day.where(["day = ? and month = ? and year = ?", t.day, t.month, t.year]).last
+        @wdays << a
+      else
+        @wdays << Day.new(:day => t.day, :month => t.month, :year => t.year)
+      end
+      t += 1.day
+    end
   end
   
 end

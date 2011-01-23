@@ -21,10 +21,15 @@
 </div>
 <div id="top_shadow"></div>
 <div>
-  <div id="calendar" class="info inline"><h2>Календарь</h2></div>
+  <div id="calendar" class="info inline">
+    <h2> <%= link_to "Календарь", days_path %></h2>
+    <div id="calendar_content">
+      <%= render :partial => 'days/week' %>
+    </div>
+  </div>
   <div id="headman_aul" class="info inline">
     <h2><%= link_to "Староста", headman_auls_path %></h2>
-      <%= render :partial => 'headman_auls/headman_aul' %>
+    <%= render :partial => 'headman_auls/headman_aul' %>
   </div>
   <div id="news" class="info inline"><h2>Новости</h2></div>
 </div>

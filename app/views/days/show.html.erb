@@ -1,0 +1,6 @@
+<div id="show_day_<%= params[:id] %>" class="show_day">
+  <table border="1">
+    <%= render :partial => "event", :collection => @events %>
+  </table>
+  <%= link_to "добавить событие(не работает)" %>
+</div>

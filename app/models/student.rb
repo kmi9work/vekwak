@@ -32,6 +32,8 @@ class Student < ActiveRecord::Base
   has_many :messages, :dependent => :delete_all
   has_many :messages_sent, :class_name => 'Message'
   has_many :post_rating_students, :dependent => :delete_all
+  has_many :days
+  has_many :comments
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
                                  :medium => "60x60>"  }

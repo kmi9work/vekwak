@@ -3,6 +3,7 @@
     <h2><%= link_to post[:title], post %></h2>
     <br>
     <%= post[:annotation] %>
+    <%= Date.new.inspect %>
   </div>
   <div class="post_bottom">
     <div class="w20 inline"><%= image_tag post.student.avatar.url(:small) %></div>

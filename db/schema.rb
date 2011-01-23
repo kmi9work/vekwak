@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.integer  "student_id"
     t.text     "content"
     t.integer  "rating"
-    t.string   "title"
-    t.text     "annotation", :limit => 256
+    t.string   "title",                     :default => "Title"
+    t.text     "annotation", :limit => 256, :default => "Annotation"
     t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"

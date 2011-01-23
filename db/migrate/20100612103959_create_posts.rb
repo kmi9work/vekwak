@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :student_id
       t.text :content
       t.integer :rating
-      t.string :title
-      t.text :annotation, :limit => 256
+      t.string :title, :default => "Title"
+      t.text :annotation, :limit => 256, :default => "Annotation"
       t.integer :section_id
       
       t.timestamps

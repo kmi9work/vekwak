@@ -175,12 +175,72 @@ h3-orange{
 }
 
 .post_bottom{  
-  height: 65px;    
-  background-image:url('img/post_bottom.png');  
+  height: 55px;  
+  position: relative;
+  background-color: #fcfebb;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555; 
+}
+
+.post_bottom_line{
+  height: 20px;
+  background-color: #ffde00;  
+  width:70%;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;  
+}
+
+.post_rating_and_section{
+  height: 20px;  
+  width:27%;
+  float:right;  
+}
+
+.rating{
+display: inline-block;
+  vertical-align: top;
+  margin-left:25%;
+  color:#000;
+}
+
+.rating_plus{
+  margin-top:2px;
+    display: inline-block;
+    vertical-align: center;
+    height: 13px;
+    width: 15px;
+    background-image:url('img/up.gif');
+    float:right;
+}
+
+.rating_plus:hover{ 
+    background-image:url('img/up_a.gif');    
+}
+
+.rating_minus{
+  margin-top:2px;
+    display: inline-block;
+    vertical-align: center;
+    height: 13px;
+    width: 15px;
+    background-image:url('img/down.gif');
+    float:left;
+}
+
+.rating_minus:hover{ 
+    background-image:url('img/down_a.gif');    
+}
+
+.post_bottom_avatar{
+  height: 50px;
+  position: absolute;
+  top:0px;
+  left:10px;
+  border: 1px solid #555;  
 }
 
 .post_content{
-  height: 350px;
+  height: 300px;
   background-color: #fcfebb;
   text-align: center;  
   border-left: 1px solid #555;

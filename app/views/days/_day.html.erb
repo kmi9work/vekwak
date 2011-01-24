@@ -1,4 +1,4 @@
 <tr>
-  <td> <%= day.date %></td>
-  <td> <%= day.events.last ? day.events.last.content : "nothing" %> </td>
+  <td> <%= day.to_s %></td>
+  <td> <%= render :partial => "event", :collection => day.events %> </td>
 </tr>

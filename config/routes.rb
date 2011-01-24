@@ -17,9 +17,10 @@ Vekwak::Application.routes.draw do
   resources :sections
   resources :headman_auls, :only => [:index, :new, :create]
   match 'days/new/:date(.:format)' => 'days#new', :as => :new_day
+  match 'days/add/:id/:date(.:format)' => 'days#add', :as => :add_day
   resources :days, :except => [:new]
   match 'days/week' => 'days#week', :as => :week
-  
+  resources :events, :only => [:destroy]
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
 

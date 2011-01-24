@@ -1,6 +1,4 @@
 <div id="show_day_<%= params[:id] %>" class="show_day">
-  <table border="1">
-    <%= render :partial => "event", :collection => @events %>
-  </table>
-  <%= link_to "добавить событие(не работает)" %>
+  <%= render :partial => "event", :collection => @events %>
+  <%= link_to "добавить событие", add_day_path(:format => :js, :date => params[:date], :id => params[:id]), :remote => true %>
 </div>

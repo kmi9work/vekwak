@@ -1,21 +1,26 @@
-<div class="calendar_week">
-  <%= image_tag "left.png", :style => "margin-top: 20px;" %>
-  <% class_str = "calendar_day " 
-  @wdays.each do |wday|
-    class_str += "calendar_day_full " if wday.id  
-    class_str += "calendar_day_sunday " if Time.parse("#{wday.day}.#{wday.month}.#{wday.year}").wday == 0
-    class_str += "calendar_day_today " if wday.day == Time.now.day 
-    class_str += "inline" %>
-    <div id="day<%= wday.day %>" class="<%= class_str %>">
-      <font size="6">
-      <% if wday.id %>
-        <%= link_to wday.day, day_path(wday.id, :date => wday.date, :format => :js), :remote => true %>
-      <% else %>
-        <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
+  <%= link_to "", prev_week_path(:fday => -7), :remote => true, :id => "prev_button", :class => "calendar_button" -%>
+  <div id="calendar_week" class="inline">
+    <div id="new_calendar_days_prev" class="new_calendar_days inline"></div>
+    <div id="calendar_days" class="inline">
+      <% class_str = "calendar_day " 
+      @wdays.each do |wday|
+        class_str += "calendar_day_full " if wday.id  
+        class_str += "calendar_day_sunday " if Time.parse("#{wday.day}.#{wday.month}.#{wday.year}").wday == 0
+        class_str += "calendar_day_today " if wday.day == Time.now.day 
+        class_str += "inline" %>
+        <div id="day<%= wday.day %>" class="<%= class_str %>">
+          <font size="5">
+          <% if wday.id %>
+            <%= link_to wday.day, day_path(wday.id, :date => wday.date, :format => :js), :remote => true %>
+          <% else %>
+            <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
+          <% end %>
+          </font>
+        </div>
+        <% class_str = "calendar_day " %> 
       <% end %>
-      </font>
-    </div>
-    <% class_str = "calendar_day " %> 
-  <% end %>
-  <%= image_tag "right.png", :style => "margin-top: 20px;" %>
-</div>
+    </div>  
+    <div id="new_calendar_days_next" class="new_calendar_days inline"></div>
+  </div>
+  <%= link_to "", next_week_path(:fday => 7), :remote => true, :id => "next_button", :class => "calendar_button" %>
+

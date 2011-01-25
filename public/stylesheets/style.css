@@ -2,6 +2,10 @@
   margin: 0px;
   padding: 0px;
 }
+
+div{
+  position: relative;
+}
 body{
 	background-image:url('img/bg.gif');
 	margin:0%;
@@ -59,6 +63,7 @@ h2{
 }
 
 .info{  
+  position: relative;
 	margin-top:1%;
   padding: 0px 1%;
 	height: 150px;
@@ -182,14 +187,59 @@ h2{
 
 /*calendar*/
 
-.calendar_week{
-  padding-top: 20px;
+#calendar_content{
+  width: 100%;
 }
 
+#calendar_week{
+  padding-top: 20px;
+  width: 80%;
+  height: 75px;
+  overflow: hidden;
+}
+
+#calendar_days{
+  overflow: hidden;
+  width: 77%;
+}
+
+.new_calendar_days{
+  position: absolute;
+  width: 100%;
+  height: 75px;
+}
+
+#new_calendar_days_next{
+  left: 286px;/*42*/
+}
+
+#new_calendar_days_prev{
+  left: -286px;/*42*/
+}
+
+.calendar_button{
+  display: inline-block;
+  margin-top: 30px;
+  width: 7%;
+  height: 20px;
+}
+#prev_button{
+  background: url('img/left.png') no-repeat;
+  background-position: center;
+}
+
+#next_button{
+  background: url('img/right.png') no-repeat;
+  background-position: center;
+}
+
+#calendar_days{
+  width: 100%;
+}
 .calendar_day{
   border-bottom: 10px solid gray;
   height: 40px;
-  width: 11%;
+  width: 12%;
   margin: 0px;
   background-color: #0f0;
 }
@@ -227,6 +277,7 @@ h2{
 .event{
   border-bottom: 1px solid blue;
 }
+
 
 
 

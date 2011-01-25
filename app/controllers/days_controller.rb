@@ -41,9 +41,26 @@ class DaysController < ApplicationController
       end
     end
   end
+  
+  def next_week
+    _week(params[:fday].to_i)
+    respond_to do |format|
+      format.html {render :refresh}
+      format.js
+    end
+  end
+  
+  def prev_week
+    _week(params[:fday].to_i)
+    respond_to do |format|
+      format.html {render :refresh}
+      format.js
+    end
+  end
+  
   protected
-  def week
-    t = Time.now - 1.day
+  def _week (fday = 0)
+    t = Time.now - 1.day + fday.days
     @wdays = []
     7.times do
       if a = Day.where(["day = ? and month = ? and year = ?", t.day, t.month, t.year]).last
@@ -53,5 +70,6 @@ class DaysController < ApplicationController
       end
       t += 1.day
     end
+    puts @wdays.inspect
   end
 end

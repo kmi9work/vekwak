@@ -20,6 +20,8 @@ Vekwak::Application.routes.draw do
   match 'days/add/:id/:date(.:format)' => 'days#add', :as => :add_day
   resources :days, :except => [:new]
   match 'days/week' => 'days#week', :as => :week
+  match 'next_week(.:format)' => 'days#next_week', :as => :next_week
+  match 'prev_week(.:format)' => 'days#prev_week', :as => :prev_week
   resources :events, :only => [:destroy]
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus

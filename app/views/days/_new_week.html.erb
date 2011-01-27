@@ -12,7 +12,8 @@
       <% else %>
         <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
       <% end %>
-      </font>
+      </font><br>
+      <%= wday.month %>
     </div>
     <% class_str = "calendar_day " %> 
   <% end %>

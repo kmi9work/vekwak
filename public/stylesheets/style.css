@@ -217,11 +217,22 @@ h2{
   left: -286px;/*42*/
 }
 
-.calendar_button{
-  display: inline-block;
+
+.button_div{
   margin-top: 30px;
   width: 7%;
   height: 20px;
+}
+.button_spinner{
+  width: 7%;
+  height: 20px;
+  position: absolute;
+  display: none;
+}
+.calendar_button{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 #prev_button{
   background: url('img/left.png') no-repeat;
@@ -237,8 +248,8 @@ h2{
   width: 100%;
 }
 .calendar_day{
-  border-bottom: 10px solid gray;
-  height: 40px;
+  border-bottom: 20px solid gray;
+  height: 30px;
   width: 12%;
   margin: 0px;
   background-color: #0f0;
@@ -257,7 +268,7 @@ h2{
 }
 
 .calendar_day_today{
-  border-bottom: 10px solid blue;
+  border-bottom: 20px solid blue;
 }
 
 .new_day{

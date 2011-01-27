@@ -43,7 +43,7 @@ class DaysController < ApplicationController
   end
   
   def next_week
-    _week(params[:fday].to_i)
+    week(params[:fday].to_i)
     respond_to do |format|
       format.html {render :refresh}
       format.js
@@ -51,7 +51,7 @@ class DaysController < ApplicationController
   end
   
   def prev_week
-    _week(params[:fday].to_i)
+    week(params[:fday].to_i)
     respond_to do |format|
       format.html {render :refresh}
       format.js
@@ -70,6 +70,5 @@ class DaysController < ApplicationController
       end
       t += 1.day
     end
-    puts @wdays.inspect
   end
 end

@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
   def headman_msg
     @headman_msg = HeadmanAul.order('created_at asc').last
   end
-  def week
-    t = Time.now - 1.day
+  
+  protected
+  def week (fday = 0)
+    t = Time.now - 1.day + fday.days
     @wdays = []
     7.times do
       if a = Day.where(["day = ? and month = ? and year = ?", t.day, t.month, t.year]).last

@@ -1,2 +1,2 @@
-$('#day<%= params[:date].match(/(\d+)_(\d+)_(\d+)/)[1] %>').append("<%= escape_javascript render(:file => 'days/new.html.erb') %>");
-$('#new_day_<%= params[:date].match(/(\d+)_(\d+)_(\d+)/)[1] %>').toggle("slow");
+$('#calendar_content').append("<%= escape_javascript render(:file => 'days/new.html.erb') %>");
+$('#new_day_<%= params[:date].match(/(\d+)_(\d+)_(\d+)/)[1] %>').slideToggle("fast");

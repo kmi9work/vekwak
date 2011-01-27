@@ -199,7 +199,6 @@ h2{
 }
 
 #calendar_days{
-  overflow: hidden;
   width: 77%;
 }
 
@@ -272,16 +271,18 @@ h2{
 }
 
 .new_day{
-  position: absolute;
+/*  position: absolute;*/
 /*  height: 50px;
   width: 100px;*/  
   background-color: yellow;
+  z-index: 10;
   display: none;
 }
 
 .show_day{
   position: absolute;
   display: none;
+  z-index: 10;
   background-color: #3c3c3c;
 }
 

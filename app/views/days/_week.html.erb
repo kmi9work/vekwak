@@ -1,5 +1,4 @@
-  <div id="prev_button_div" class="button_div inline">
-    <div id="prev_spinner" class="button_spinner inline"><%= image_tag "spinner.gif" %></div>
+<div id="prev_button_div" class="button_div inline">
     <%= link_to "", 
                 prev_week_path(:fday => -7), 
                 :remote => true, 
@@ -23,16 +22,14 @@
           <% else %>
             <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
           <% end %>
-          </font><br>
-          <%= wday.month %>
+          </font>
+          <%= @month_arr[wday.month-1] %>
         </div>
         <% class_str = "calendar_day " %> 
       <% end %>
     </div>  
     <div id="new_calendar_days_next" class="new_calendar_days inline"></div>
-  </div>
-  <div id="next_button_div" class="button_div inline">
-    <div id="next_spinner" class="button_spinner inline"><%= image_tag "spinner.gif" %></div>
+  </div>  
     <%= link_to "", 
                 next_week_path(:fday => 7), 
                 :remote => true, 

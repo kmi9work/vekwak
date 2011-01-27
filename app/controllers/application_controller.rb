@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
@@ -9,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password  
+
   def stud
     @student = current_student
     @students= Student.all
@@ -29,6 +31,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def week (fday = 0)
+    @month_arr=["янв", "фев", "мар", "апр"]
     t = Time.now - 1.day + fday.days
     @wdays = []
     7.times do

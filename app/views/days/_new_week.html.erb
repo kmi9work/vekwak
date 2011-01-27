@@ -13,7 +13,7 @@
         <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
       <% end %>
       </font><br>
-      <%= wday.month %>
+      <%= @month_arr[wday.month-1] %>
     </div>
     <% class_str = "calendar_day " %> 
   <% end %>

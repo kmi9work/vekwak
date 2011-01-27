@@ -1,4 +1,5 @@
 <div id="prev_button_div" class="button_div inline">
+    <div id="prev_spinner" class="button_spinner inline"><%= image_tag "spinner.gif" %></div>
     <%= link_to "", 
                 prev_week_path(:fday => -7), 
                 :remote => true, 
@@ -30,6 +31,8 @@
     </div>  
     <div id="new_calendar_days_next" class="new_calendar_days inline"></div>
   </div>  
+   <div id="next_button_div" class="button_div inline">
+    <div id="next_spinner" class="button_spinner inline"><%= image_tag "spinner.gif" %></div>
     <%= link_to "", 
                 next_week_path(:fday => 7), 
                 :remote => true, 
@@ -38,4 +41,3 @@
                 :onclick => "$('#next_button').hide(); $('#next_spinner').show();" %>
     
   </div>
-

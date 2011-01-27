@@ -1,0 +1,11 @@
+<div id="headman_aul_content">
+<% if @headman_msg %>
+  <%= @headman_msg.content %>
+<% end %>
+<br>
+<% if @student and @student.headman -%>
+  <div id="headman_aul_button">
+    <%= link_to "Написать", new_headman_aul_path(:format => :js), :remote => true -%>
+  </div>
+<% end -%>
+</div>

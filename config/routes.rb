@@ -1,39 +1,32 @@
 Vekwak::Application.routes.draw do
-  resources :students
-  #resources :topics   
-#  resources :comments   
-  resources :sections
 
   resource :session, :only => [:new, :create, :destroy]
-  
-
-  match 'signup' => 'students#new', :as => :signup
-
-  match 'register' => 'students#create', :as => :register
-
-  match 'login' => 'sessions#new', :as => :login
-
-  match 'logout' => 'sessions#destroy', :as => :logout
-
   match '/activate/:activation_code' => 'students#activate', :as => :activate, :activation_code => nil
+  match 'signup' => 'students#new', :as => :signup
+  match 'register' => 'students#create', :as => :register
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
   
-  match 'new_aul' => 'headman_aul#new', :as => :aul_new
+  resources :students, :only => [:new, :create, :show]
+  resources :posts do
+    resources :comments, :only => [:new, :create, :destroy]
+  end
+  resources :comments, :only => [:new, :create, :destroy] do
+    resources :comments, :only => [:new, :create, :destroy]
+  end
+  resources :sections
+  resources :headman_auls, :only => [:index, :new, :create]
+  match 'days/new/:date(.:format)' => 'days#new', :as => :new_day
+  match 'days/add/:id/:date(.:format)' => 'days#add', :as => :add_day
+  resources :days, :except => [:new]
+  match 'days/week' => 'days#week', :as => :week
+  match 'next_week(.:format)' => 'days#next_week', :as => :next_week
+  match 'prev_week(.:format)' => 'days#prev_week', :as => :prev_week
+  resources :events, :only => [:destroy]
+  match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
+  match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
 
-  match 'list_aul' => 'headman_aul#list', :as => :aul_list
-  
-  match 'create_aul' => 'headman_aul#create', :as => :headman_aul_create
-
-  match 'delete_comment/:id' => 'comments#destroy', :as => :delete_comment
-  match 'new_comment' => 'comments#new', :as => :new_comment
-  match 'create_comment' => 'comments#create', :as => :create_comment
-
-  match 'delete_topic/:id' => 'topics#destroy', :as => :delete_topic
-  match 'new_topic' => 'topics#new', :as => :new_topic
-  match 'create_topic' => 'topics#create', :as => :create_topic
-  match 'edit_topic' => 'topics#edit', :as => :edit_topic
-  resources :topics
-
-  root :to => "topics#index"
+  root :to => "posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

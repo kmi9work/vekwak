@@ -1,3 +1,4 @@
+#encoding: utf-8
 class HeadmanAulController < ApplicationController
   def list
     @auls = HeadmanAul.order('created_at desc').all

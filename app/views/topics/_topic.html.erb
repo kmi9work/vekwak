@@ -1,27 +1,23 @@
-<div class='topic_title'>
-<h3><%= link_to topic.title, topic %></h3>
-</div>
-<div class="topic">
-<%= textilize (h topic.content) %>
-</div>
-<div class = "under_topic">
-  Автор: <%= topic.student.login %> <font color="green">|</font>  
-  <% if topic.rating %>
-    Рейтинг: 	
-    <% if topic.rating > 0 %>
-      <font color="green">
-    <% elsif topic.rating == 0 %>
-      <font color="gray">
-    <% else %>
-      <font color="red">
-    <% end %>
-    <%=h topic.rating %> </font>
-  <%end%>
-  <div style="margin-right:8px;margin-top:-20px;text-align:right">  
-    <%= link_to 'Подробнее', topic %>
-    <% if @student.admin or topic.student.id == @student.id %>
-       <%= link_to 'Править  ', edit_topic_path(topic) %> <%= link_to 'Удалить', topic, :confirm => 'Вы уверены?', :method => :delete %>
-    <% end %>
+<div id="post_<%= post.id %>" class="post inline">
+  <div class="post_content">
+    <h2><%= link_to post[:title], post %></h2>
+    <br>
+    <%= post[:annotation] %>
+  </div>
+  <div class="post_bottom">
+    <div class="w20 inline"><%= image_tag post.student.avatar.url(:small) %></div>
+    <div class="section_red inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
+      <%= post.created_at.strftime("%d.%m %H:%M") %>
+      <div class="my_h1"><%= post.section.title %></div>
+    </div>
+    <div class="w20 inline">
+      <%= link_to "", post_plus_path(:post_id => post.id, :format => :js), 
+                      :remote => true, 
+                      :class => "rating_plus" %>
+      <div id="post_rating_<%= post.id %>"class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= post.rating %></div>
+      <%= link_to "", post_minus_path(:post_id => post.id, :format => :js), 
+                      :remote => true, 
+                      :class => "rating_minus" %>
+    </div>
   </div>
 </div>
-<br>

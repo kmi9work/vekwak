@@ -1,0 +1,13 @@
+<% if top_level %>
+  $('#comments').append("<%= escape_javascript(render :partial => 'comments/comment', 
+                                                      :locals => {:top_level => top_level, 
+                                                      :comment => @comment}) %>"); 
+  $('#comment_button').show();
+<% else %>
+  $('#comment_top_<%= @comment.comment.id %>').append("<%= escape_javascript(render :partial => 'comments/comment', 
+                                                      :locals => {:top_level => top_level, 
+                                                      :comment => @comment}) %>");
+  $('#comment_button_<%= @comment.comment.id %>').show();
+<% end %>
+  $('#new_comment').hide();
+  

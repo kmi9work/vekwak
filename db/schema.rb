@@ -10,14 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101112161227) do
+ActiveRecord::Schema.define(:version => 20110122094654) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "post_id"
     t.integer  "student_id"
     t.integer  "comment_id"
     t.text     "content"
     t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "days", :force => true do |t|
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "day_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +51,25 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
     t.integer  "student_id"
     t.integer  "student_from_id"
     t.boolean  "new",             :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_rating_students", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "student_id"
+    t.integer  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "student_id"
+    t.text     "content"
+    t.integer  "rating"
+    t.string   "title"
+    t.text     "annotation", :limit => 256
+    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,24 +106,5 @@ ActiveRecord::Schema.define(:version => 20101112161227) do
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true
-
-  create_table "topic_rating_students", :force => true do |t|
-    t.integer  "topic_id"
-    t.integer  "student_id"
-    t.integer  "mark"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "topics", :force => true do |t|
-    t.integer  "student_id"
-    t.text     "content"
-    t.integer  "rating"
-    t.string   "title"
-    t.text     "annotation", :limit => 256
-    t.integer  "section_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

@@ -1,3 +1,11 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+div{
+  position: relative;
+}
 body{
 	background-image:url('img/bg.gif');
 	margin:0%;
@@ -23,6 +31,7 @@ h2{
   background-color: #222;
   border-bottom:1px solid #000;
   text-align:center;
+  margin: 5px 0px;
 }
 
 /*============================================*/
@@ -31,6 +40,10 @@ h2{
 	height:103px;
 	width:100%;
 	background-image:url('img/head.png');
+}
+
+#posts{
+  margin-bottom: 20px;
 }
 
 .student{
@@ -50,18 +63,23 @@ h2{
 }
 
 .info{  
+  position: relative;
 	margin-top:1%;
+  padding: 0px 1%;
 	height: 150px;
-	width:31.3%;
+	width:29.3%;
 	margin-left:1.525%;
-	background-image:url('img/info.png');
+	background-image: url('img/info.png');
+	text-align: center;
 }
 
 .post{  
 	margin-top:1%;
+	margin-bottom: 5%;
 	height: 350px;
 	width:28%;
 	margin-left:4%;
+
 }
 
 .post_bottom{  
@@ -138,25 +156,26 @@ h2{
   vertical-align: top;
 }
 
-.topic_show{
-  background-color: #3c3c3c;
-}
-
-.topic_show_content{
+.grey-bg-padding{
   padding: 10px;
 }
 
 .grey-bg{
   background-color: #3c3c3c;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .grey-block{
+  position: fixed;
+  bottom: 0px;
   padding-left:10%;
-  margin-top:10%;
   border-right:1px solid #fff;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
+  background-color: #3c3c3c;
 }
 
 .comment_top{
@@ -165,5 +184,126 @@ h2{
   margin: 10px 3px;
   padding: 5px;
 }
+
+/*calendar*/
+
+#calendar_content{
+  width: 100%;
+}
+
+#calendar_week{
+  padding-top: 20px;
+  width: 80%;
+  height: 75px;
+  overflow: hidden;
+}
+
+#calendar_days{
+  width: 77%;
+}
+
+.new_calendar_days{
+  position: absolute;
+  width: 100%;
+  height: 75px;
+}
+
+#new_calendar_days_next{
+  left: 286px;/*42*/
+}
+
+#new_calendar_days_prev{
+  left: -286px;/*42*/
+}
+
+
+.button_div{
+  margin-top: 30px;
+  width: 7%;
+  height: 20px;
+}
+.button_spinner{
+  width: 7%;
+  height: 20px;
+  position: absolute;
+  display: none;
+}
+.calendar_button{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+#prev_button{
+  background: url('img/left.png') no-repeat;
+  background-position: center;
+}
+
+#next_button{
+  background: url('img/right.png') no-repeat;
+  background-position: center;
+}
+
+#calendar_days{
+  width: 100%;
+}
+.calendar_day{
+  border-bottom: 20px solid gray;
+  height: 30px;
+  width: 12%;
+  margin: 0px;
+  background-color: #0f0;
+}
+
+.calendar_day_full a{
+  color: red;
+}
+
+.calendar_day_full a:hover{
+  color: #ff2fa3;
+}
+
+.calendar_day_sunday{
+  background-color: #f00;
+}
+
+.calendar_day_today{
+  border-bottom: 20px solid blue;
+}
+
+.new_day{
+/*  position: absolute;*/
+/*  height: 50px;
+  width: 100px;*/  
+  background-color: yellow;
+  z-index: 10;
+  display: none;
+}
+
+.show_day{
+  position: absolute;
+  display: none;
+  z-index: 10;
+  background-color: #3c3c3c;
+}
+
+.event{
+  border-bottom: 1px solid blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,0 +1,5 @@
+<div id="show_day_<%= params[:id] %>" class="show_day">
+  <%= render :partial => "event", :collection => @events %>
+  <%= link_to "добавить событие", add_day_path(:format => :js, :date => params[:date], :id => params[:id]), :remote => true %> 
+  <a href="#" onclick="$('#show_day_<%= params[:id] %>').slideUp('fast');">X</a>
+</div>

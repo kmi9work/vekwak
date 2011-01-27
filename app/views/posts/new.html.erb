@@ -1,0 +1,25 @@
+
+<div id="new_post" class="post inline" style="display: none;">
+  <%= form_for @post, :remote => true do |f| %>
+  <div class="post_content">
+    <h2><%= f.text_field :title %></h2>
+    <br>
+    <%= f.text_area :annotation, :cols => 40, :rows => 16, :maxlength => 512 %>
+    <br>
+    <%= f.submit 'Создать' -%>
+    <a href="#" onclick="$('#new_post').slideUp();">x</a>
+  </div>
+  <div class="post_bottom">
+    <div class="w20 inline"><%= image_tag @student.avatar.url(:small) %></div>
+    <div class="section_red inline" style="background-color: #fff">
+      <%= Time.now.strftime("%m/%d/%Y") %><br>
+      <%= f.select 'section_id', @sections %>
+    </div>
+    <div class="w20 inline">
+      <div class="rating_plus"></div>
+      <div class="rating">0</div>
+      <div class="rating_minus"></div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,10 +1,33 @@
-<% form_for(@comment, :url => {:action=> :create, :topic_id => params[:topic_id], :comment_id => params[:comment_id]})  do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit 'create comment' %>
-  </p>
+<% if params[:comment_id] %>
+  <%= form_for(@comment, 
+             :url => {:action=> :create, 
+                      :post_id => params[:post_id], 
+                      :comment_id => params[:comment_id]},
+             :html => {:id => "new_comment_#{params[:comment_id]}", :style => "display: none;"},
+             :remote => true)  do |f| %>
+    <p>
+      <%= f.text_area :content, :size => "50" %>
+    </p>
+    <p>
+      <%= f.submit 'create' -%>
+      <a href="#" onclick="$('#new_comment_<%= params[:comment_id] %>').slideUp(); $('#comment_button_<%= params[:comment_id] %>').slideDown()">Нафиг</a>
+    </p>
+  <% end -%> 
+
+<% else %>
+  <%= form_for(@comment, 
+             :url => {:action=> :create, 
+                      :post_id => params[:post_id], 
+                      :comment_id => params[:comment_id]},
+             :html => {:id => "new_comment", :style => "display: none;"},
+             :remote => true)  do |f| %>
+    <p>
+      <%= f.text_area :content, :size => "50" %>
+    </p>
+    <p>
+      <%= f.submit 'create' -%>
+        <a href="#" onclick="$('#new_comment').slideUp(); $('#comment_button').slideDown()">Нафиг</a>
+    </p>
+  <% end -%>
+
 <% end %>

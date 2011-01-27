@@ -1,0 +1,2 @@
+$("#show_day_<%= @day_id %>").remove();
+$('#calendar_content').html("<%= escape_javascript(render :partial => 'days/week') %>");

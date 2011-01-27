@@ -1,0 +1,19 @@
+
+  <% class_str = "calendar_day " 
+  @wdays.each do |wday|
+    class_str += "calendar_day_full " if wday.id  
+    class_str += "calendar_day_sunday " if Time.parse("#{wday.day}.#{wday.month}.#{wday.year}").wday == 0
+    class_str += "calendar_day_today " if wday.day == Time.now.day 
+    class_str += "inline" %>
+    <div id="day<%= wday.day %>" class="<%= class_str %>">
+      <font size="5">
+      <% if wday.id %>
+        <%= link_to wday.day, day_path(wday.id, :date => wday.date, :format => :js), :remote => true %>
+      <% else %>
+        <%= link_to wday.day, new_day_path(:format => :js, :date => wday.date), :remote => true %>
+      <% end %>
+      </font><br>
+      <%= wday.month %>
+    </div>
+    <% class_str = "calendar_day " %> 
+  <% end %>

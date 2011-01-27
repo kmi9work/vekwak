@@ -1,20 +1,25 @@
 
 <% if top_level %>
-<div class="comment_top">
+<div id="comment_top_<%= comment.id %>" class="comment_top">
 <% else %>
-  <div class="comment_bottom", style="margin-left: 20px">
+  <div id="comment_bottom_<%= comment.id %>" class="comment_bottom", style="margin-left: 20px">
 <% end %>
-  <div class="comment_content">
+  <div id="comment_content_<%= comment.id %>" class="comment_content">
   <b><%= comment.student.login %></b>: <%= comment.content %>
 	</div>
 	<% if @student.admin or @student.id == comment.student.id%>
-  	<%= link_to 'Destroy', :controller => :comments, :action => :destroy, :id => comment.id %><br>
+  	<%= link_to 'Destroy', topic_comment_path((comment.topic_id or comment.comment_id), comment.id), :method => :delete %><br>
 	<% end %>
   
 
 <% if top_level %>
 <%= render :partial => "comment", :collection => comment.comments, :locals => {:top_level => nil} %>
-<font size="2"><%= link_to 'Комментировать', :controller => :comments, :action => :new, :topic_id => @topic.id, :comment_id => comment.id %></font>
+<div id="write_comment_<%= comment.id %>"> hjjh
+</div>
+<font size="2"><%= link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js),
+                            :remote => true, :id => "lol#{comment.id}"
+                            %></font>
+
 </div>
 <% else %>
 </div>

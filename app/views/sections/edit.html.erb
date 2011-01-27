@@ -1,6 +1,6 @@
 <h1>Editing section</h1>
 
-<% form_for(@topic) do |f| %>
+<% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -12,5 +12,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>

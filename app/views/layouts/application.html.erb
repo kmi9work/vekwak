@@ -3,12 +3,12 @@
 <head>
   <title>Vekwak</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery.min', 'rails', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 <div id="top">
-<div class="student inline"><%= image_tag(@student.avatar ? @student.avatar.url : "noavatar.gif", :width => 100, :height => 100)%> </div>
+<div class="student inline"><%= link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), "/"%> </div>
 <div class="inline"><%= render :partial => 'students/student_bar' %></div>
 <% @students.each do |student| %>
 <% if @students_online.include?(student) %>
@@ -17,15 +17,21 @@
 <div class="inline"><%= image_tag(student.avatar.url(:small)) %> </div>
 <% end %>
 <% end %>
+<%= raw "admin: " + @student.admin.to_s + " headman: " + @student.headman.to_s %>
 </div>
 <div id="top_shadow"></div>
 <div>
-  <div class="info inline"><h2>Календарь</h2></div>
-  <div class="info inline">
-    <h2>Староста</h2>
-      <%= render :partial => 'headman_aul/headman_msg' %>
+  <div id="calendar" class="info inline">
+    <h2> <%= link_to "Календарь", days_path %></h2>
+    <div id="calendar_content" class="inline">
+      <%= render :partial => 'days/week' %>
+    </div>
   </div>
-  <div class="info inline"><h2>Новости</h2></div>
+  <div id="headman_aul" class="info inline">
+    <h2><%= link_to "Староста", headman_auls_path %></h2>
+    <%= render :partial => 'headman_auls/headman_aul' %>
+  </div>
+  <div id="news" class="info inline"><h2>Новости</h2></div>
 </div>
 <%= yield %>
 

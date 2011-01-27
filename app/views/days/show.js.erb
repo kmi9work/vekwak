@@ -1,0 +1,2 @@
+$('#calendar_content').append("<%= escape_javascript render(:file => 'days/show.html.erb') %>");
+$('#show_day_<%= params[:id] %>').slideToggle("fast");

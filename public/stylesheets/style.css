@@ -2,50 +2,254 @@
   margin: 0px;
   padding: 0px;
 }
-
-div{
-  position: relative;
-}
 body{
-	background-image:url('img/bg.gif');
-	margin:0%;
-  color:#BBB;
-  font-family:Georgia;
-  text-shadow: black 1px 1px 2px;
+  background-color: #DDD;  
+	margin: 0%;
+  color: #BBB;
+  font-family: Georgia, serif;
+  font-size: 1.2em;
+  background-image:url('img/bg_light.gif');
 }
 
-A:link {text-decoration: none; color:white; text-shadow: black 1px 1px 2px;}
-A:visited { text-decoration: none; color:white; text-shadow: black 0px 0px 2px;} 
+A:link {text-decoration: none; color:#feab25}
+A:visited { text-decoration: none; color:#feab25} 
 A:active { text-decoration: none; color:white; }
-A:hover {text-decoration: underline; color: #ff2fa3; } 
+A:hover {text-decoration: underline; color: #fba822;} 
 
-/* -------------------TEMP--------------------*/
-.my_h1{
-  font-size:30pt;
-  color:white;
+/*===================================================================================== GENERAL */
+.inline{
+  display: inline-block;
+  vertical-align: top;
 }
 
+h1{
+  font-family: Arial Black, Gadget, sans-serif;
+  text-shadow: #000 1px 1px 2px;
+  font-size: 1.2em;
+}
 
 h2{
-  font-size:18pt;
-  background-color: #222;
-  border-bottom:1px solid #000;
-  text-align:center;
-  margin: 5px 0px;
+  font-family: Arial Black, Gadget, sans-serif;
+  font-size: 1em;
+  display: inline-block;
+  text-shadow: #000 1px 1px 2px;
 }
 
-/*============================================*/
+h3{
+  font-family: Arial Black, Gadget, sans-serif;
+  font-size: 1em;
+  display: inline-block;
+}
 
+h3-orange{
+  color: #feab25;
+  font-family: Arial Black, Gadget, sans-serif;
+  font-size: 1em;
+  display: inline-block;
+}
+
+.yellow-block{
+  padding-left: 10%;
+  margin-top: 10%;
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 40%;
+  background-color: #fcfebb;
+}
+
+.for_bg{
+  background-image:url('img/bg_info.gif');
+}
+/*_____________________________________________________________________________________ END GENERAL */
+
+/*===================================================================================== TOP  */
 #top{
-	height:103px;
-	width:100%;
-	background-image:url('img/head.png');
+	height: 120px;
+  width: 100%;
+  background-image:url('img/bg_top.gif');
 }
 
-#posts{
-  margin-bottom: 20px;
+#top_students{
+  position: absolute;
+  height: 108px;
+  width: 100%;
+  margin-top:8px;
+  text-align:center;
 }
 
+#top_line{
+  position: absolute;
+  top:10px;
+  height: 40px;
+  width: 100%;
+  background-color: #ffde00;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+}
+
+
+/*____________________________________________________________________________________ END TOP  */
+
+
+/* ==================================================================================== INFO    */
+
+.wave_top{
+  width:100%;
+  height:15px;
+  background-image:url('img/wave_top.gif');
+  position: relative;
+
+}
+
+.wave_bottom{
+  width:100%;
+  height:15px;
+  background-image:url('img/wave_bottom.gif');  
+}
+
+.wave_border_b{
+  height:8px;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
+
+.wave_border_t{ 
+  position: absolute;
+  bottom:0px;
+  height:8px;
+  width:99.5%;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
+
+
+#info_center{
+  width:100%;
+  height:200px; 
+  background-color: #fcfebb;
+  text-align: center; 
+}
+
+.info{
+  width:32.8%;
+  height:100%;
+  border-left: 1px solid #feab25;
+  color: #ffde00;
+}
+
+#headman_aul_content{
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+  color: #555;
+  font-size: 60%;
+  text-align: left;
+}
+
+#last_comments{
+  width: 100%;
+  height: 100%;
+  margin-left: 5px;
+  color: #555;
+  font-size: 60%;
+  text-align: left;
+}
+
+/* ____________________________________________________________________________________ END INFO   */
+
+/* ==================================================================================== POST */
+
+.post{  
+	margin-top:1%;
+	margin-bottom: 5%;
+	height: 100%;
+	width:28%;
+  margin-left:4%;  
+}
+
+.post_title{
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+  background-color: #ffde00;
+}
+
+.post_bottom{  
+  height: 55px;  
+  position: relative;
+  background-color: #fcfebb;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555; 
+}
+
+.post_bottom_line{
+  height: 20px;
+  background-color: #ffde00;  
+  width:70%;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;  
+}
+
+.post_rating_and_section{
+  height: 20px;  
+  width:27%;
+  float:right;  
+}
+
+.rating{
+display: inline-block;
+  vertical-align: top;
+  margin-left:25%;
+  color:#000;
+}
+
+.rating_plus{
+  margin-top:2px;
+    display: inline-block;
+    vertical-align: center;
+    height: 13px;
+    width: 15px;
+    background-image:url('img/up.gif');
+    float:right;
+}
+
+.rating_plus:hover{ 
+    background-image:url('img/up_a.gif');    
+}
+
+.rating_minus{
+  margin-top:2px;
+    display: inline-block;
+    vertical-align: center;
+    height: 13px;
+    width: 15px;
+    background-image:url('img/down.gif');
+    float:left;
+}
+
+.rating_minus:hover{ 
+    background-image:url('img/down_a.gif');    
+}
+
+.post_bottom_avatar{
+  height: 50px;
+  position: absolute;
+  top:0px;
+  left:10px;
+  border: 1px solid #555;  
+}
+
+.post_content{
+  height: 300px;
+  background-color: #fcfebb;
+  text-align: center;  
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;    
+  background-color: #fcfebb;
+}
+
+
+/*
 .student{
 	height:100px;
 	width:100px;
@@ -63,7 +267,6 @@ h2{
 }
 
 .info{  
-  position: relative;
 	margin-top:1%;
   padding: 0px 1%;
 	height: 150px;
@@ -162,20 +365,15 @@ h2{
 
 .grey-bg{
   background-color: #3c3c3c;
-  padding-bottom: 10px;
-  margin-bottom: 50px;
-  border-radius: 0px 0px 10px 10px;
 }
 
 .grey-block{
-  position: fixed;
-  bottom: 0px;
   padding-left:10%;
+  margin-top:10%;
   border-right:1px solid #fff;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   width:40%;
-  background-color: #3c3c3c;
 }
 
 .comment_top{
@@ -185,125 +383,4 @@ h2{
   padding: 5px;
 }
 
-/*calendar*/
-
-#calendar_content{
-  width: 100%;
-}
-
-#calendar_week{
-  padding-top: 20px;
-  width: 80%;
-  height: 75px;
-  overflow: hidden;
-}
-
-#calendar_days{
-  width: 77%;
-}
-
-.new_calendar_days{
-  position: absolute;
-  width: 100%;
-  height: 75px;
-}
-
-#new_calendar_days_next{
-  left: 286px;/*42*/
-}
-
-#new_calendar_days_prev{
-  left: -286px;/*42*/
-}
-
-
-.button_div{
-  margin-top: 30px;
-  width: 7%;
-  height: 20px;
-}
-.button_spinner{
-  width: 7%;
-  height: 20px;
-  position: absolute;
-  display: none;
-}
-.calendar_button{
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-#prev_button{
-  background: url('img/left.png') no-repeat;
-  background-position: center;
-}
-
-#next_button{
-  background: url('img/right.png') no-repeat;
-  background-position: center;
-}
-
-#calendar_days{
-  width: 100%;
-}
-.calendar_day{
-  border-bottom: 20px solid gray;
-  height: 30px;
-  width: 12%;
-  margin: 0px;
-  background-color: #0f0;
-}
-
-.calendar_day_full a{
-  color: red;
-}
-
-.calendar_day_full a:hover{
-  color: #ff2fa3;
-}
-
-.calendar_day_sunday{
-  background-color: #f00;
-}
-
-.calendar_day_today{
-  border-bottom: 20px solid blue;
-}
-
-.new_day{
-/*  position: absolute;*/
-/*  height: 50px;
-  width: 100px;*/  
-  background-color: yellow;
-  z-index: 10;
-  display: none;
-}
-
-.show_day{
-  position: absolute;
-  display: none;
-  z-index: 10;
-  background-color: #3c3c3c;
-}
-
-.event{
-  border-bottom: 1px solid blue;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/

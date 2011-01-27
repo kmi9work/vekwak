@@ -1,24 +1,29 @@
 <div id="post_<%= post.id %>" class="post inline">
+  <div class="wave_top"><div class="wave_border_t"></div></div>
   <div class="post_content">
-    <h2><%= link_to post[:title], post %></h2>
-    <br>
+    <div class="post_title">
+     <h2><%= link_to post[:title], post %></h2>
+    </div>
     <%= post[:annotation] %>
     <%= Date.new.inspect %>
   </div>
-  <div class="post_bottom">
-    <div class="w20 inline"><%= image_tag post.student.avatar.url(:small) %></div>
-    <div class="section_red inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>">
-      <%= post.created_at.strftime("%d.%m %H:%M") %>
-      <div class="my_h1"><%= post.section.title %></div>
-    </div>
-    <div class="w20 inline">
-      <%= link_to "", post_plus_path(:post_id => post.id, :format => :js), 
+  <div class="post_bottom">    
+      <div class="post_bottom_line inline">
+      </div>
+      <div class="post_rating_and_section inline" style="background-color: #<%= post.rating>=0 ? "bffe91" : "ff5656"  %>">
+        <%= link_to "", post_plus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_plus" %>
-      <div id="post_rating_<%= post.id %>"class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= post.rating %></div>
-      <%= link_to "", post_minus_path(:post_id => post.id, :format => :js), 
+        <div id="post_rating_<%= post.id %>"class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= post.rating %></div>
+        <%= link_to "", post_minus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_minus" %>
+      </div>
+      <div class="post_rating_and_section inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>; margin-left:70%">
+      </div>      
+      <div id="avatar" class="post_bottom_avatar">
+          <%= image_tag post.student.avatar.url(:small) %>
+      </div>
     </div>
-  </div>
+  <div class="wave_bottom"><div class="wave_border_b"></div></div>
 </div>

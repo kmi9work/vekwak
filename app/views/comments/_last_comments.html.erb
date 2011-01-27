@@ -1,0 +1,11 @@
+<div id="last_comments">
+<% if @last_comments %>
+ <% @last_comments.each do |msg| %>
+  <h3-orange><%= msg.student.login %></h3-orange> <h3><%= msg.comment ? msg.comment.post.title : msg.post.title %></h3> 
+  </br>
+  <%= msg.content %>
+    </br>
+ <% end %>  
+<% end %>
+<br>
+</div>

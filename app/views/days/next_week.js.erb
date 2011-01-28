@@ -1,18 +1,18 @@
 $('#new_calendar_days_next').html("<%= escape_javascript(render :partial => 'days/new_week') %>"); 
 $('#calendar_days').animate({
-  left: '-=286'
+  left: '-100%'
 }, 200, function() {
   $('#calendar_days').remove();
 });
 $('#new_calendar_days_next').animate({
-  left: '-=286'
+  left: '0%'
 }, 200, function() {
     $('#new_calendar_days_next').attr('id', 'calendar_days');
-    $('#calendar_week').prepend('<div id="new_calendar_days_next" class="new_calendar_days inline"></div>'); 
+    $('#calendar_week').append('<div id="new_calendar_days_next" class="new_calendar_days inline"></div>'); 
     var fday = Number($('#next_button').attr('href').split('=')[1]);
-    fday += 7;
+    fday += 17;
     $('#next_button').attr('href', '/next_week?fday=' + fday);
-    $('#prev_button').attr('href', '/prev_week?fday=' + Number(fday - 14));
+    $('#prev_button').attr('href', '/prev_week?fday=' + Number(fday - 34));
     $('#next_spinner').hide();
     $('#next_button').show();    
 });

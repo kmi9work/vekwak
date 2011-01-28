@@ -2,6 +2,10 @@
   margin: 0px;
   padding: 0px;
 }
+
+div{
+  position: relative;
+}
 body{
   background-color: #DDD;  
 	margin: 0%;
@@ -162,11 +166,35 @@ h3-orange{
   border-bottom: 1px solid #555;  
   background-color: #ffde00;
 }
+/*===================================================================================== CALENDAR  */
 
 #calendar{
-
+  text-align: center;
 }
 
+#calendar_week{
+  width: 80%;
+  height: 41px;
+  overflow: hidden;
+}
+
+#calendar_days{
+  width: 98%;
+}
+
+.new_calendar_days{
+  position: absolute;
+  width: 100%;
+  height: 41px;
+}
+
+#new_calendar_days_next{
+  left: 100%;
+}
+
+#new_calendar_days_prev{
+  left: -100%;
+}
 #prev_button{
   background-image:url('img/button_right.gif');
   display: inline-block;
@@ -179,8 +207,14 @@ h3-orange{
   width: 15px;
   height: 41px;
 }
+.button_spinner{
+  margin-top: 10px;
+  position: absolute;
+  display: none;
+}
 
 .calendar_day{
+  width: 5%;
   background-color: #FFF;
 }
 

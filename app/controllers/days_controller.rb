@@ -58,17 +58,4 @@ class DaysController < ApplicationController
     end
   end
   
-  protected
-  def _week (fday = 0)
-    t = Time.now - 1.day + fday.days
-    @wdays = []
-    7.times do
-      if a = Day.where(["day = ? and month = ? and year = ?", t.day, t.month, t.year]).last
-        @wdays << a
-      else
-        @wdays << Day.new(:day => t.day, :month => t.month, :year => t.year)
-      end
-      t += 1.day
-    end
-  end
 end

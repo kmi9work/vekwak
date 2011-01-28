@@ -12,6 +12,12 @@ class PostsController < ApplicationController
     @post = Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
   end
+  
+  def new_big
+    puts @post.inspect + "\n\n\n" + params.inspect + "\n\n\n"
+    @post ||= Post.new
+    @sections = Section.all.collect {|s| [ s.title, s.id ] }
+  end
 
   def edit
     @post = Post.find(params[:id])

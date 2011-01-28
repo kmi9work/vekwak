@@ -8,6 +8,9 @@ Vekwak::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   
   resources :students, :only => [:new, :create, :show]
+  match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
+  match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
+  match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
   resources :posts do
     resources :comments, :only => [:new, :create, :destroy]
   end
@@ -23,8 +26,6 @@ Vekwak::Application.routes.draw do
   match 'next_week(.:format)' => 'days#next_week', :as => :next_week
   match 'prev_week(.:format)' => 'days#prev_week', :as => :prev_week
   resources :events, :only => [:destroy]
-  match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
-  match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
 
   root :to => "posts#index"
 

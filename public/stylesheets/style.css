@@ -92,24 +92,59 @@ h3-orange{
   border-bottom: 1px solid #555;
 }
 
+.top_wave_top{
+  width:95%;
+  height:15px;
+  background-image:url('img/wave_top.gif');
+  position: relative;
+  margin-left:2.5%;
+}
+
+.top_wave_bottom{
+  width:95%;
+  height:15px;
+  background-image:url('img/wave_bottom.gif');
+  margin-left:2.5%;
+}
+
+.top_wave_border_b{
+width:100%;
+  height:8px;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
+.top_wave_border_t{ 
+  position: absolute;
+  bottom:0px;
+  height:8px;
+  width:100%;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
 
 /*____________________________________________________________________________________ END TOP  */
 
 
 /* ==================================================================================== INFO    */
 
+#info_bg{
+  width:100%%;
+  height:100%;
+  background-image:url('img/bg_prepost.gif');
+  background-repeat:repeat-x;
+}
+
 .wave_top{
   width:100%;
   height:15px;
   background-image:url('img/wave_top.gif');
   position: relative;
-
 }
 
 .wave_bottom{
   width:100%;
   height:15px;
-  background-image:url('img/wave_bottom.gif');  
+  background-image:url('img/wave_bottom.gif');
 }
 
 .wave_border_b{
@@ -129,10 +164,13 @@ h3-orange{
 
 
 #info_center{
-  width:100%;
+  width:95%;
+  margin-left:2.5%;
   height:200px; 
   background-color: #fcfebb;
   text-align: center; 
+border-left: 1px solid #555;
+  border-right: 1px solid #555;   
 }
 
 .info{
@@ -160,10 +198,10 @@ h3-orange{
 }
 
 #info_line{
-  width: 100%;
+  width: 95%;
+  margin-left:2.5%;
   height: 41px;
-  border-top: 1px solid #555;
-  border-bottom: 1px solid #555;  
+  border: 1px solid #555; 
   background-color: #ffde00;
 }
 /*===================================================================================== CALENDAR  */
@@ -196,16 +234,24 @@ h3-orange{
   left: -100%;
 }
 #prev_button{
-  background-image:url('img/button_right.gif');
+  background-image:url('img/button_left.gif');
   display: inline-block;
   width: 15px;
   height: 41px;
 }
+#prev_button:hover{
+  background-image:url('img/button_left_a.gif');
+}
+
 #next_button{
   background-image:url('img/button_right.gif');
   display: inline-block;
   width: 15px;
   height: 41px;
+}
+
+#next_button:hover{
+  background-image:url('img/button_right_a.gif');
 }
 .button_spinner{
   margin-top: 10px;
@@ -216,6 +262,8 @@ h3-orange{
 .calendar_day{
   width: 5%;
   background-color: #FFF;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
 }
 
 .calendar_day_full{
@@ -223,11 +271,12 @@ h3-orange{
 }
 
 .calendar_day_sunday{
-  background-color: #0F0;
+  background-color: #BCE324;
 }
 
 .calendar_day_today{
-  border: 2px solid #555;  
+  height:32px; 
+  border: 5px solid #555;  
 }
 
 .new_day{

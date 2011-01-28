@@ -15,10 +15,8 @@
       <%= link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), "/"%>
     </div>
   </div>
-  <div class="for_bg">
-    <div class="wave_top">
-    </div>
-  </div>
+  <div id="info_bg">    
+    <div class="top_wave_top"><div class="top_wave_border_t"></div></div>
   <div id="info_center">
     <div class="info inline ">
       <h1>Новости</h1>
@@ -37,9 +35,8 @@
       <%= render :partial => "days/week" %>
     </div>
   </div>
-  <div class="wave_bottom">
-  </div>
-
+  <div class="top_wave_bottom"><div class="top_wave_border_b"></div></div>
+</div>
   <%= yield %>
 
 

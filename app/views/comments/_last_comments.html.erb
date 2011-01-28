@@ -1,7 +1,8 @@
 <div id="last_comments">
 <% if @last_comments %>
  <% @last_comments.each do |comment| %>
-  <h3-orange><%= comment.student.login %></h3-orange> 
+  <h3-orange><%= comment.student.login %></h3-orange>
+  &#8658
   <h3>
     <% if comment.comment %>
       <%= link_to comment.comment.post.title, comment.comment.post %>

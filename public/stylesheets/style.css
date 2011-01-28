@@ -219,7 +219,7 @@ h3-orange{
 }
 
 .calendar_day_full{
-  background-color: #0F0;
+  color: #00f;
 }
 
 .calendar_day_sunday{
@@ -228,6 +228,23 @@ h3-orange{
 
 .calendar_day_today{
   border: 2px solid #555;  
+}
+
+.new_day{
+  background-color: yellow;
+  z-index: 10;
+  display: none;
+}
+
+.show_day{
+  position: absolute;
+  display: none;
+  z-index: 10;
+  background-color: #523047;
+}
+
+.event{
+  border-bottom: 1px solid blue;
 }
 /* ____________________________________________________________________________________ END INFO   */
 

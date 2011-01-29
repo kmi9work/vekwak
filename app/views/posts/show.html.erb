@@ -13,7 +13,7 @@
 
 <p>
   <div id="post_rating">
-  <b>Рейтинг:</b><font color="<%= font_color(@post.rating) %>"> <%= link_to h(@post.rating), {:url => {:action => :post_raters, :id => @post.id}, :update => 'post_raters'}, :remote =>true  -%></font>
+  <b>Рейтинг:</b><font color="<%= font_color(@post.rating) %>"> <%= link_to h(@post.rating), {:url => {:action => :raters, :id => @post.id}, :update => 'raters'}, :remote =>true  -%></font>
      <%= link_to "+" || image_tag("up.png") || "+",
                              { :url => {:action => :plus, :id => @post.id}},
                                :remote => true -%> |
@@ -22,7 +22,7 @@
                              :url => {:action => :minus, :id => @post.id}},
                              :remote =>true -%>
    </div> 
-   <div id="post_raters"></div>
+   <div id="raters"></div>
   
 </p>
   

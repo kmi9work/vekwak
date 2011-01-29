@@ -10,6 +10,7 @@ Vekwak::Application.routes.draw do
   resources :students, :only => [:new, :create, :show]
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
+  match 'posts/:post_id/raters(.:fomat)' => 'posts#raters', :as => :raters
   match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
   resources :posts do
     resources :comments, :only => [:new, :create, :destroy]

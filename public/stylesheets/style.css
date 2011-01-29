@@ -405,6 +405,13 @@ border-left: 1px solid #555;
   border: 1px solid #555;  
 }
 
+.raters{
+  border-radius: 5px;
+  background-color: #3c3c3c;
+  opacity: 0.8;
+  display: none;
+  color: #000;
+}
 /*
 .student{
 	height:100px;

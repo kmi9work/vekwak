@@ -121,10 +121,11 @@ class PostsController < ApplicationController
       end
     end
   end
-  def post_raters
-    post = Post.find(params[:id])
-    @post_raters = post.post_rating_students
-    render :template => 'posts/post_raters', :layout => false
+  def raters
+    post = Post.find(params[:post_id])
+    @id = post.id
+    @raters = post.post_rating_students
+    render :template => 'posts/raters', :layout => false
   end
   
   def sections

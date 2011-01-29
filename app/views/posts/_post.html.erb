@@ -14,7 +14,7 @@
         <%= link_to "", post_plus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_plus" %>
-        <div id="post_rating_<%= post.id %>"class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= link_to post.rating, raters_path(:post_id => post.id, :format => :js), :remote => true %></div>
+        <div id="post_rating_<%= post.id %>" class="rating"><!--ffont color="<%= font_color(post.rating) %>"><%= post.rating %></font--><%= link_to post.rating, raters_path(:post_id => post.id, :format => :js), :remote => true %></div>
         <%= link_to "", post_minus_path(:post_id => post.id, :format => :js), 
                       :remote => true, 
                       :class => "rating_minus" %>

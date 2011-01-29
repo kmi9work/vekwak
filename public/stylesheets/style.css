@@ -406,6 +406,9 @@ border-left: 1px solid #555;
 }
 
 .raters{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
   border-radius: 5px;
   background-color: #3c3c3c;
   opacity: 0.8;

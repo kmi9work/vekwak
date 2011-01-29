@@ -1,2 +1,2 @@
-$('#post_<%= @id %>').append("<%= escape_javascript render(:file => 'posts/raters.html.erb') %>");
+$('#post_<%= @id %> .post_content').append("<%= escape_javascript render(:file => 'posts/raters.html.erb') %>");
 $('#raters_<%= @id %>').fadeToggle("slow");

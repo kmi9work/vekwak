@@ -1,1 +1,1 @@
-$("#post_rating_<%= @id %>.rating").html("<%= @rating %>");
+$("#post_rating_<%= @id %>.rating").html("<%= escape_javascript(link_to(@rating, raters_path(:post_id => @id, :format => :js), :remote => true)) %>");

@@ -264,6 +264,7 @@ border-left: 1px solid #555;
   background-color: #FFF;
   border-left: 1px solid #555;
   border-right: 1px solid #555;
+  float: left;
 }
 
 .calendar_day_full{
@@ -341,9 +342,10 @@ border-left: 1px solid #555;
 .post_bottom_line{
   height: 20px;
   background-color: #ffde00;  
-  width:70%;
+  width: 70%;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;  
+  float: left;
 }
 
 .big_post_bottom_line{
@@ -352,13 +354,16 @@ border-left: 1px solid #555;
 
 
 .post_rating_and_section{
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
   height: 20px;  
-  width:27%;
-  float:right;  
+  width: 30%;
+  border-left: 1px solid #555;
+  float: right;  
 }
 
 .rating{
-display: inline-block;
+  display: inline-block;
   vertical-align: top;
   margin-left:25%;
   color:#000;

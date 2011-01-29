@@ -19,8 +19,6 @@
                       :remote => true, 
                       :class => "rating_minus" %>
       </div>
-      <div class="post_rating_and_section inline" style="background-color: #<%= (s = (post.section.title.hash % 16581375).to_s(16)).size < 6 ? ("0" + s) : s %>; margin-left:70%">
-      </div>      
       <div id="avatar" class="post_bottom_avatar">
           <%= image_tag post.student.avatar.url(:small) %>
       </div>

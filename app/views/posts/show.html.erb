@@ -3,8 +3,15 @@
 <div id="post_show">
   <div class="post_left_part inline">  
     <h1><%= link_to @post.section.title, '/'%> &#8658 <%= h @post.title %></h1>
+    <p>
+      <% if @post.content and !@post.content.strip.empty? %>
+        <%= @post.content %>
+      <% else %>
+         <%= @post.annotation %>
+      <% end %>
+      </p>
   </div>
-  <div class="post_right_part inline">
+  <div class="post_right_part inline" style="background-color: #<%= @post.section.color %>;">
     <br>
   </div>
 </div>

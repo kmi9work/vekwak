@@ -188,6 +188,15 @@ border-left: 1px solid #555;
   text-align: left;
 }
 
+#headman_aul_link{
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  background-color: #fcfebb;
+  border: 1px solid #555;
+}
+
+
 #last_comments{
   width: 100%;
   height: 100%;
@@ -415,6 +424,7 @@ border-left: 1px solid #555;
   display: none;
   color: #000;
 }
+
 /*
 .student{
 	height:100px;

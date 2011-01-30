@@ -210,10 +210,15 @@ border-left: 1px solid #555;
   text-align: center;
 }
 
+
 #calendar_week{
-  width: 80%;
+  width: 76%;
   height: 41px;
   overflow: hidden;
+}
+
+#calendar_week a{
+  text-decoration:none;
 }
 
 #calendar_days{
@@ -260,6 +265,8 @@ border-left: 1px solid #555;
 }
 
 .calendar_day{
+  color:#999;
+  height:41px;
   width: 5%;
   background-color: #FFF;
   border-left: 1px solid #555;
@@ -267,17 +274,34 @@ border-left: 1px solid #555;
   float: left;
 }
 
+.calendar_day:hover{
+  height:37px; 
+  border: 2px solid #555;
+  background-color: #ececec;
+}
+
 .calendar_day_full{
-  color: #00f;
+  color: #555;
+  background-color: #BCE324;
+}
+.calendar_day_full:hover{
+  background-color: #daea6a;
 }
 
 .calendar_day_sunday{
-  background-color: #BCE324;
+  color:#ba0400;
 }
 
+
+
 .calendar_day_today{
-  height:32px; 
-  border: 5px solid #555;  
+  height:39px; 
+  width:10%;
+  border: 1px solid #555;
+}
+
+.month{
+  margin-top:-7px;
 }
 
 .new_day{

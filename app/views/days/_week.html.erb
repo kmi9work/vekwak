@@ -6,15 +6,19 @@
                 :id => "prev_button", 
                 :class => "calendar_button", 
                 :onclick => "$('#prev_button').hide(); $('#prev_spinner').show();" -%>
-  </div>
-  <div id="calendar_week" class="inline">
+</div>
+ 
+
+<div id="calendar_week" class="inline">
     <div id="new_calendar_days_prev" class="new_calendar_days inline"></div>
     <div id="calendar_days" class="inline">
       <%= render :partial => "days/new_week" %>
     </div>  
     <div id="new_calendar_days_next" class="new_calendar_days inline"></div>
-  </div>  
-   <div id="next_button_div" class="button_div inline">
+</div>  
+   
+  
+<div id="next_button_div" class="button_div inline">
     <div id="next_spinner" class="button_spinner inline"><%= image_tag "spinner.gif" %></div>
     <%= link_to "", 
                 next_week_path(:fday => 17), 
@@ -23,4 +27,4 @@
                 :class => "calendar_button", 
                 :onclick => "$('#next_button').hide(); $('#next_spinner').show();" %>
     
-  </div>
+</div>

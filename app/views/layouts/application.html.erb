@@ -37,6 +37,11 @@
       <%= render :partial => "days/week" %>
     </div>
   </div>
+    <div id="info_sections">
+    <% @sections.each do |section| %>
+      <div class="info_sect inline" style="background-color:#<%= section.color %>; width:<%=100.0/@sections.size %>%;"><h2><%= link_to section.title, "/" -%></h2></div> 
+    <% end %>
+   </div>
   <div class="top_wave_bottom"><div class="top_wave_border_b"></div></div>
 </div>
   <%= yield %>

@@ -169,7 +169,7 @@ width:100%;
   height:200px; 
   background-color: #fcfebb;
   text-align: center; 
-border-left: 1px solid #555;
+  border-left: 1px solid #555;
   border-right: 1px solid #555;   
 }
 
@@ -213,6 +213,21 @@ border-left: 1px solid #555;
   border: 1px solid #555; 
   background-color: #ffde00;
 }
+
+#info_sections{
+  width: 95%;
+  margin-left:2.5%;
+  height: 41px;
+  background-color: #fcfebb;
+  border-left: 1px solid #555; 
+  border-right: 1px solid #555;
+}
+.info_sect{
+  border-bottom: 1px solid #555; 
+  float:left; 
+  height:30px;
+  text-align:center;
+}
 /*===================================================================================== CALENDAR  */
 
 #calendar{
@@ -220,9 +235,13 @@ border-left: 1px solid #555;
 }
 
 #calendar_week{
-  width: 80%;
+  width: 76%;
   height: 41px;
   overflow: hidden;
+}
+
+#calendar_week a{
+  text-decoration:none;
 }
 
 #calendar_days{
@@ -269,6 +288,8 @@ border-left: 1px solid #555;
 }
 
 .calendar_day{
+  color:#999;
+  height:41px;
   width: 5%;
   background-color: #FFF;
   border-left: 1px solid #555;
@@ -276,30 +297,47 @@ border-left: 1px solid #555;
   float: left;
 }
 
+.calendar_day:hover{
+  height:37px; 
+  border: 2px solid #555;
+  background-color: #ececec;
+}
+
 .calendar_day_full{
-  color: #00f;
+  color: #555;
+  background-color: #BCE324;
+}
+.calendar_day_full:hover{
+  background-color: #daea6a;
 }
 
 .calendar_day_sunday{
-  background-color: #BCE324;
+  color:#ba0400;
 }
 
 .calendar_day_today{
-  height:32px; 
-  border: 5px solid #555;  
+  height:39px; 
+  width:10%;
+  border: 1px solid #555;
+}
+
+.month{
+  margin-top:-7px;
 }
 
 .new_day{
-  background-color: yellow;
+  background-color: #fcfebb;
   z-index: 10;
   display: none;
+  margin-top:-4px;
+  border: 1px solid #555;
 }
 
 .show_day{
   position: absolute;
   display: none;
   z-index: 10;
-  background-color: #523047;
+  background-color: #fcfebb;
 }
 
 .event{
@@ -419,10 +457,29 @@ border-left: 1px solid #555;
   right: 0px;
   bottom: 0px;
   border-radius: 5px;
-  background-color: #3c3c3c;
+  background-color: #bbb;
   opacity: 0.8;
   display: none;
   color: #000;
+}
+
+#post_show{
+  background-color: #fcfebb;  
+}
+#post_show h1{
+  color:  #ffde00;
+}
+#post_show a{
+  color:  #feab25;
+}
+
+.post_left_part{
+  width:  70%;
+  background-color: #fcfebb;  
+}
+
+.post_right_part{  
+  width:  30%;
 }
 
 /*

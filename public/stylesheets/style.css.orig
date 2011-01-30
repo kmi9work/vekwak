@@ -92,24 +92,59 @@ h3-orange{
   border-bottom: 1px solid #555;
 }
 
+.top_wave_top{
+  width:95%;
+  height:15px;
+  background-image:url('img/wave_top.gif');
+  position: relative;
+  margin-left:2.5%;
+}
+
+.top_wave_bottom{
+  width:95%;
+  height:15px;
+  background-image:url('img/wave_bottom.gif');
+  margin-left:2.5%;
+}
+
+.top_wave_border_b{
+width:100%;
+  height:8px;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
+.top_wave_border_t{ 
+  position: absolute;
+  bottom:0px;
+  height:8px;
+  width:100%;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+}
 
 /*____________________________________________________________________________________ END TOP  */
 
 
 /* ==================================================================================== INFO    */
 
+#info_bg{
+  width:100%%;
+  height:100%;
+  background-image:url('img/bg_prepost.gif');
+  background-repeat:repeat-x;
+}
+
 .wave_top{
   width:100%;
   height:15px;
   background-image:url('img/wave_top.gif');
   position: relative;
-
 }
 
 .wave_bottom{
   width:100%;
   height:15px;
-  background-image:url('img/wave_bottom.gif');  
+  background-image:url('img/wave_bottom.gif');
 }
 
 .wave_border_b{
@@ -129,16 +164,18 @@ h3-orange{
 
 
 #info_center{
-  width:100%;
+  width:95%;
+  margin-left:2.5%;
   height:200px; 
   background-color: #fcfebb;
   text-align: center; 
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;   
 }
 
 .info{
   width:32.8%;
   height:100%;
-  border-left: 1px solid #feab25;
   color: #ffde00;
 }
 
@@ -151,6 +188,15 @@ h3-orange{
   text-align: left;
 }
 
+#headman_aul_link{
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  background-color: #fcfebb;
+  border: 1px solid #555;
+}
+
+
 #last_comments{
   width: 100%;
   height: 100%;
@@ -160,6 +206,146 @@ h3-orange{
   text-align: left;
 }
 
+#info_line{
+  width: 95%;
+  margin-left:2.5%;
+  height: 41px;
+  border: 1px solid #555; 
+  background-color: #ffde00;
+}
+
+#info_sections{
+  width: 95%;
+  margin-left:2.5%;
+  height: 41px;
+  background-color: #fcfebb;
+  border-left: 1px solid #555; 
+  border-right: 1px solid #555;
+}
+.info_sect{
+  border-bottom: 1px solid #555; 
+  float:left; 
+  height:30px;
+  text-align:center;
+}
+/*===================================================================================== CALENDAR  */
+
+#calendar{
+  text-align: center;
+}
+
+
+#calendar_week{
+  width: 76%;
+  height: 41px;
+  overflow: hidden;
+}
+
+#calendar_week a{
+  text-decoration:none;
+}
+
+#calendar_days{
+  width: 98%;
+}
+
+.new_calendar_days{
+  position: absolute;
+  width: 100%;
+  height: 41px;
+}
+
+#new_calendar_days_next{
+  left: 100%;
+}
+
+#new_calendar_days_prev{
+  left: -100%;
+}
+#prev_button{
+  background-image:url('img/button_left.gif');
+  display: inline-block;
+  width: 15px;
+  height: 41px;
+}
+#prev_button:hover{
+  background-image:url('img/button_left_a.gif');
+}
+
+#next_button{
+  background-image:url('img/button_right.gif');
+  display: inline-block;
+  width: 15px;
+  height: 41px;
+}
+
+#next_button:hover{
+  background-image:url('img/button_right_a.gif');
+}
+.button_spinner{
+  margin-top: 10px;
+  position: absolute;
+  display: none;
+}
+
+.calendar_day{
+  color:#999;
+  height:41px;
+  width: 5%;
+  background-color: #FFF;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
+  float: left;
+}
+
+.calendar_day:hover{
+  height:37px; 
+  border: 2px solid #555;
+  background-color: #ececec;
+}
+
+.calendar_day_full{
+  color: #555;
+  background-color: #BCE324;
+}
+.calendar_day_full:hover{
+  background-color: #daea6a;
+}
+
+.calendar_day_sunday{
+  color:#ba0400;
+}
+
+
+
+.calendar_day_today{
+  height:39px; 
+  width:10%;
+  border: 1px solid #555;
+}
+
+.month{
+  margin-top:-7px;
+}
+
+.new_day{
+  background-color: #fcfebb;
+  z-index: 10;
+  display: none;
+  margin-top:-4px;
+  border: 1px solid #555;
+}
+
+.show_day{
+  position: absolute;
+  display: none;
+  z-index: 10;
+  background-color: #fcfebb;
+}
+
+.event{
+  border-bottom: 1px solid blue;
+}
 /* ____________________________________________________________________________________ END INFO   */
 
 /* ==================================================================================== POST */
@@ -170,6 +356,23 @@ h3-orange{
 	height: 100%;
 	width:28%;
   margin-left:4%;  
+}
+#new_big_post{
+	height: 100%;
+	width: 90%;
+  margin: 0% 5%;
+}
+.post_content{
+  height: 300px;
+  background-color: #fcfebb;
+  text-align: center;  
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;    
+  background-color: #fcfebb;
+}
+
+#big_post_content{
+	height: 100%;
 }
 
 .post_title{
@@ -189,19 +392,28 @@ h3-orange{
 .post_bottom_line{
   height: 20px;
   background-color: #ffde00;  
-  width:70%;
+  width: 70%;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;  
+  float: left;
 }
 
+.big_post_bottom_line{
+  width: 100%;
+}
+
+
 .post_rating_and_section{
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
   height: 20px;  
-  width:27%;
-  float:right;  
+  width: 30%;
+  border-left: 1px solid #555;
+  float: right;  
 }
 
 .rating{
-display: inline-block;
+  display: inline-block;
   vertical-align: top;
   margin-left:25%;
   color:#000;
@@ -243,16 +455,39 @@ display: inline-block;
   border: 1px solid #555;  
 }
 
-.post_content{
-  height: 300px;
-  background-color: #fcfebb;
-  text-align: center;  
-  border-left: 1px solid #555;
-  border-right: 1px solid #555;    
-  background-color: #fcfebb;
+.raters{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  border-radius: 5px;
+  background-color: #bbb;
+  opacity: 0.8;
+  display: none;
+  color: #000;
 }
 
+<<<<<<< HEAD
+=======
+#post_show{
+  background-color: #fcfebb;  
+}
+#post_show h1{
+  color:  #ffde00;
+}
+#post_show a{
+  color:  #feab25;
+}
 
+.post_left_part{
+  width:  70%;
+  background-color: #fcfebb;  
+}
+
+.post_right_part{  
+  width:  30%;
+}
+
+>>>>>>> qaa12
 /*
 .student{
 	height:100px;
@@ -271,7 +506,6 @@ display: inline-block;
 }
 
 .info{  
-  position: relative;
 	margin-top:1%;
   padding: 0px 1%;
 	height: 150px;
@@ -388,129 +622,4 @@ display: inline-block;
   padding: 5px;
 }
 
-<<<<<<< HEAD
-/*calendar*/
-
-#calendar_content{
-  width: 100%;
-}
-
-#calendar_week{
-  padding-top: 20px;
-  width: 80%;
-  height: 75px;
-  overflow: hidden;
-}
-
-#calendar_days{
-  width: 77%;
-}
-
-.new_calendar_days{
-  position: absolute;
-  width: 100%;
-  height: 75px;
-}
-
-#new_calendar_days_next{
-  left: 286px;/*42*/
-}
-
-#new_calendar_days_prev{
-  left: -286px;/*42*/
-}
-
-
-.button_div{
-  margin-top: 30px;
-  width: 7%;
-  height: 20px;
-}
-.button_spinner{
-  width: 7%;
-  height: 20px;
-  position: absolute;
-  display: none;
-}
-.calendar_button{
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-#prev_button{
-  background: url('img/left.png') no-repeat;
-  background-position: center;
-}
-
-#next_button{
-  background: url('img/right.png') no-repeat;
-  background-position: center;
-}
-
-#calendar_days{
-  width: 100%;
-}
-.calendar_day{
-  border-bottom: 20px solid gray;
-  height: 30px;
-  width: 12%;
-  margin: 0px;
-  background-color: #0f0;
-}
-
-.calendar_day_full a{
-  color: red;
-}
-
-.calendar_day_full a:hover{
-  color: #ff2fa3;
-}
-
-.calendar_day_sunday{
-  background-color: #f00;
-}
-
-.calendar_day_today{
-  border-bottom: 20px solid blue;
-}
-
-.new_day{
-/*  position: absolute;*/
-/*  height: 50px;
-  width: 100px;*/  
-  background-color: yellow;
-  z-index: 10;
-  display: none;
-}
-
-.show_day{
-  position: absolute;
-  display: none;
-  z-index: 10;
-  background-color: #3c3c3c;
-}
-
-.event{
-  border-bottom: 1px solid blue;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 */
->>>>>>> qaa12

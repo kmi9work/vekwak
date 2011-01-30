@@ -11,6 +11,10 @@ class SectionsController < ApplicationController
   def edit
     @section = Section.find(params[:id])
   end
+  
+  def show
+    @sections = Section.all
+  end
 
   def create
     @section = Section.new(params[:section])

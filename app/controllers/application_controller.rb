@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
 
   def stud
     @student = current_student
-    @students= Student.all
+    @students = Student.all
+    @sections = Section.all
   end
 
   def stud_online

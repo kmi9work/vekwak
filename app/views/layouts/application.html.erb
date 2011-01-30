@@ -27,7 +27,9 @@
     </div>
     <div class="info inline">
       <h1><%= link_to "Староста", headman_auls_path %></h1>
-      <%= render :partial => 'headman_auls/headman_aul' %>
+      <div id="headman_aul_content">
+        <%= render :partial => 'headman_auls/headman_aul' %>
+      </div>
     </div>
   </div>
   <div id="info_line">

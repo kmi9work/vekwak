@@ -11,6 +11,7 @@ class HeadmanAulsController < ApplicationController
   def create
     @headman_aul = HeadmanAul.create(params[:headman_aul])
     success = @headman_aul && @headman_aul.save
+    info_msg
     if success and @headman_aul.errors.empty?
       respond_to do |format|
         format.html {redirect_back_or_default('/')}

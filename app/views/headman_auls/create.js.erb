@@ -1,2 +1,3 @@
-$('#headman_aul_content').html("<%= escape_javascript(render @headman_aul) %>"); 
+$('#headman_aul_content').html("<%= escape_javascript(render :partial => 'headman_auls/headman_aul') %>"); 
 $('#new_headman_aul').hide();
+$('#headman_aul_content').slideDown();

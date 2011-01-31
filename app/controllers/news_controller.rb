@@ -1,17 +1,17 @@
-#encoding: utf-8
-class HeadmanAulsController < ApplicationController
+class NewsController < ApplicationController
   def index
-    @auls = HeadmanAul.order('created_at desc').all
+    @news = New.order('created_at desc').all
   end
   
   def new
   end
   
   def create
-    @headman_aul = HeadmanAul.create(params[:headman_aul])
-    success = @headman_aul && @headman_aul.save
+    @new = New.create(params[:new])
+    @new.student = @student
+    success = @new && @new.save
     info_msg
-    if success and @headman_aul.errors.empty?
+    if success and @new.errors.empty?
       respond_to do |format|
         format.html {redirect_back_or_default('/')}
         format.js

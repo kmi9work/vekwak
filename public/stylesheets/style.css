@@ -188,7 +188,15 @@ width:100%;
   text-align: left;
 }
 
-#headman_aul_link{
+#new_content{
+  width: 100%;
+  height: 100%;
+  color: #555;
+  font-size: 60%;
+  text-align: left;
+}
+
+.new_link{
   position: absolute;
   right: 10px;
   bottom: 40px;

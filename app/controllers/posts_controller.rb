@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.find(:all, :limit => 10, :order => 'rating desc')
+  def index   
+    if params[:section_id]
+      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+    else
+      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
+    end      
   end
 
   def show

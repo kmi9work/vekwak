@@ -13,46 +13,34 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.student = @student
     unless @comment.content.strip.empty?
-      if params[:post_id]
-        post = Post.find(params[:post_id]) 
-        @comment.post = post
-        post.comments << @comment
-        if @comment.save
-          #created.
-          respond_to do |format|
-            format.html{redirect_to post}
-            format.js{render 'create.js.erb', :locals => {:top_level => true}}
-          end
-        else
-          # smth wrong with save :(
-          respond_to do |format|
-            format.html{redirect_to :action => :new}
-            format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
-          end
-        end
-      elsif params[:comment_id]
+      if params[:comment_id]
         comment = Comment.find(params[:comment_id])
         comment.comments << @comment
         @comment.comment = comment
         post = comment.post
-        if @comment.save
-          flash[:notice] = 'Comment was successfully created.'
-          respond_to do |format|
-            format.html{redirect_to post}
-            format.js{render 'create.js.erb', :locals => {:top_level => false}}
-          end
-        else
-          flash[:notice] = 'smth wrong with save :('
-          respond_to do |format|
-            format.html{redirect_to :action => :new}
-            format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
-          end
-        end
-      else
-        flash[:notice] = 'Something wrong!'
+        top_level = false
+      elsif params[:post_id]
+        post = Post.find(params[:post_id]) 
+        top_level = true
+      else 
+        puts "error!"#error
         respond_to do |format|
           format.html{redirect_to :action => :new}
           format.js{render 'fail_create.js.erb', :locals => {:msg => "Wrong params!"}}
+        end
+        return
+      end
+      @comment.post = post
+      post.comments << @comment
+      if @comment.save
+        respond_to do |format|
+          format.html{redirect_to post}
+          format.js{render 'create.js.erb', :locals => {:top_level => top_level}}
+        end
+      else
+        respond_to do |format|
+          format.html{redirect_to :action => :new}
+          format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
         end
       end
     else

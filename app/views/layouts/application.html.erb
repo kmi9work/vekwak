@@ -19,7 +19,10 @@
     <div class="top_wave_top"><div class="top_wave_border_t"></div></div>
   <div id="info_center">
     <div class="info inline ">
-      <h1>Новости</h1>
+      <h1><%= link_to "Новости", news_index_path %></h1>
+      <div id="new_content">
+        <%= render :partial => 'news/news' %>
+      </div>
     </div>
     <div class="info inline">
       <h1>Последние комментарии</h1>

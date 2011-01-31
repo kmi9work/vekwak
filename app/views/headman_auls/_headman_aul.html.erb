@@ -6,6 +6,6 @@
 <% end %>
 <br>
 <% if @student and @student.headman -%>
-  <%= link_to "Написать", new_headman_aul_path(:format => :js), :remote => true, :id => "headman_aul_link" -%>
+  <%= link_to "Написать", new_headman_aul_path(:format => :js), :remote => true, :id => "new_headman_aul_link", :class => "new_link" -%>
 <% end -%>
 

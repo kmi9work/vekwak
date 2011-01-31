@@ -34,6 +34,7 @@ class Student < ActiveRecord::Base
   has_many :post_rating_students, :dependent => :delete_all
   has_many :days
   has_many :comments
+  has_many :news
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
                                  :medium => "60x60>"  }

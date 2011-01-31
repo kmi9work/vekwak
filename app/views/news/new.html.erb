@@ -1,0 +1,13 @@
+<%= form_for :new, {:url => news_index_path, 
+                    :remote => true, 
+                    :html => { :id => "new_new", 
+                               :style => "display: none;" 
+                              }
+                    } do |f| -%>
+  <%= f.text_field :title, :maxlength => 64 %></p>                  
+  <%= f.text_area :content, :cols => 40, :rows => 5, :maxlength => 256 %></p>
+  <p>
+    <%= submit_tag 'Готово' %>
+    <a href="#" onclick="$('#new_new').slideUp(); $('#new_content').slideDown()">Нафиг</a>
+  </p>
+<% end -%>

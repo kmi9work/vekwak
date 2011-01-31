@@ -1,28 +1,40 @@
-
+<br>
 <% if top_level %>
+<div class="wave_top"></div>
 <div id="comment_top_<%= comment.id %>" class="comment_top">
-<% else %>
-  <div id="comment_bottom_<%= comment.id %>" class="comment_bottom", style="margin-left: 20px;">
-<% end %>
   <div id="comment_content_<%= comment.id %>" class="comment_content">
-  <b><%= comment.student.login %></b>: <%= comment.content -%> 
-  <% if @student.admin or @student.id == comment.student.id%>
-  	<%= link_to 'x', post_comment_path((comment.post_id or comment.comment_id), comment.id), :method => :delete, :remote => true %><br>
-	<% end %>
-	<% if top_level %>
-  	<span id="comment_button_<%= comment.id %>"><font size="2">
-  	<%= link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true%></font></span>
-  
-	<% end %>
-	</div>
-	
-  
-
-<% if top_level %>
-<%= render :partial => 'comments/comment', :collection => comment.comments, :locals => {:top_level => false} %>
-
-</div>
+    <%= comment.content -%>
+  </div>
+  <div class="post_show_bottom">
+  <div class="post_line">
+  <span id="comment_button_<%= comment.id %>"><font size="2">
+  <%= link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true%>
+  <% if @student.admin or @student.id == comment.student.id %>|
+    <%= link_to 'Удалить', post_comment_path((comment.post_id or comment.comment_id), comment.id), :method => :delete, :remote => true %>
+    <% end %>
+    </font></span>
+    </div>
+    <div id="avatar_<%= comment.student.login %>" class="post_bottom_avatar">
+    <%= image_tag comment.student.avatar.url(:small) %>
+    </div>
+    </div>
+    <%= render :partial => 'comments/comment', :collection => comment.comments, :locals => {:top_level => false} %>
+    </div>
+    <div class="wave_bottom"></div>
+    
 <% else %>
-</div>
-<%= render :partial => 'comments/comment', :collection => comment.comments, :locals => {:top_level => false} %>
+<div id="comment_bottom_<%= comment.id %>" class="comment_bottom", style="margin-left:10px;">
+  <div id="avatar_<%= comment.student.login %>" class="comment_avatar inline">
+    <%= image_tag comment.student.avatar.url(:small) %>
+    </div>    
+    <div class="comment_content inline">  
+    <%= comment.content -%>
+    <% if @student.admin or @student.id == comment.student.id%>
+        <%= link_to 'x', post_comment_path((comment.post_id or comment.comment_id), comment.id), :method => :delete, :remote => true %><br>
+    <% end %>  
+  </div>
+    </div>
 <% end %>
+      
+      
+      

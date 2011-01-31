@@ -1,6 +1,6 @@
 <% if params[:comment_id] %>
 $('#comment_button_<%= params[:comment_id] %>').slideUp();
-$("<%= escape_javascript render(:file => 'comments/new.html.erb') %>").insertBefore('#comment_button_<%= params[:comment_id] %>'); 
+$("<%= escape_javascript render(:file => 'comments/new.html.erb') %>").insertAfter('#comment_top_<%= params[:comment_id] %>'); 
 $('#new_comment_<%= params[:comment_id] %>').slideDown(); 
 <% elsif params[:post_id] %>
 $('#comment_button').slideUp();
@@ -9,6 +9,3 @@ $('#new_comment').slideDown();
 <% else %>
 alert("Do not do it again!");
 <% end %>
-
-
-

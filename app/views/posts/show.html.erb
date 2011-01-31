@@ -36,6 +36,7 @@
     <%= image_tag @post.student.avatar.url(:small) %>
   </div>
 </div>
+<div class="wave_bottom"></div>
 
 <div id="comments">
   <%= render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true} %>

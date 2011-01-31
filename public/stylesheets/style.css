@@ -177,6 +177,7 @@ width:100%;
   width:32.8%;
   height:100%;
   color: #ffde00;
+  overflow: hidden;
 }
 
 #headman_aul_content{
@@ -520,11 +521,29 @@ width:100%;
 }
 
 #comments{
-  background-color: #fcfebb;;  
+  color: #666;
 }
 
 .comment_top{
-  border-top: 1px dashed #555;
+  font-size:16px;
+  background-color: #fcfebb;  
+}
+.comment_bottom{
+  font-size:15px;
+  background-color: #fcfebb;
+}
+
+#comment_new{
+  z-index:12;
+  background-color: #fcfebb;
+}
+
+.comment_avatar{
+  height: 50px;  
+  border: 1px solid #555;  
+}
+.comment_content{
+  width:90%;
 }
 /*
 .student{

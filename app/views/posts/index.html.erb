@@ -3,6 +3,7 @@
     <%= render :partial => "post", :collection => @posts %>
 <% end %>
 </div>
+  <%= will_paginate @posts %>
 <div id="post_button" class="yellow-block">
   <%= link_to 'Написать ещё', new_post_path(:format => :js), :remote => true %>
 </div>

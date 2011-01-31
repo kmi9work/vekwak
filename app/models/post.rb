@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 6
   belongs_to :student
   belongs_to :section
   has_many :comments, :dependent => :delete_all

@@ -1,0 +1,7 @@
+.event{:id => "event_#{event.id}"}
+  %strong
+    = event.title
+  %br 
+  = event.content
+  -if @student.admin
+    = link_to "x", event_path(event.id), :method => :delete, :remote => true

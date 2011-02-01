@@ -1,0 +1,21 @@
+.post.inline{:id => "post_#{post.id}"}
+  .wave_top
+    .wave_border_t
+  .post_content
+    .post_title{:style => "background-color:##{post.section.color};"}
+      %h2
+        = link_to post[:title], post
+    = post[:annotation]
+    = Date.new.inspect
+  .post_bottom
+    .post_bottom_line.inline
+    .post_rating_and_section.inline{:style => "background-color: ##{ post.rating >= 0 ? "bffe91" : "ff5656"}"}
+      = link_to "", post_plus_path(:post_id => post.id, :format => :js), 
+                    :remote => true, :class => "rating_plus"
+      .rating{:id => "post_rating_#{post.id}" }              
+      = link_to post.rating, raters_path(:post_id => post.id, :format => :js), :remote => true
+      = link_to "", post_minus_path(:post_id => post.id, :format => :js), :remote => true, :class => "rating_minus"
+    #avatar.post_bottom_avatar
+      = image_tag post.student.avatar.url(:small)
+  .wave_bottom
+    .wave_border_b

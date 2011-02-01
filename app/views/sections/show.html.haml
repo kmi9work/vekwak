@@ -1,0 +1,8 @@
+-@sections.each do |section|
+  %div{:style => "background-color:##{section.color}; height:30px;"}
+    %h2
+      = link_to section.title, "/"
+	= link_to 'Edit', edit_section_path(section) 
+	| 
+	= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+	%br

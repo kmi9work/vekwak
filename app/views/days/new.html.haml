@@ -1,0 +1,7 @@
+.new_day{ :id => "new_day_#{params[:date].match(/(\d+)_(\d+)_(\d+)/)[1]}"}
+  =form_for :event, {:url => days_path(:date => params[:date], :id => params[:id]), :remote => true} do |f| -
+    %p Название: #{f.text_field :title}
+    %p= f.text_area :content, :cols => 40, :rows => 5, :maxlength => 256
+    %p
+      = submit_tag 'Готово'
+      %a{:href => "#", :onclick => "$('#new_day_#{params[:date].match(/(\d+)_(\d+)_(\d+)/)[1]} ').slideUp('fast');"} Нафиг

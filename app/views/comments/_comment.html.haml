@@ -1,0 +1,34 @@
+%br
+-if top_level
+  .wave_top
+  .comment_top{:id => "comment_top_#{comment.id}"}
+    .comment_content{:id => "comment_content_#{comment.id}"}
+      = comment.content
+    .post_show_bottom
+      .post_line
+        %span{:id => "comment_button_#{comment.id}"}
+          %font{:size => "2"}
+            = link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true
+            - if @student.admin or @student.id == comment.student.id 
+              |
+              = link_to('Удалить', post_comment_path((comment.post_id or comment.comment_id), comment.id), 
+                                   :method => :delete, :remote => true)
+          
+      .post_bottom_avatar{:id => "avatar_#{comment.student.login}"}
+        =image_tag comment.student.avatar.url(:small)
+    = render :partial => 'comments/comment', :collection => comment.comments, :locals => {:top_level => false}
+
+  .wave_bottom
+-else
+  .comment_bottom{:id => "comment_bottom_#{comment.id}", :style => "margin-left:10px;"}
+    .comment_avatar.inline{:id => "avatar_#{comment.student.login}"}
+      = image_tag comment.student.avatar.url(:small)
+    .comment_content.inline  
+      = comment.content
+      -if @student.admin or @student.id == comment.student.id
+        = link_to('x', post_comment_path((comment.post_id or comment.comment_id), comment.id), 
+                       :method => :delete, :remote => true)
+        %br
+      
+      
+      

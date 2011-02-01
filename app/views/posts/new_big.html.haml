@@ -1,0 +1,17 @@
+#new_big_post.big_post.inline{:style =>"display: none;"}
+  .wave_top
+    .wave_border_t
+  = form_for @post, :remote => true, :id => "new_big_post_form" do |f|
+    #big_post_content.post_content
+      .post_title
+        %h2= f.text_field :title, :id => "new_big_post[title]", :maxlength => 60
+      %br
+      = f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_big_post[annotation]"
+      %br
+      = f.submit 'Создать'
+      %a(href="#" onclick="$('#new_big_post').slideUp();") x
+    .post_bottom
+      .post_bottom_line{:style => "width: 100%"}
+        = f.select 'section_id', @sections, :id => "new_big_post[section_id]"
+  .wave_bottom
+    .wave_border_b

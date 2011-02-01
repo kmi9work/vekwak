@@ -1,0 +1,9 @@
+%div{:style => "text-align: center;"}
+  = image_tag(@student.avatar ? @student.avatar.url : "noavatar.gif", :width => 100, :height => 100)
+#student-bar-greeting
+  = @student[:name]
+  = @student[:second_name]
+#student-bar-greeting= @student[:last_name]
+#student-bar-greeting 
+  Группа 
+  = @student[:group]

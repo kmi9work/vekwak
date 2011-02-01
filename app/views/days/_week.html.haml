@@ -1,0 +1,25 @@
+#prev_button_div.button_div.inline
+  #prev_spinner.button_spinner.inline
+    = image_tag "spinner.gif"
+  = link_to "", prev_week_path(:fday => -17), 
+                :remote => true, 
+                :id => "prev_button", 
+                :class => "calendar_button", 
+                :onclick => "$('#prev_button').hide(); $('#prev_spinner').show();"
+
+ 
+
+#calendar_week.inline
+  #new_calendar_days_prev.new_calendar_days.inline
+  #calendar_days.inline
+    = render :partial => "days/new_week"
+  #new_calendar_days_next.new_calendar_days.inline
+
+#next_button_div.button_div.inline
+  #next_spinner.button_spinner.inline
+    = image_tag "spinner.gif"
+  = link_to "", next_week_path(:fday => 17), 
+                :remote => true, 
+                :id => "next_button", 
+                :class => "calendar_button", 
+                :onclick => "$('#next_button').hide(); $('#next_spinner').show();"

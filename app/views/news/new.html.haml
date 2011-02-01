@@ -1,0 +1,6 @@
+= form_for :new, {:url => news_index_path, :remote => true, :html => { :id => "new_new", :style => "display: none;" }} do |f| 
+  %p= f.text_field :title
+  %p= f.text_area :content, :cols => 40, :rows => 5
+  %p
+    = submit_tag 'Готово'
+    %a(href="#" onclick="$('#new_new').slideUp(); $('#new_content').slideDown()") Нафиг

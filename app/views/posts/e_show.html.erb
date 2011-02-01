@@ -1,0 +1,43 @@
+<br>
+<div class="wave_top"></div>
+
+<div id="post_show">
+  <div class="post_left_part inline">
+    <h1><%= link_to @post.section.title, '/'%> &#8658 <%= h @post.title %></h1>
+    <p>
+      <% if @post.content and !@post.content.strip.empty? %>
+      <%= @post.content %>
+      <% else %>
+      <%= @post.annotation %>
+      <% end %>
+    </p>
+  </div>
+  <div class="post_right_part" style="background-color: #<%= @post.section.color %>;">
+    <br>
+    <p>Какая-нибудь хрень.</p>
+    <br>
+    <br>
+  </div>
+</div>
+
+<div class="post_show_bottom">
+  <div class="post_line">
+    <span id="comment_button"><%= link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true %> |
+      <% if @student.admin or @student.id == @post.student.id %>
+      <%= link_to 'Удалить', post_path(@post.id), :method => :delete %>
+<% end %>
+
+<% if @student.id == @post.student.id %>
+| <%= link_to 'Редактировать', edit_post_path(@post.id) %>
+<% end %>
+</span>
+  </div>
+  <div id="avatar" class="post_bottom_avatar">
+    <%= image_tag @post.student.avatar.url(:small) %>
+  </div>
+</div>
+<div class="wave_bottom"></div>
+
+<div id="comments">
+  <%= render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true} %>
+</div>

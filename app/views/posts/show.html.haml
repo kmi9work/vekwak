@@ -1,0 +1,34 @@
+%br
+.wave_top
+
+#post_show
+  .post_left_part.inline
+    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
+    %p
+      - if @post.content and !@post.content.strip.empty?
+        = @post.content 
+      - else 
+        = @post.annotation
+  .post_right_part{:style => "background-color: ##{@post.section.color};"}
+    %br
+    %p Какая-нибудь хрень.
+    %br
+    %br
+    
+.post_show_bottom
+  .post_line
+    %span#comment_button
+      = link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true
+      - if @student.admin or @student.id == @post.student.id
+        | 
+        = link_to 'Удалить', post_path(@post.id), :method => :delete
+
+      - if @student.id == @post.student.id
+        | 
+        = link_to 'Редактировать', edit_post_path(@post.id)
+  #avatar.post_bottom_avatar
+    = image_tag @post.student.avatar.url(:small)
+.wave_bottom
+
+#comments
+  = render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true}

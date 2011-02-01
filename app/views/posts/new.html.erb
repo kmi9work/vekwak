@@ -4,10 +4,10 @@
   <%= form_for @post, :remote => true, :id => "new_post_form" do |f| %>
   <div class="post_content">
     <div class="post_title">
-     <h2><%= f.text_field :title, :id => "new_post[title]" %></h2>
+     <h2><%= f.text_field :title, :id => "new_post[title]", :maxlength => 60 %></h2>
     </div>
     <br>
-    <%= f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 512, :id => "new_post[annotation]" %>
+    <%= f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_post[annotation]" %>
     <br>
     <%= f.submit 'Создать' -%>
     <a href="#" onclick="$('#new_post').slideUp();">x</a><br>

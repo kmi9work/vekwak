@@ -1,6 +1,0 @@
-<div id ="event_<%= event.id %>" class="event">
-  <strong><%= event.title %></strong><br> <%= event.content %>
-  <% if @student.admin %>
-    <%= link_to "x", event_path(event.id), :method => :delete, :remote => true -%>
-  <% end %>
-</div>

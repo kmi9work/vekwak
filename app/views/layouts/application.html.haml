@@ -13,7 +13,7 @@
 
     #info_bg
       .top_wave_top
-        .top_wave_border_t">
+        .top_wave_border_t>
         
       #info_center
         .info.inline
@@ -38,6 +38,5 @@
           .info_sect.inline{:style => "background-color:##{section.color}; width: #{100.0/@sections.size}%;"}
             %h2
               = link_to section.title, "/posts?section_id=#{section.id}" 
-    .top_wave_bottom
-      .top_wave_border_b
+      .shadow_95
   = yield

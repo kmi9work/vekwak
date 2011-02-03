@@ -59,11 +59,25 @@ h3-orange{
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   width: 40%;
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 .for_bg{
-  background-image:url('img/bg_info.gif');
+  background-image: url('img/bg_info.gif');
+}
+
+.shadow{
+  border-top:1px solid #555;
+  width:100%;
+  background-image: url('img/shadow.png');
+  height: 9px;
+}
+.shadow_95{
+  border-top:1px solid #555;
+  width:95%;
+  margin-left:2.5%;
+  background-image: url('img/shadow.png');
+  height: 9px;
 }
 /*_____________________________________________________________________________________ END GENERAL */
 
@@ -167,7 +181,7 @@ width:100%;
   width:95%;
   margin-left:2.5%;
   height:200px; 
-  background-color: #fcfebb;
+  background-color: white;
   text-align: center; 
   border-left: 1px solid #555;
   border-right: 1px solid #555;   
@@ -201,7 +215,7 @@ width:100%;
   position: absolute;
   right: 10px;
   bottom: 40px;
-  background-color: #fcfebb;
+  background-color: white;
   border: 1px solid #555;
 }
 
@@ -227,7 +241,7 @@ width:100%;
   width: 95%;
   margin-left:2.5%;
   height: 41px;
-  background-color: #fcfebb;
+  background-color: white;
   border-left: 1px solid #555; 
   border-right: 1px solid #555;
 }
@@ -335,7 +349,7 @@ width:100%;
 }
 
 .new_day{
-  background-color: #fcfebb;
+  background-color: white;
   z-index: 10;
   display: none;
   margin-top:-4px;
@@ -346,7 +360,7 @@ width:100%;
   position: absolute;
   display: none;
   z-index: 10;
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 .event{
@@ -370,11 +384,11 @@ width:100%;
 }
 .post_content{
   height: 300px;
-  background-color: #fcfebb;
+  background-color: white;
   text-align: center;  
   border-left: 1px solid #555;
   border-right: 1px solid #555;    
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 #big_post_content{
@@ -390,7 +404,7 @@ width:100%;
 .post_bottom{  
   height: 55px;  
   position: relative;
-  background-color: #fcfebb;
+  background-color: white;
   border-left: 1px solid #555;
   border-right: 1px solid #555; 
 }
@@ -473,8 +487,9 @@ width:100%;
 }
 
 #post_show{
-  background-color: #fcfebb;  
+  background-color: white;  
   float:left;
+  width:100%;
 }
 #post_show h1{
   color:  #ffde00;
@@ -488,7 +503,7 @@ width:100%;
   font-size: 18px;
   float:left;
   width:  70%;
-  background-color: #fcfebb;  
+  background-color: white;  
 }
 
 .post_right_part{ 
@@ -517,7 +532,7 @@ width:100%;
 .post_show_bottom{
   clear:both;  
   height: 55px;
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 #comments{
@@ -525,17 +540,24 @@ width:100%;
 }
 
 .comment_top{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:10px;
   font-size:16px;
-  background-color: #fcfebb;  
+  border-top: 1px solid #555; 
+  background-color: white;  
 }
 .comment_bottom{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:50px;
   font-size:15px;
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 #comment_new{
   z-index:12;
-  background-color: #fcfebb;
+  background-color: white;
 }
 
 .comment_avatar{
@@ -543,7 +565,7 @@ width:100%;
   border: 1px solid #555;  
 }
 .comment_content{
-  width:90%;
+  width:80%;
 }
 /*
 .student{

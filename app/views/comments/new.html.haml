@@ -8,7 +8,7 @@
         = f.text_area :content
       %p
         = f.submit 'create'
-        %a{:href => "#", :onclick => "$('#new_comment_#{params[:comment_id]}').remove(); $('#comment_button_#{params[:comment_id]}').slideDown()"} Нафиг
+        %a{:href => "#", :onclick => "$('#comment_new').remove(); $('#comment_button_#{params[:comment_id]}').slideDown()"} Нафиг
 
   -else
     = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]}, :html => {:id => "new_comment", :style => "display: none;"}, :remote => true) do |f|
@@ -16,4 +16,4 @@
         = f.text_area :content
       %p
         = f.submit 'create'
-        %a{:href => "#", :onclick => "$('#new_comment').remove(); $('#comment_button').slideDown()"} Нафиг
+        %a{:href => "#", :onclick => "$('#comment_new').remove(); $('#comment_button').slideDown()"} Нафиг

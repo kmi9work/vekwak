@@ -28,7 +28,7 @@
         = link_to 'Редактировать', edit_post_path(@post.id)
   #avatar.post_bottom_avatar
     = image_tag @post.student.avatar.url(:small)
-.wave_bottom
+.shadow
 
 #comments
   = render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true}

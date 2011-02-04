@@ -6,7 +6,6 @@
       %h2
         = link_to post[:title], post
     = post[:annotation]
-    = Date.new.inspect
   .post_bottom
     .post_bottom_line.inline
     .post_rating_and_section.inline{:style => "background-color: ##{ post.rating >= 0 ? "bffe91" : "ff5656"}"}

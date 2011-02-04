@@ -10,7 +10,13 @@
       #top_line
       #top_students
         = link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), "/"
-
+      - @students.each do |student|
+        - if @students_online.include?(student)
+          .online.inline
+            = image_tag(student.avatar.url(:small)) 
+        - else
+          .inline
+            = image_tag(student.avatar.url(:small))
     #info_bg
       .wave_top
         

@@ -63,7 +63,9 @@ h3-orange{
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   width: 40%;
-  background-color: white;
+  background-color: #ffde00;
+  text-shadow: #000 1px 1px 2px;
+  font-family: Arial Black, Gadget, sans-serif;
 }
 
 
@@ -101,35 +103,6 @@ h3-orange{
   border-bottom: 1px solid #555;
 }
 
-.top_wave_top{
-  width:95%;
-  height:15px;
-  background-image:url('img/wave_top.gif');
-  position: relative;
-  margin-left:2.5%;
-}
-
-.top_wave_bottom{
-  width:95%;
-  height:15px;
-  background-image:url('img/wave_bottom.gif');
-  margin-left:2.5%;
-}
-
-.top_wave_border_b{
-width:100%;
-  height:8px;
-  border-left: 1px solid #555;
-  border-right: 1px solid #555;  
-}
-.top_wave_border_t{ 
-  position: absolute;
-  bottom:0px;
-  height:8px;
-  width:100%;
-  border-left: 1px solid #555;
-  border-right: 1px solid #555;  
-}
 
 /*____________________________________________________________________________________ END TOP  */
 
@@ -165,7 +138,7 @@ width:100%;
   position: absolute;
   bottom:0px;
   height:8px;
-  width:99.5%;
+  width:99.7%;
   border-left: 1px solid #555;
   border-right: 1px solid #555;  
 }
@@ -361,11 +334,11 @@ width:100%;
 /* ==================================================================================== POST */
 
 .post{  
-	margin-top:1%;
-	margin-bottom: 5%;
+	margin-top:3px;
+	margin-bottom: 5px;
 	height: 100%;
-	width:28%;
-  margin-left:4%;  
+	width:32%;
+  margin-left:1%;
 }
 #new_big_post{
 	height: 100%;

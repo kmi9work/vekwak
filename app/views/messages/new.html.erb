@@ -1,0 +1,19 @@
+<% form_for(@message, :url => {:action=> :send})  do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label 'Кому' %><br />
+    <%= f.select :student_id, Student.find(:all).collect{|p| p.student_id} %>
+  </p>
+  
+  <p>
+    <%= f.label 'Тема' %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label 'Содержание' %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>

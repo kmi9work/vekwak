@@ -3,7 +3,9 @@
   .comment_avatar.inline
     = image_tag @student.avatar.url(:small) 
   -if params[:comment_id]
-    = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]}, :html => {:id => "new_comment_#{params[:comment_id]}", :style => "display: none;"}, :remote => true) do |f|
+    = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]},
+                         :html => {:id => "new_comment_#{params[:comment_id]}", :style => "display: none;"},
+                         :remote => true) do |f|
       %p
         = f.text_area :content
       %p
@@ -11,7 +13,9 @@
         %a{:href => "#", :onclick => "$('#new_comment_#{params[:comment_id]}').remove(); $('#comment_button_#{params[:comment_id]}').slideDown()"} Нафиг
 
   -else
-    = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]}, :html => {:id => "new_comment", :style => "display: none;"}, :remote => true) do |f|
+    = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]},
+                         :html => {:id => "new_comment", :style => "display: none;"},
+                         :remote => true) do |f|
       %p
         = f.text_area :content
       %p

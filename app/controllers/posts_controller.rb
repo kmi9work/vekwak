@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   end
   
   def new_big
-    puts @post.inspect + "\n\n\n" + params.inspect + "\n\n\n"
     @post ||= Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
   end

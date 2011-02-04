@@ -1,0 +1,11 @@
+<% @messages.each do |msg| %>
+  <% if msg.new %>
+    <div class="message_list_new">
+  <% else %>
+    <div class="message_list">
+  <% end %>
+  <%= h msg.student_from%>
+  <%= link_to msg.title, :action => :show, :message_id => msg.id %>
+  </div>
+<% end %>
+<%= link_to 'новое сообщение', :controller => :messages, :action => :new %>

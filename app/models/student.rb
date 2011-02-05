@@ -61,7 +61,7 @@ class Student < ActiveRecord::Base
   
   def record_last_visit
     ActiveRecord::Base.connection.execute("update students set last_visit =
-    datetime() where id = #{id}")
+    datetime() where id = #{id}")    
   end  
   
   def online?(max_delay=5.minutes)

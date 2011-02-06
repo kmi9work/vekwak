@@ -9,10 +9,10 @@ div{
 body{
   background-color: #DDD;  
 	margin: 0%;
-  color: #BBB;
   font-family: Georgia, serif;
   font-size: 1.2em;
   background-color:#d3d3d3;
+  color: #555;
 }
 
 A:link {text-decoration: none; color:#feab25}
@@ -162,21 +162,22 @@ h3-orange{
   overflow: hidden;
 }
 
-#headman_aul_content{
+.info_content{
   width: 100%;
   height: 100%;
-  margin-left: 5px;
   color: #555;
   font-size: 60%;
   text-align: left;
 }
 
+#headman_aul_content{
+  margin-left: 5px;
+}
+
 #new_content{
-  width: 100%;
-  height: 100%;
-  color: #555;
-  font-size: 60%;
-  text-align: left;
+}
+
+#last_comments{
 }
 
 .new_link{
@@ -185,16 +186,6 @@ h3-orange{
   bottom: 40px;
   background-color: white;
   border: 1px solid #555;
-}
-
-
-#last_comments{
-  width: 100%;
-  height: 100%;
-  margin-left: 5px;
-  color: #555;
-  font-size: 60%;
-  text-align: left;
 }
 
 #info_line{
@@ -457,7 +448,8 @@ h3-orange{
 #post_show{
   background-color: white;  
   float:left;
-  width:100%;
+  width: 97%;
+  padding-left: 3%;
 }
 #post_show h1{
   color:  #ffde00;

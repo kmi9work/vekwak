@@ -24,16 +24,17 @@
         .info.inline
           %h1
             = link_to "Новости", news_index_path
-          #new_content
+          #new_content.info_content
             = render :partial => 'news/news'
           
         .info.inline
           %h1 Последние комментарии
-          = render :partial => 'comments/last_comments'
+          #last_comments.info_content
+            = render :partial => 'comments/last_comments'
         .info.inline
           %h1
             = link_to "Староста", headman_auls_path
-          #headman_aul_content
+          #headman_aul_content.info_content
             = render :partial => 'headman_auls/headman_aul'
       #info_line
         #calendar

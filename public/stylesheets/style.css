@@ -531,6 +531,26 @@ h3-orange{
 .comment_content{
   width:80%;
 }
+
+.student_login{
+  position: absolute;
+  z-index: 10;
+  border-radius: 5px;
+  background: #c3c3c3;
+}
+
+.student_info{
+  position: absolute;
+  z-index: 11;
+  border-radius: 5px;
+  background: #c3c3c3;
+}
+
+.close{
+  position: absolute;
+  left: 5px;
+  top: 0px;
+}
 /*
 .student{
 	height:100px;

@@ -7,6 +7,11 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
   end
+  
+  def info
+    @student = Student.find(params[:id])
+  end
+  
  
   def create
     logout_keeping_session!

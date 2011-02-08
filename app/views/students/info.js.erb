@@ -1,0 +1,2 @@
+$("<%= escape_javascript render(:file => 'students/info.html') %>").appendTo('#student_<%= @student.id %>');
+$("#student_info_<%= @student.id %>").slideToggle("fast");

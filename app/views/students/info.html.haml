@@ -1,0 +1,7 @@
+.student_info{:id => "student_info_#{@student.id}", :style => "display: none;"}
+  .close{:onclick => "$('#student_info_#{@student.id}').remove();"} 
+    %a{:href => "#"} x
+  = @student.login
+  = @student.name
+  %hr
+  = link_to "Написать", ""

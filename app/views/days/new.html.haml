@@ -4,4 +4,5 @@
     %p= f.text_area :content, :cols => 40, :rows => 5, :maxlength => 256
     %p
       = submit_tag 'Готово'
-      %a{:href => "#", :onclick => "$('#new_day_#{params[:date].match(/(\d+)_(\d+)_(\d+)/)[1]} ').slideUp('fast');"} Нафиг
+      .close
+        %a{:href => "#", :onclick => "$('#new_day_#{params[:date].match(/(\d+)_(\d+)_(\d+)/)[1]} ').slideUp('fast');"} x

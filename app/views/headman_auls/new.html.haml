@@ -2,7 +2,8 @@
   %p= f.text_area :content, :cols => 40, :rows => 5
   %p
     = submit_tag 'Готово'
-    %a{:href => "#", :onclick => "$('#new_headman_aul').slideUp(); $('#headman_aul_content').slideDown()"} Нафиг
+    .close 
+      %a{:href => "#", :onclick => "$('#new_headman_aul').slideUp(); $('#headman_aul_content').slideDown()"} x
 
 / 
 / ActionView::Template::Error (Inconsistent indentation: 26 spaces were used for indentation, but the rest of the document was indented using 36 spaces.):
@@ -13,4 +14,4 @@
 /     7:   %p= f.text_area :content, :cols => 40, :rows => 5
 /     8:   %p
 /     9:     = submit_tag 'Готово'
-/   app/views/headman_auls/new.html.haml:6
+/   app/views/headman_auls/new.html:6

@@ -9,7 +9,8 @@
       = f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_post[annotation]"
       %br
       = f.submit 'Создать'
-      %a(href="#" onclick="$('#new_post').slideUp();") x
+      .close
+        %a(href="#" onclick="$('#new_post').slideUp();") x
       %br
       = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
     .post_bottom

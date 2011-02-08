@@ -11,7 +11,8 @@
       = f.text_area :content, :cols => 80, :rows => 14, :id => "new_big_post[annotation]"
       %br
       = f.submit 'Создать'
-      %a(href="#" onclick="$('#new_big_post').slideUp();") x
+      .close
+        %a(href="#" onclick="$('#new_big_post').slideUp();") x
     .post_bottom
       .post_bottom_line{:style => "width: 100%"}
         = f.select 'section_id', @sections, :id => "new_big_post[section_id]"

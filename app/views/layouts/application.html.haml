@@ -9,7 +9,7 @@
     #top
       #top_line
       #top_students
-        = link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), "/"
+        = link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), :controller => :messages, :action => :index
         - @students.each do |student|
           .inline{:id => "student_#{student.id}", :class => @students_online.include?(student) ? "online" : "",
                   :onMouseOver => "$('<div id=\"student_#{student.id}_login\" class=\"student_login\">#{student.login}</div>').appendTo('#student_#{student.id}');",

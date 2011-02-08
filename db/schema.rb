@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20110130204322) do
   end
 
   create_table "messages", :force => true do |t|
-    t.string   "title"
     t.string   "content"
     t.integer  "student_id"
     t.integer  "student_from_id"

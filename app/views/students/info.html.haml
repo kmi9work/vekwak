@@ -1,7 +1,7 @@
-.student_info{:id => "student_info_#{@student.id}", :style => "display: none;"}
-  .close{:onclick => "$('#student_info_#{@student.id}').remove();"} 
+.student_info{:id => "student_info_#{@student_info.id}", :style => "display: none;"}
+  .close{:onclick => "$('#student_info_#{@student_info.id}').remove();"} 
     %a{:href => "#"} x
-  = @student.login
-  = @student.name
+  = @student_info.login
+  = @student_info.name
   %hr
-  = link_to "Написать", ""
+  = link_to "Написать", new_message_path(:format => :js, :student_id => @student_info.id), :remote => true, :id => "message_button"

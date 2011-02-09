@@ -1,22 +1,27 @@
+#encoding: utf-8
 class MessagesController < ApplicationController
-  def new
-    @message = Message.new
+  def new   
+    @student_to = Student.find(params[:student_id])
   end
 
-  def sent
-    student_to = Student.find_by_login(params[:message][:student_id])
+  def create
+    student_to = Student.find_by_id(params[:message][:student_id])
     @message = Message.new(params[:message])
     @message.student_from = @student
     @message.student = student_to
     student_to.messages << @message
     @student.messages << @message
     if @message.save and @student.save and student_to.save
-      flash[:notice] = "Сообщение для #{@student_to.login} отправленно."
-      redirect_to(:controller => :messages, :action => :list)
+      respond_to do |format|
+        format.html {redirect_back_or_default('/')}
+        format.js
+      end
     else
       student_to.messages.pop
-      flash[:notice] = 'Сообщение не отправленно'
-      render :action => "new"
+      respond_to do |format|
+        format.html {render :action => 'new'}
+        format.js {render 'fail_create.js.erb'}
+      end  
     end
   end
 

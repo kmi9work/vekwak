@@ -1,9 +1,10 @@
-- if @headman_msg 
-  - @headman_msg.each do |msg|
-    %h3= msg.created_at.strftime("%d.%m %H:%M") 
-    = msg.content
-    %br
-%br
--if @student and @student.headman
-  = link_to "Написать", new_headman_aul_path(:format => :js), :remote => true, :id => "new_headman_aul_link", :class => "new_link"
-
+-if @messages
+  -@messages.each do |msg|
+    - if msg.new
+      .message_new
+        = link_to msg.created_at.strftime("%d.%m.%Y %H:%M #{msg.student_from.name} #{msg.student_from.second_name}"), message_path(:id => msg.id), :remote => true 
+    - else
+      .message
+      = link_to msg.created_at.strftime("%d.%m.%Y %H:%M #{msg.student_from.name} #{msg.student_from.second_name}"), message_path(:id => msg.id), :remote => true
+    %div{:id => "message_show_#{msg.id}", :style => "display: none;"}
+      msg.content

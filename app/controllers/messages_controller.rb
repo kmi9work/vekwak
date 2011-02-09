@@ -4,20 +4,17 @@ class MessagesController < ApplicationController
     @student_to = Student.find(params[:student_id])
   end
 
-  def create
-    student_to = Student.find_by_id(params[:message][:student_id])
+  def create    
     @message = Message.new(params[:message])
-    @message.student_from = @student
-    @message.student = student_to
-    student_to.messages << @message
-    @student.messages << @message
-    if @message.save and @student.save and student_to.save
+    puts "-------------------"
+    puts "-------------------"
+    @message.student_from = @student    
+    if @message.save
       respond_to do |format|
         format.html {redirect_back_or_default('/')}
         format.js
       end
     else
-      student_to.messages.pop
       respond_to do |format|
         format.html {render :action => 'new'}
         format.js {render 'fail_create.js.erb'}
@@ -26,13 +23,17 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = @student.messages
+    @messages = @student.messages.reverse
   end
 
   def show
-    @message = Message.find_by_id(params[:message_id])
+    @message = Message.find_by_id(params[:id])
     @message.new = 0
     @message.save
+    respond_to do |format|
+      format.html
+      format.js
+    end  
   end
 
 end

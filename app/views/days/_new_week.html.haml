@@ -6,7 +6,7 @@
   -class_str += "inline"     
   -if wday.id
     = link_to day_path(wday.id, :date => wday.date, :format => :js), :remote => true do
-      %div{:id => "day#{wday.day}", :class => class_str}
+      %div{:id => "day_#{wday.date}", :class => class_str}
         -if (wday.day == Time.now.day and wday.month == Time.now.month and wday.year == Time.now.year)
           Сегодня 
           .month= wday.day.to_s + ' ' + @month_arr[wday.month - 1]
@@ -15,7 +15,7 @@
           .month= @month_arr[wday.month - 1]
   -else
     = link_to new_day_path(:format => :js, :date => wday.date), :remote => true do
-      %div{:id => "day#{wday.day}", :class => class_str}
+      %div{:id => "day_#{wday.date}", :class => class_str}
         -if (wday.day == Time.now.day and wday.month == Time.now.month and wday.year == Time.now.year)
           Сегодня 
           .month

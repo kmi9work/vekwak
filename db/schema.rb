@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110130204322) do
+ActiveRecord::Schema.define(:version => 20110209124200) do
+
+  create_table "blinds", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"

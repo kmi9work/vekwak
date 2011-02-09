@@ -13,6 +13,7 @@
         %a(href="#" onclick="$('#new_post').slideUp();") x
       %br
       = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
+      = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
     .post_bottom
       .post_bottom_line
         = f.select 'section_id', @sections, :id => "new_post[section_id]"

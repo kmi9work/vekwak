@@ -12,11 +12,12 @@
         = link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), :controller => :messages, :action => :index
         - @students.each do |student|
           .inline{:id => "student_#{student.id}", :class => @students_online.include?(student) ? "online" : "",
-                  :onMouseOver => "over_student();",
-                  :onMouseOut => "out_student();"}
+                  :onMouseOver => "over_student('#{student.id}', 'top');",
+                  :onMouseOut => "over_student('#{student.id}', 'top');"}
             = link_to image_tag(student.avatar.url(:small)),
                       student_info_path(:id => student.id, :format => :js),
                       :remote => true
+            .student_login{:id => "student_#{student.id}_login_top", :style => "display: none;"}= student.login
     #info_bg
       .wave_top
         

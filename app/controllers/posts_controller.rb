@@ -134,8 +134,6 @@ class PostsController < ApplicationController
   def sections
     @sections = Section.find(:all)
   end
-  
-  
 end
 
 

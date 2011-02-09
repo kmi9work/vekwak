@@ -1,0 +1,2 @@
+module BlindsHelper
+end

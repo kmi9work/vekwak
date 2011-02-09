@@ -200,8 +200,6 @@ h3-orange{
   width: 100%;
   height: 41px;
   background-color: white;
-  border-left: 1px solid #555; 
-  border-right: 1px solid #555;
 }
 .info_sect{
   border-bottom: 1px solid #555; 
@@ -389,6 +387,7 @@ h3-orange{
 .post_rating_and_section{
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
+  margin-left: -1px;
   height: 20px;  
   width: 30%;
   border-left: 1px solid #555;

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20110209124200) do
     t.integer  "student_id"
     t.integer  "comment_id"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

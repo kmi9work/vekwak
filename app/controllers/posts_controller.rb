@@ -34,8 +34,8 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
-    Blind.new(params[:post])
-    Blind.save
+    # Blind.new(params[:post])
+    # Blind.save
     if @post.save
       respond_to do |rt|
         rt.html {redirect_to(@post)}

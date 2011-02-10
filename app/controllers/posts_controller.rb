@@ -1,19 +1,18 @@
 class PostsController < ApplicationController
   def index  
     if params[:section_id]
-      @posts1=Post.all
+      @posts1=Post.all :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+    else
+      @posts1=Post.all :order => 'created_at DESC'
+    end
     @posts2=[]
     @posts1.each do |post|
       post.blinds.each do |blind|
         (@posts2<<post) if blind.student_id==@student.id
       end
     end
-    @posts1=@posts1-@posts2    
-    if params[:section_id]
-      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
-    else
-      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
-    end          
+    @posts1=@posts1-@posts2            
+    @posts = @posts1.paginate :page => params[:page], :per_page => 6    
   end
 
   def show

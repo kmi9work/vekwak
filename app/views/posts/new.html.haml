@@ -6,16 +6,20 @@
       .post_title
         %h2= f.text_field :title, :id => "new_post[title]", :maxlength => 60
       %br
-      = f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_post[annotation]"
+      = f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_post_annotation"
       %br
-      = f.submit 'Создать'
+      #blinds{:style =>"display: none;"}
+        -@students.each do |stud|
+          = check_box_tag(stud[1])
+          = label_tag(stud[1], stud[0])
+    .post_bottom
+      .post_bottom_line{:style => "text-align:center;"}
+        = f.select 'section_id', @sections, :id => "new_post[section_id]"
+      #blinds_button
+        = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
+      = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
+      = f.submit 'Создать', :style => "border-radius:5px;"
       .close
         %a(href="#" onclick="$('#new_post').slideUp().remove();") x
-      %br
-      = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
-      = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
-    .post_bottom
-      .post_bottom_line
-        = f.select 'section_id', @sections, :id => "new_post[section_id]"
   .wave_bottom
     .wave_border_b

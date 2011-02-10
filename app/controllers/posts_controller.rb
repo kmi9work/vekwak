@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
+    @students = Student.all.collect {|s| [ s.name, s.id ] }
   end
   
   def new_big
@@ -33,6 +34,8 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
+    Blind.new(params[:post])
+    Blind.save
     if @post.save
       respond_to do |rt|
         rt.html {redirect_to(@post)}

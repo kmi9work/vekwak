@@ -345,6 +345,18 @@ h3-orange{
 /* ____________________________________________________________________________________ END INFO   */
 
 /* ==================================================================================== POST */
+#blinds_button{
+  width:30%;
+  height: 20px;
+  float:left;
+  background-color: #000;
+  display:block;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;  
+}
+#blinds{
+  font-size:70%;
+}
 
 .post{  
 	margin-top:3px;

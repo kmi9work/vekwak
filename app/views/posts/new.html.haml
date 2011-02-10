@@ -10,7 +10,7 @@
       %br
       = f.submit 'Создать'
       .close
-        %a(href="#" onclick="$('#new_post').slideUp();") x
+        %a(href="#" onclick="$('#new_post').slideUp().remove();") x
       %br
       = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
       = link_to "Ослепить", new_blind_path(:format => :js), :remote => true

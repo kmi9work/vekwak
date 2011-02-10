@@ -5,15 +5,4 @@
   %p
     = submit_tag 'отправить'
     .close 
-      %a{:href => "#", :onclick => "$('#new_message').slideUp(); $('#message_button').slideDown()"} x
-
-/ 
-/ ActionView::Template::Error (Inconsistent indentation: 26 spaces were used for indentation, but the rest of the document was indented using 36 spaces.):
-/     3:                           :html => { :id => "new_headman_aul", 
-/     4:                                      :style => "display: none;" 
-/     5:                                     }
-/     6:                           } do |f|
-/     7:   %p= f.text_area :content, :cols => 40, :rows => 5
-/     8:   %p
-/     9:     = submit_tag 'Готово'
-/   app/views/headman_auls/new.html:6
+      %a{:href => "#", :onclick => "$('#new_message').slideUp().remove(); $('#message_button').slideDown()"} x

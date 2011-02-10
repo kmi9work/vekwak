@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index  
-    @posts1=Post.all
+    if params[:section_id]
+      @posts1=Post.all
     @posts2=[]
     @posts1.each do |post|
       post.blinds.each do |blind|
@@ -9,10 +10,10 @@ class PostsController < ApplicationController
     end
     @posts1=@posts1-@posts2    
     if params[:section_id]
-      @posts = @posts1.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
     else
-      @posts = @posts1.paginate :page => params[:page], :order => 'created_at DESC'
-    end      
+      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
+    end          
   end
 
   def show

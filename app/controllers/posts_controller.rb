@@ -1,14 +1,25 @@
 class PostsController < ApplicationController
-  def index   
+  def index  
+    @posts1=Post.all
+    @posts2=[]
+    @posts1.each do |post|
+      post.blinds.each do |blind|
+        (@posts2<<post) if blind.student_id==@student.id
+      end
+    end
+    @posts1=@posts1-@posts2    
     if params[:section_id]
-      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+      @posts = @posts1.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
     else
-      @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
+      @posts = @posts1.paginate :page => params[:page], :order => 'created_at DESC'
     end      
   end
 
   def show
     @post = Post.find(params[:id])
+    @post.blinds.each do |blind|
+      redirect_to "/" if blind.student_id==@student.id
+    end
     @comments = @post.comments.reject{|i| i.comment_id}
   end
 
@@ -34,8 +45,16 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
-    Blind.new(params[:post])
-    Blind.save
+    (Student.all-[@student]).each do |stud|
+      puts "this------------"
+      puts params["#{stud.id}"]
+      if params["#{stud.id}"]=="1"
+        a=Blind.new        
+        a.student_id=stud.id
+        @post.blinds << a
+        a.save
+      end
+    end
     if @post.save
       respond_to do |rt|
         rt.html {redirect_to(@post)}

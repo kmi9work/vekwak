@@ -7,4 +7,4 @@
       .message
       = link_to msg.created_at.strftime("%d.%m.%Y %H:%M #{msg.student_from.name} #{msg.student_from.second_name}"), message_path(:id => msg.id), :remote => true
     %div{:id => "message_show_#{msg.id}", :style => "display: none;"}
-      msg.content
+      =msg.content

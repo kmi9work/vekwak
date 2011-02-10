@@ -1,0 +1,10 @@
+<tr>
+  <th><%= topic_rater.student.login %></th>
+  <td><font color="<%= if topic_rater.mark > 0
+    "green"
+  elsif topic_rater.mark == 0
+    "gray"
+  else
+    "red"
+  end  %>"><%= topic_rater.mark %></font></td>
+</tr>

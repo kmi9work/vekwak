@@ -1,0 +1,4 @@
+<%= render :partial => "section", :collection => @sections %>
+<% if @student.admin or @student.headman %>
+  <%= link_to "Добавить раздел", :controller => :sections, :action => :new %>
+<% end %>

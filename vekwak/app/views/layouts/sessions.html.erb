@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vekwak</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div class="grey-block grey-bg">    
+  <h1>Добро пожаловать!</h1>
+  
+  <% form_tag session_path do -%>
+  <br>
+  <p><%= label_tag 'login', 'Логин :' %>
+  <%= text_field_tag 'login', @login %></p>
+  <br>
+  <p><%= label_tag 'password', 'Пароль' %>
+  <%= password_field_tag 'password', nil %></p>
+  <br>
+  <!-- Uncomment this if you want this functionality
+  <p><%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+  -->
+  
+  <p><%= submit_tag 'Войти' %></p>
+  <% end -%>  
+</div>
+</body>
+</html>
+

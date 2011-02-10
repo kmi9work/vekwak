@@ -17,6 +17,9 @@
         %p
           = label_tag 'password', 'Пароль'
           = password_field_tag 'password', nil
-        %br  
+        %br
+        %p
+          = label_tag 'remember_me', 'Remember me'
+          = check_box_tag 'remember_me', '1', @remember_me  
         %p= submit_tag 'Войти'
 

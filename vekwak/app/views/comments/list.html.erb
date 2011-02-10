@@ -1,0 +1,5 @@
+<% @comments.each do |comment| %>
+	<%= h comment.content%> | 
+	<%= link_to 'Edit', edit_comment_path(comment) %> | 
+	<%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %><br>
+<%end%>

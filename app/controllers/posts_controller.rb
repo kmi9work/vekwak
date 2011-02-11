@@ -17,8 +17,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @blinds=[]
     @post.blinds.each do |blind|
       redirect_to "/" if blind.student_id==@student.id
+      @blinds<<Student.find_by_id(blind.student_id).name
     end
     @comments = @post.comments.reject{|i| i.comment_id}
   end

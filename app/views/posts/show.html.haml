@@ -11,7 +11,9 @@
         = @post.annotation
   .post_right_part{:style => "background-color: ##{@post.section.color};"}
     %br
-    %p Какая-нибудь хрень.
+    Пост скрыт для:
+    -@blinds.each do |blind|
+      =blind+', '
     %br
     %br
     

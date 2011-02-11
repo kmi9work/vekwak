@@ -10,6 +10,10 @@
       %br
       = f.text_area :content, :cols => 80, :rows => 14, :id => "new_big_post[annotation]"
       %br
+      #blinds
+        -@students_list.each do |stud|
+          = check_box_tag(stud[1])
+          = label_tag(stud[1], stud[0])
       = f.submit 'Создать'
       .close
         %a(href="#" onclick="$('#new_big_post').slideUp();") x

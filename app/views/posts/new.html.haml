@@ -9,7 +9,7 @@
       = f.text_area :annotation, :cols => 40, :rows => 14, :maxlength => 256, :id => "new_post_annotation"
       %br
       #blinds{:style =>"display: none;"}
-        -@students.each do |stud|
+        -@students_list.each do |stud|
           = check_box_tag(stud[1])
           = label_tag(stud[1], stud[0])
     .post_bottom

@@ -28,16 +28,18 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
-    @students = Student.all.collect {|s| [ s.name, s.id ] }
+    @students_list = Student.all.collect {|s| [ s.name, s.id ] }
   end
   
   def new_big
     @post ||= Post.new
     @sections = Section.all.collect {|s| [ s.title, s.id ] }
+    @students_list = Student.all.collect {|s| [ s.name, s.id ] }
   end
 
   def edit
     @post = Post.find(params[:id])
+    @students_list = Student.all.collect {|s| [ s.name, s.id ] }
     unless @student.admin or @student.id == @post.student.id
       render :status => 403
     end

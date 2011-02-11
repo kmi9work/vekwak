@@ -1,12 +1,13 @@
 <% if params[:comment_id] %>
 $('#comment_button_<%= params[:comment_id] %>').slideUp();
 $("<%= escape_javascript render(:file => 'comments/new.html') %>").insertAfter('#comment_top_<%= params[:comment_id] %>'); 
-$('#new_comment_<%= params[:comment_id] %>').slideDown();
+$('#comment_new<%= params[:comment_id] %>').slideDown();
+$('html, body').stop().animate({scrollTop: $('#comment_new<%= params[:comment_id] %>').offset().top}, 1000);
 <% elsif params[:post_id] %>
 $('#comment_button').slideUp();
-$("<%= escape_javascript render(:file => 'comments/new.html') %>").insertBefore('#comment_button'); 
-$('#new_comment').slideDown(); 
+$('#comments').append("<%= escape_javascript render(:file => 'comments/new.html') %>");
+$('#comment_new').slideDown(); 
+$('html, body').stop().animate({scrollTop: $('#comment_new').offset().top}, 1000);
 <% else %>
 alert("Do not do it again!!11");
 <% end %>
-$('html, body').stop().animate({scrollTop: $('#comment_new').offset().top}, 1000);

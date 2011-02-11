@@ -1,13 +1,12 @@
 <% if top_level %>
   $('#comments').append("<%= escape_javascript(render :partial => 'comments/comment', 
                                                       :locals => {:top_level => top_level, 
-                                                      :comment => @comment}) %>"); 
-  $('#comment_button').show();
+                                                        :comment => @comment}) %>");                                                       
   $('#comment_new').remove();
 <% else %>
   $('#comment_top_<%= @comment.comment.id %>').append("<%= escape_javascript(render :partial => 'comments/comment', 
                                                       :locals => {:top_level => top_level, 
-                                                      :comment => @comment}) %>");
-  $('#comment_button_<%= @comment.comment.id %>').show();
+                                                        :comment => @comment}) %>");                                                      
   $('#comment_new<%= @comment.comment.id %>').remove();
 <% end %>
+$("span#comment_button").show();

@@ -1,2 +1,2 @@
-$("<%= escape_javascript render(:file => 'students/info.html') %>").appendTo('#student_<%= @student_info.id %>');
-$("#student_info_<%= @student_info.id %>").slideToggle("fast");
+$("<%= escape_javascript render(:file => 'students/info.html') %>").appendTo('#avatar_<%= @id %>_<%= @path %>');
+$("#student_info_<%= @id %>_<%= @path %>").slideToggle("fast");

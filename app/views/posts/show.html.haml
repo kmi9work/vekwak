@@ -27,10 +27,10 @@
       - if @student.id == @post.student.id
         | 
         = link_to 'Редактировать', edit_post_path(@post.id)
-  #avatar.post_bottom_avatar{:onMouseOver => "over_student('#{@post.id}', 'post_show');", :onMouseOut => "over_student('#{@post.id}', 'post_show');"}
-    = image_tag @post.student.avatar.url(:small)
-    .student_login{:id => "student_#{@post.id}_login_post_show", :style => "display: none;"}= @post.student.login
-    
+  =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',
+                                                      :student => @post.student,
+                                                      :id => @post.id,
+                                                      :path => 'post_show'}
 .shadow
 
 #comments

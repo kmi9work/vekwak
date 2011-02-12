@@ -14,8 +14,9 @@
       .rating{:id => "post_rating_#{post.id}" }              
         = link_to post.rating, post_raters_path(:post_id => post.id, :format => :js), :remote => true
       = link_to "", post_minus_path(:post_id => post.id, :format => :js), :remote => true, :class => "rating_minus"
-    #avatar.post_bottom_avatar{:onMouseOver => "over_student('#{post.id}', 'post');", :onMouseOut => "over_student('#{post.id}', 'post');"}
-      =image_tag post.student.avatar.url(:small)
-      .student_login{:id => "student_#{post.id}_login_post", :style => "display: none;"}= post.student.login
+    =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',
+                                                         :student => post.student,
+                                                         :id => post.id,
+                                                         :path => 'post'}
   .wave_bottom
     .wave_border_b

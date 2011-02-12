@@ -1,9 +1,10 @@
 -if top_level
   %br
   .comment_top{:id => "comment_top_#{comment.id}"}
-    .comment_avatar.inline{:id => "avatar_#{comment.student.login}", :onMouseOver => "over_student('#{comment.id}', 'comment');", :onMouseOut => "over_student('#{comment.id}', 'comment');"}
-      =image_tag comment.student.avatar.url(:small)
-      .student_login{:id => "student_#{comment.id}_login_comment", :style => "display: none;"}= comment.student.login
+    =render :partial => "students/avatar", :locals => {:div_class => 'comment_avatar',
+                                              :student => comment.student,
+                                              :id => comment.id,
+                                              :path => 'comment'}
     .comment_content.inline{:id => "comment_content_#{comment.id}"}
       = comment.content
       %span{:id => "comment_button"}
@@ -25,9 +26,10 @@
 -else
   %hr
   .comment_bottom{:id => "comment_bottom_#{comment.id}"}
-    .comment_avatar.inline{:id => "avatar_#{comment.student.login}", :onMouseOver => "over_student('#{comment.id}', 'comment');", :onMouseOut => "over_student('#{comment.id}', 'comment');"}
-      = image_tag comment.student.avatar.url(:small)
-      .student_login{:id => "student_#{comment.id}_login_comment", :style => "display: none;"}= comment.student.login
+    =render :partial => "students/avatar", :locals => {:div_class => 'comment_avatar',
+                                              :student => comment.student,
+                                              :id => comment.id,
+                                              :path => 'comment'}
     .comment_content.inline  
       = comment.content
       -if @student.admin or @student.id == comment.student.id

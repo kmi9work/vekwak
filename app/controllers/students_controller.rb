@@ -10,6 +10,8 @@ class StudentsController < ApplicationController
   
   def info
     @student_info = Student.find(params[:id])
+    @path = params[:path]
+    @id = params[:div_id]
   end
   
  

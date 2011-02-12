@@ -12,8 +12,7 @@
   .post_right_part{:style => "background-color: ##{@post.section.color};"}
     %br
     Пост скрыт для:
-    -@blinds.each do |blind|
-      =blind+', '
+    = @blinds.join(", ")
     %br
     %br
     
@@ -28,9 +27,12 @@
       - if @student.id == @post.student.id
         | 
         = link_to 'Редактировать', edit_post_path(@post.id)
-  #avatar.post_bottom_avatar
+  #avatar.post_bottom_avatar{:onMouseOver => "over_student('#{@post.id}', 'post_show');", :onMouseOut => "over_student('#{@post.id}', 'post_show');"}
     = image_tag @post.student.avatar.url(:small)
+    .student_login{:id => "student_#{@post.id}_login_post_show", :style => "display: none;"}= @post.student.login
+    
 .shadow
 
 #comments
   = render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true}
+<br><br>

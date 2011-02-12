@@ -49,6 +49,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
+<<<<<<< HEAD
+    # Blind.new(params[:post])
+    # Blind.save
+=======
     (Student.all-[@student]).each do |stud|
       puts "this------------"
       puts params["#{stud.id}"]
@@ -59,6 +63,7 @@ class PostsController < ApplicationController
         a.save
       end
     end
+>>>>>>> qaa12
     if @post.save
       respond_to do |rt|
         rt.html {redirect_to(@post)}

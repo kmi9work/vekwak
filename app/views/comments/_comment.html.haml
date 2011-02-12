@@ -5,7 +5,7 @@
       =image_tag comment.student.avatar.url(:small)
     .comment_content.inline{:id => "comment_content_#{comment.id}"}
       = comment.content
-      %span{:id => "comment_button_#{comment.id}"}
+      %span{:id => "comment_button"}
         %font{:size => "2"}
           = link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true
           .comment_rating.inline{:id => "comment_rating_#{comment.id}", :style => "background-color: ##{ comment.rating >= 0 ? "bffe91" : "ff5656"}"}

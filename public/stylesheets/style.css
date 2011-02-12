@@ -113,14 +113,17 @@ h3-orange{
 
 /* ==================================================================================== MESSAGES    */
 .message_new{
-  width:100%;
+  width:99%;
   background-color:#ff6262;
   border-bottom: 1px solid #FFF;
 }
 .message{
-  width:100%;
+  width:99%;
   background-color:#FFF;
-  border-bottom: 1px solid #FFF;
+  border-top: 1px solid #DDD;
+}
+.message_open{
+  background-color:#F0F0F0;
 }
 
 #white_bg{
@@ -505,6 +508,7 @@ h3-orange{
   width:  29%;
   float: right;
   margin-top:10px;
+  margin-bottom:10px;
   border-top: 1px solid #555; 
   border-left: 1px solid #555; 
   border-bottom: 1px solid #555; 
@@ -549,14 +553,19 @@ h3-orange{
   background-color: white;
 }
 
-#comment_new{
+.comment_new{
   z-index:12;
+  padding-top:10px;
   background-color: white;
+  text-align:left;
+  border-top: 1px solid #555; 
+  border-bottom: 1px solid #555; 
 }
 
 .comment_avatar{
   height: 50px;  
-  border: 1px solid #555;  
+  border: 1px solid #555;
+  margin-left:10px;
 }
 .comment_content{
   width:80%;

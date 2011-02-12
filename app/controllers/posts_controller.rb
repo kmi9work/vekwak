@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @blinds=[]
     @post.blinds.each do |blind|
-      redirect_to "/" if blind.student_id==@student.id
+      redirect_to ("/", :notice => 'Ahhaahah!!')nt_id==@student.id
       @blinds<<Student.find_by_id(blind.student_id).name
     end
     @comments = @post.comments.reject{|i| i.comment_id}

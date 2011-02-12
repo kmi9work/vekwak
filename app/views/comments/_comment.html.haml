@@ -12,7 +12,7 @@
             = link_to "", comment_plus_path(:comment_id => comment.id, :format => :js), 
                           :remote => true, :class => "rating_plus"
             .rating{:id => "comment_rating_#{comment.id}" }              
-              = link_to comment.rating, raters_path(:comment_id => comment.id, :format => :js), :remote => true
+              = link_to comment.rating, comment_raters_path(:comment_id => comment.id, :format => :js), :remote => true
             = link_to "", comment_minus_path(:comment_id => comment.id, :format => :js), :remote => true, :class => "rating_minus"
           - if @student.admin or @student.id == comment.student.id 
             |

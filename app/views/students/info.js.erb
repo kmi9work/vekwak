@@ -1,2 +1,6 @@
+<% @students.each do |stud| %>
+  $('#student_<%= stud.id %>_login_top').hide();
+  $('#student_info_<%= stud.id %>').remove();
+  <% end %>
 $("<%= escape_javascript render(:file => 'students/info.html') %>").appendTo('#student_<%= @student_info.id %>');
 $("#student_info_<%= @student_info.id %>").slideToggle("fast");

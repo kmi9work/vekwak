@@ -1,5 +1,5 @@
 .student_info{:id => "student_info_#{@student_info.id}", :style => "display: none;"}
-  .close{:onclick => "$('#student_info_#{@student_info.id}').remove();"} 
+  .close{:onclick => "$('#student_info_#{@student_info.id}').remove(); $('#student_#{@student_info.id}_login_top').hide();"} 
     %a{:href => "#"} x
   = @student_info.login
   = @student_info.name

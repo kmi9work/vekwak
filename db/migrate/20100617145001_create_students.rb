@@ -12,11 +12,9 @@ class CreateStudents < ActiveRecord::Migration
       t.column :updated_at,                :datetime
       t.column :remember_token,            :string, :limit => 40
       t.column :remember_token_expires_at, :datetime
-      t.string :photo
       t.integer :rating,                   :default => 0
       t.string :second_name, :limit => 100
       t.string :last_name, :limit => 100
-      t.integer :karma, :default => 0
       t.boolean :admin, :default => false
       t.boolean :headman, :default => false
     end

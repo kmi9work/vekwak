@@ -107,11 +107,9 @@ ActiveRecord::Schema.define(:version => 20110209124200) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.string   "photo"
     t.integer  "rating",                                   :default => 0
     t.string   "second_name",               :limit => 100
     t.string   "last_name",                 :limit => 100
-    t.integer  "karma",                                    :default => 0
     t.boolean  "admin",                                    :default => false
     t.boolean  "headman",                                  :default => false
     t.string   "avatar_file_name"

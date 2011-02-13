@@ -5,3 +5,4 @@ $("<%= escape_javascript render(:file => 'posts/new_big.html') %>").insertAfter(
 $('#new_big_post').slideDown();
 $('#new_big_post[annotation]').val(ann);
 $('#new_big_post[title]').val(title);
+$("#textile_big_post").markItUp(mySettings);

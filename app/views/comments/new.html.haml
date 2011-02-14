@@ -4,7 +4,7 @@
       = image_tag @student.avatar.url(:small) 
     = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]}, :html => {:id => "new_comment_#{params[:comment_id]}", :style => "display: inline-block;"}, :remote => true) do |f|
       %p
-        = f.text_area :content, :class => 'ata', :rows => 4
+        = f.text_area :content, :id => 'textile_comment', :class => 'ata'
       %p
         = f.submit 'create'
         .close
@@ -15,7 +15,7 @@
       = image_tag @student.avatar.url(:small) 
     = form_for(@comment, :url => {:action=> :create, :post_id => params[:post_id], :comment_id => params[:comment_id]}, :html => {:id => "new_comment", :style => "display: inline-block;"}, :remote => true) do |f|
       %p
-        = f.text_area :content, :class => 'ata', :rows => 4
+      = f.text_area :content, :id => 'textile_comment', :class => 'ata', :rows => "10"
       %p
         = f.submit 'create'
         .close

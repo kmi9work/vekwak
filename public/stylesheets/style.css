@@ -3,6 +3,10 @@
   padding: 0px;
 }
 
+img{
+  border: 0px;
+}
+
 div{
   position: relative;
 }

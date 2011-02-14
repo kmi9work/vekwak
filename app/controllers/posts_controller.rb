@@ -107,8 +107,6 @@ class PostsController < ApplicationController
   def plus
     post = Post.find(params[:post_id])
     if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      post_rating_student.mark += 1
-      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
@@ -133,8 +131,6 @@ class PostsController < ApplicationController
   def minus
     post = Post.find(params[:post_id])
     if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      post_rating_student.mark -= 1
-      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
@@ -158,7 +154,7 @@ class PostsController < ApplicationController
   def raters
     post = Post.find(params[:post_id])
     @id = post.id
-    @raters = post.post_rating_students
+    @raters = post.post_rating_students.sort{|i, j| i.mark <=> j.mark}
     render :template => 'posts/raters', :layout => false
   end
   

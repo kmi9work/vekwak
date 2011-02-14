@@ -376,6 +376,16 @@ h3-orange{
 	width: 90%;
   margin: 0% 5%;
 }
+.annotation{
+  width: 90%;
+  margin: 0% 5%;
+  height: 100px;
+}
+.title{
+  width: 90%;
+  margin: 0% 5%;
+}
+
 .post_content{
   color:#555;
   height: 300px;

@@ -1,8 +1,8 @@
-var ann = $('#new_post[annotation]').val();
-var title = $('#new_post[title]').val();
+var ann = $('#new_post_annotation').val();
+var title = $('#new_post_title').val();
 $('#new_post').slideUp(); 
 $("<%= escape_javascript render(:file => 'posts/new_big.html') %>").insertAfter('#posts');
 $('#new_big_post').slideDown();
-$('#new_big_post[annotation]').val(ann);
-$('#new_big_post[title]').val(title);
+$('#new_big_post_annotation').val(ann);
+$('#new_big_post_title').val(title);
 $("#textile_big_post").markItUp(mySettings);

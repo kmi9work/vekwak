@@ -33,9 +33,9 @@
 					nameSpace:				'',
 					root:					'',
 					previewInWindow:		'', // 'width=800, height=600, resizable=yes, scrollbars=yes'
-					previewAutoRefresh:		true,
+					previewAutoRefresh:		false,
 					previewPosition:		'after',
-					previewTemplatePath:	'~/templates/preview.html',
+					previewTemplatePath:	'/posts/preview',
 					previewParserPath:		'',
 					previewParserVar:		'data',
 					resizeHandle:			true,
@@ -465,8 +465,9 @@
 					if (!template) {
 						$.ajax( {
 							url: options.previewTemplatePath,
+							data: 'content=' + $$.val(),
 							success: function(data) {
-								writeInPreview( localize(data, 1).replace(/<!-- content -->/g, $$.val()) );
+								writeInPreview( localize(data, 1) );
 							}
 						} );
 					}

@@ -95,6 +95,11 @@ class PostsController < ApplicationController
     end
   end
 #AJAX
+  def preview
+    @data = params[:content]
+    render :file => 'posts/preview.html', :layout => false
+  end
+  
   def write_comment
     render :text => "lalala", :layout => false
   end

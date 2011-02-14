@@ -128,7 +128,10 @@ h3-orange{
 
 #white_bg{
   background-color: #FFF;
-  width: 100%;
+  width: 100%;  
+}
+#white_bg h1{
+    text-shadow: none;  
 }
 /*____________________________________________________________________________________ END MESSAGES  */
 
@@ -490,6 +493,7 @@ h3-orange{
 }
 #post_show h1{
   color:  #ffde00;
+  text-shadow: none;  
 }
 #post_show a{
   color:  #feab25;
@@ -569,6 +573,10 @@ h3-orange{
 }
 .comment_content{
   width:80%;
+}
+
+.comment_content h1{
+  text-shadow: none;
 }
 
 .student_login{

@@ -16,6 +16,7 @@ Vekwak::Application.routes.draw do
   match 'comments/:comment_id/minus(.:format)' => 'comments#minus', :as => :comment_minus
   match 'comments/:comment_id/raters(.:fomat)' => 'comments#raters', :as => :comment_raters
   match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
+  match 'posts/preview' => 'posts#preview'
   resources :blinds
   resources :posts do
     resources :comments, :only => [:new, :create, :destroy]

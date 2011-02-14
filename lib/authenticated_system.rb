@@ -127,7 +127,7 @@ module AuthenticatedSystem
     # Called from #current_student.  Finaly, attempt to login by an expiring token in the cookie.
     # for the paranoid: we _should_ be storing student_token = hash(cookie_token, request IP)
     def login_from_cookie
-      student = cookies[:auth_token] && Student.find_by_remember_token(cookies[:auth_token].value)
+      student = cookies[:auth_token].blank? && Student.find_by_remember_token(cookies[:auth_token].value)
       if student && student.remember_token?
         self.current_student = student
         handle_remember_cookie! false # freshen cookie token (keeping date)

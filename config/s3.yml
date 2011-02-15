@@ -1,0 +1,16 @@
+development:
+  bucket_name: vekwak-evelopment
+  access_key_id: 123
+  secret_access_key: 321
+
+test:
+  bucket_name: vekwak-test
+  access_key_id: 123
+  secret_access_key: 321
+
+production:
+  bucket_name: vekwak-production
+  access_key_id: 123
+  secret_access_key: 321
+
+heroku config:add S3_KEY=z).(HukD S3_SECRET=v0XnRHI$

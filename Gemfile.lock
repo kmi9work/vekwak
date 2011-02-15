@@ -39,6 +39,10 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -78,12 +82,14 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.14)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   RedCloth
+  aws-s3
   haml
   paperclip!
   rails (= 3.0.0)

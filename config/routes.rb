@@ -26,7 +26,7 @@ Vekwak::Application.routes.draw do
   end
   resources :sections
   resources :headman_auls, :only => [:index, :new, :create]
-  resources :messages, :only => [:index, :new, :create, :show]  
+  resources :messages, :only => [:index, :new, :create, :show]
   resources :news, :only => [:index, :new, :create]
   match 'days/new/:date(.:format)' => 'days#new', :as => :new_day
   match 'days/add/:id/:date(.:format)' => 'days#add', :as => :add_day

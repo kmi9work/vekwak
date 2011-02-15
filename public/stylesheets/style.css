@@ -108,7 +108,39 @@ h3-orange{
   border-bottom: 1px solid #555;
 }
 
+.my_avatar{
+  height: 100px;
+  width: 100px;
+}
 
+.stud_bar{
+  position:absolute;
+  bottom:5px;
+  background-color:#000;
+  opacity:0.6;
+  height: 20px;
+  width: 100px;
+}
+
+a.message_info{
+  position:absolute;
+  bottom:4px;
+  color:#fff;
+  background-image:url('img/Closed_mail.png');
+  background-repeat: no-repeat;
+  padding-left:30px;  
+  display:inline-block;
+}
+a.logout{
+  height:24px;
+  width:24px;
+  position:absolute;
+  bottom:0px;
+  right:0px;  
+  background-image:url('img/logout.png');
+  background-repeat: no-repeat;  
+  display:inline-block;  
+}
 /*____________________________________________________________________________________ END TOP  */
 
 /* ==================================================================================== MESSAGES    */
@@ -353,7 +385,7 @@ h3-orange{
 /* ==================================================================================== POST */
 #blinds_button{
   width:30%;
-  height: 20px;
+  height: 30px;
   float:left;
   background-color: #000;
   display:block;
@@ -418,7 +450,7 @@ h3-orange{
 }
 
 .post_bottom_line{
-  height: 20px;
+  height: 30px;
   background-color: #ffde00;  
   width: 70%;
   border-top: 1px solid #555;
@@ -435,7 +467,7 @@ h3-orange{
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
   margin-left: -1px;
-  height: 20px;  
+  height: 30px;  
   width: 30%;
   border-left: 1px solid #555;
   float: right;  
@@ -452,10 +484,13 @@ a.rating_comment{
 .rating{
   display: inline-block;
   vertical-align: top;
-  margin-left:25%;
+  padding-left: 25%;
   color:#000;
 }
 
+.rating a{
+  color:#333;
+}
 .rating_plus{
   margin-top:2px;
   display: inline-block;

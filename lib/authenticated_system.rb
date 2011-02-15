@@ -14,7 +14,8 @@ module AuthenticatedSystem
     # Accesses the current student from the session.
     # Future calls avoid the database because nil is not equal to false.
     def current_student
-      @current_student ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_student == false
+     # @current_student ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_student == false
+      @current_user ||= login_from_session unless @current_user == false
     end
 
     # Store the given student id in the session.

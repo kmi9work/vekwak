@@ -50,8 +50,6 @@ class PostsController < ApplicationController
     @post.student = @student
     @post.rating = 0
     (Student.all-[@student]).each do |stud|
-      puts "this------------"
-      puts params["#{stud.id}"]
       if params["#{stud.id}"]=="1"
         a=Blind.new        
         a.student_id=stud.id
@@ -75,6 +73,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @student.admin or @student.id == @post.student.id
+      blinds = @post.blinds
+      (Student.all-[@student]).each do |stud|
+        if params["#{stud.id}"] == "1"
+          if blinds.select{|i| i.post_id == @post.id and i.student_id == stud.id}.empty?
+            a = Blind.new        
+            a.student_id = stud.id
+            @post.blinds << a
+            a.save
+          end
+        else
+          unless (b = blinds.select{|i| i.post_id == @post.id and i.student_id == stud.id}).empty?
+            b.each{|i| i.delete}
+          end
+        end
+      end
       if @post.update_attributes(params[:post])
         redirect_to @post
       else

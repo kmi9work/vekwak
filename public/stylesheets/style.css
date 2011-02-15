@@ -430,7 +430,7 @@ a.logout{
   border-left: 1px solid #555;
   border-right: 1px solid #555;    
   background-color: white;
-  background-image:url(img/ruby.png);
+  background-image:url('img/ruby.png');
   background-repeat: no-repeat;
   background-position: right bottom;
 }

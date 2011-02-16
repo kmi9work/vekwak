@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index  
     if params[:section_id]
-      @posts1=Post.all :order => 'created_at DESC', :conditions => ["section_id ==?", (params[:section_id]).to_i]
+      @posts1=Post.all :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
     else
       @posts1=Post.all :order => 'created_at DESC'
     end

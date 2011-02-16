@@ -1,2 +1,6 @@
-$("#comment_rating_<%= @id %>.rating").html("<%= escape_javascript(link_to(@rating, comment_raters_path(:post_id => @id, :format => :js), :remote => true)) %>");
-$("#comment_rating_and_section_<%= @id %>").css('background-color', '<%= "##{ @rating >= 0 ? "bffe91" : "ff5656"}" %>')
+$("#comment_rating_<%= @id %>").html("<%= @rating %>");
+<% if @rating >= 0 %>
+  $("#comment_rating_and_section_<%= @id %>").removeClass('comment_rating_bad');
+<% else %>
+  $("#comment_rating_and_section_<%= @id %>").addClass('comment_rating_bad');
+<% end %> 

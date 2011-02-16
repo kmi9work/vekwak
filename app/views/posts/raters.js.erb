@@ -1,9 +1,2 @@
 $('#post_<%= @id %> .post_content').append("<%= escape_javascript render(:file => 'posts/raters.html') %>");
-$('post_rating_link_<%= @id %>').toggle(
-  function(){
-    $('#raters_<%= @id %>').fadeIn();
-  }, 
-  function(){
-    $('#raters_<%= @id %>').fadeOut();
-  }
-);
+$('#raters_<%= @id %>').fadeToggle();

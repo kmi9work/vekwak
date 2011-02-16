@@ -125,14 +125,14 @@ class PostsController < ApplicationController
         format.js {render :nothing => true}
       end
     else
-      post_rating_student = PostRatingStudent.new
+      @post_rating_student = PostRatingStudent.new
       post[:rating] +=1
       @rating = post[:rating]
       @id = post.id
-      post_rating_student.mark = 1
-      post.post_rating_students << post_rating_student
+      @post_rating_student.mark = 1
+      post.post_rating_students << @post_rating_student
       post.save
-      @student.post_rating_students << post_rating_student
+      @student.post_rating_students << @post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -149,14 +149,14 @@ class PostsController < ApplicationController
         format.js {render :nothing => true}
       end
     else
-      post_rating_student = PostRatingStudent.new
+      @post_rating_student = PostRatingStudent.new
       post[:rating] -=1
       @rating = post[:rating]
       @id = post.id
-      post_rating_student.mark = -1
-      post.post_rating_students << post_rating_student
+      @post_rating_student.mark = -1
+      post.post_rating_students << @post_rating_student
       post.save
-      @student.post_rating_students << post_rating_student
+      @student.post_rating_students << @post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}

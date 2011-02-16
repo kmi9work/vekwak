@@ -2,10 +2,11 @@
   %br
   .comment_top{:id => "comment_top_#{comment.id}"}
     
-    .comment_rating.inline{:id => "comment_rating_and_section_#{comment.id}", :class => "#{ comment.rating <= 0 ? "comment_rating_bad" : "" }"}
-      = link_to "", comment_plus_path(:comment_id => comment.id, :format => :js), 
+    .comment_rating.inline{:id => "comment_rating_and_section_#{comment.id}", :class => "#{ comment.rating < 0 ? "comment_rating_bad" : "" }"}
+      = link_to "", comment_plus_path(:comment_id => comment.id, :format => :js),
                   :remote => true, :class => "rating_plus"      
-      = link_to comment.rating, comment_raters_path(:comment_id => comment.id, :format => :js), :remote => true, :class => "rating_comment"
+      = link_to comment.rating, comment_raters_path(:comment_id => comment.id, :format => :js), :remote => true,
+                :class => "rating_comment", :id => "comment_rating_#{comment.id}"
       = link_to "", comment_minus_path(:comment_id => comment.id, :format => :js), :remote => true, :class => "rating_minus"
     
     =render :partial => "students/avatar", :locals => {:div_class => 'comment_avatar',

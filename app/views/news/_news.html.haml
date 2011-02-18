@@ -1,0 +1,9 @@
+- if @new_msg
+ - @new_msg.each do |msg|
+  %h3= msg.title
+  = msg.content
+  %br
+%br
+= link_to "Написать", new_news_path(:format => :js), :remote => true, :id => "new_new_link", :class => "new_link"
+/=javascript_tag("$('#new_new_link').click(function (event) { alert('lol'); event.preventDefault()});")
+

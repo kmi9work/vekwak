@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :student_id
       t.integer :comment_id
       t.text :content
-      t.integer :rating
+      t.integer :rating, :default => 0
 
       t.timestamps
     end

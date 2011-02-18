@@ -1,0 +1,9 @@
+- if @headman_msg 
+  - @headman_msg.each do |msg|
+    %h3= msg.created_at.strftime("%d.%m %H:%M") 
+    = msg.content
+    %br
+%br
+-if @student and @student.headman
+  = link_to "Написать", new_headman_aul_path(:format => :js), :remote => true, :id => "new_headman_aul_link", :class => "new_link"
+

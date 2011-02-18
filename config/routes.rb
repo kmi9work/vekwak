@@ -7,11 +7,17 @@ Vekwak::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
   
-  resources :students, :only => [:new, :create, :show]
+  resources :students, :only => [:new, :create, :show] 
+  match 'student_info/:id(.:format)' => 'students#info', :as => :student_info
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
-  match 'posts/:post_id/raters(.:fomat)' => 'posts#raters', :as => :raters
+  match 'posts/:post_id/raters(.:fomat)' => 'posts#raters', :as => :post_raters
+  match 'comments/:comment_id/plus(.:format)' => 'comments#plus', :as => :comment_plus
+  match 'comments/:comment_id/minus(.:format)' => 'comments#minus', :as => :comment_minus
+  match 'comments/:comment_id/raters(.:fomat)' => 'comments#raters', :as => :comment_raters
   match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
+  match 'posts/preview' => 'posts#preview'
+  resources :blinds
   resources :posts do
     resources :comments, :only => [:new, :create, :destroy]
   end
@@ -20,6 +26,7 @@ Vekwak::Application.routes.draw do
   end
   resources :sections
   resources :headman_auls, :only => [:index, :new, :create]
+  resources :messages, :only => [:index, :new, :create, :show]
   resources :news, :only => [:index, :new, :create]
   match 'days/new/:date(.:format)' => 'days#new', :as => :new_day
   match 'days/add/:id/:date(.:format)' => 'days#add', :as => :add_day

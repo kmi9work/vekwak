@@ -1,0 +1,7 @@
+#posts
+  -if @posts[0] != nil 
+    = render :partial => "post", :collection => @posts
+= will_paginate @posts
+#post_button.yellow-block
+  = link_to 'Написать ещё', new_post_path(:format => :js), :remote => true
+  

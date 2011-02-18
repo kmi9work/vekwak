@@ -1,0 +1,13 @@
+%h1 New section
+
+=form_for(@section) do |f|
+  = f.error_messages
+  %p
+    = f.label "Название"
+    = f.text_field :title
+  %p
+    = f.label "Цвет RGB without #"  
+    = f.text_field :color
+  %p
+    = f.submit 'Создать'
+= link_to 'Back', posts_path

@@ -10,14 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110130204322) do
+ActiveRecord::Schema.define(:version => 20110214130218) do
+
+  create_table "blinds", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_rating_students", :force => true do |t|
+    t.integer  "comment_id"
+    t.integer  "student_id"
+    t.integer  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
     t.integer  "student_id"
     t.integer  "comment_id"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20110130204322) do
   end
 
   create_table "messages", :force => true do |t|
-    t.string   "title"
     t.string   "content"
     t.integer  "student_id"
     t.integer  "student_from_id"
@@ -101,11 +115,9 @@ ActiveRecord::Schema.define(:version => 20110130204322) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.string   "photo"
     t.integer  "rating",                                   :default => 0
     t.string   "second_name",               :limit => 100
     t.string   "last_name",                 :limit => 100
-    t.integer  "karma",                                    :default => 0
     t.boolean  "admin",                                    :default => false
     t.boolean  "headman",                                  :default => false
     t.string   "avatar_file_name"

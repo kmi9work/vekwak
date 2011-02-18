@@ -1,0 +1,18 @@
+%h1 Editing section
+
+= form_for(@post) do |f|
+  = f.error_messages
+  %p
+    = f.label "Название:" 
+    %br
+    = f.text_field :title
+  %p
+    = f.label "Цвет:"
+    %br
+    = f.text_field :color
+  %p
+    = f.submit 'Update'
+
+= link_to 'Show', @post
+|
+= link_to 'Back', posts_path

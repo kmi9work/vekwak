@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password  
+  
 
   def stud
     @student = current_student
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
   
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
-    @new_msg=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
+    @new_message=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
   end
   def info_msg
     @headman_msg = HeadmanAul.order('created_at desc').first(5)

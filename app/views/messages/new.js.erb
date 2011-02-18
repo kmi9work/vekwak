@@ -1,0 +1,3 @@
+$('a#message_button').slideUp();
+$("<%= escape_javascript render(:file => 'messages/new.html') %>").insertAfter('#message_button');
+$('#new_message').slideDown();

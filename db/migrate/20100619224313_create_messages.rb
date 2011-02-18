@@ -1,7 +1,6 @@
 class CreateMessages < ActiveRecord::Migration
   def self.up
     create_table :messages do |t|
-      t.string :title
       t.string :content
       t.integer :student_id
       t.integer :student_from_id

@@ -6,12 +6,13 @@
     %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
     %p
       - if @post.content and !@post.content.strip.empty?
-        = @post.content 
+        = raw(RedCloth.new(@post.content).to_html)
       - else 
         = @post.annotation
   .post_right_part{:style => "background-color: ##{@post.section.color};"}
     %br
-    %p Какая-нибудь хрень.
+    Пост скрыт для:
+    = @blinds.join(", ")
     %br
     %br
     
@@ -26,9 +27,12 @@
       - if @student.id == @post.student.id
         | 
         = link_to 'Редактировать', edit_post_path(@post.id)
-  #avatar.post_bottom_avatar
-    = image_tag @post.student.avatar.url(:small)
-.wave_bottom
+  =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',
+                                                      :student => @post.student,
+                                                      :id => @post.id,
+                                                      :path => 'post_show'}
+.shadow
 
 #comments
   = render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true}
+<br><br>

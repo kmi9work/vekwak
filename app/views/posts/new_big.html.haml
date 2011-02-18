@@ -1,0 +1,24 @@
+#new_big_post.big_post.inline{:style =>"display: none;"}
+  .wave_top
+    .wave_border_t
+  = form_for @post, :remote => true, :id => "new_big_post_form" do |f|
+    #big_post_content.post_content
+      .post_title
+        %h2= f.text_field :title, :id => "new_big_post_title", :maxlength => 60, :class => 'title'
+      %br
+      = f.text_area :annotation, :maxlength => 256, :id => "new_big_post_annotation", :class => 'annotation'
+      %br
+      = f.text_area :content, :id => 'textile_big_post'
+      %br
+      #blinds
+        -@students_list.each do |stud|
+          = check_box_tag(stud[1])
+          = label_tag(stud[1], stud[0])
+      = f.submit 'Создать'
+      .close
+        %a(href="#" onclick="$('#new_big_post').slideUp();") x
+    .post_bottom
+      .post_bottom_line{:style => "width: 100%"}
+        = f.select 'section_id', @sections, :id => "new_big_post_section"
+  .wave_bottom
+    .wave_border_b

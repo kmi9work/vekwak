@@ -1,0 +1,7 @@
+$("#comment_rating_<%= @id %>").html("<%= @rating %>");
+<% if @rating >= 0 %>
+  $("#comment_rating_and_section_<%= @id %>").removeClass('comment_rating_bad');
+<% else %>
+  $("#comment_rating_and_section_<%= @id %>").addClass('comment_rating_bad');
+<% end %> 
+$('#raters_<%= @id %>').append('<%= escape_javascript ( render :partial => "rater", :locals => {:rater => @comment_rating_student})%>');

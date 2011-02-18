@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %title Vekwak
+    = stylesheet_link_tag :all
+    = javascript_include_tag 'jquery.min', 'rails', 'application'
+    = csrf_meta_tag
+  %body
+    .grey-block.grey-bg
+      %h1 Добро пожаловать!
+      = form_tag session_path do
+        %br
+        %p
+          = label_tag 'login', 'Логин :'
+          = text_field_tag 'login', @login
+        %br
+        %p
+          = label_tag 'password', 'Пароль'
+          = password_field_tag 'password', nil
+        %br
+        %p
+          = label_tag 'remember_me', 'Remember me'
+          = check_box_tag 'remember_me', '1', @remember_me  
+        %p= submit_tag 'Войти'
+

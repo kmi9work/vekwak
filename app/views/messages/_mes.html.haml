@@ -1,0 +1,11 @@
+-if @messages
+  -@messages.each do |msg|
+    - if msg.new
+      .message_new{:id  => "message_#{msg.id}"}
+        = link_to msg.created_at.strftime("%d.%m.%Y %H:%M #{msg.student_from.name} #{msg.student_from.second_name}"), message_path(:id => msg.id), :remote => true 
+    - else
+      .message{:id  => "message_#{msg.id}"}
+        = link_to msg.created_at.strftime("%d.%m.%Y %H:%M #{msg.student_from.name} #{msg.student_from.second_name}"), message_path(:id => msg.id), :remote => true
+    %div{:id => "message_show_#{msg.id}", :style => "display: none;"}
+      = msg.content
+      = link_to "Ответить(не работает)", new_message_path(:format => :js, :student_id => msg.student.id), :remote => true, :id => "message_button"

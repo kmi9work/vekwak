@@ -1,0 +1,10 @@
+-@messages.each do |msg|
+  -if msg.new
+    .message_list_new
+  -else
+    .message_list
+  -end
+      = h msg.student_from
+      = link_to msg.title, :action => :show, :message_id => msg.id      
+end
+= link_to 'новое сообщение', :controller => :messages, :action => :new

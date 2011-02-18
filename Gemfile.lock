@@ -1,6 +1,15 @@
+GIT
+  remote: http://github.com/patshaughnessy/paperclip.git
+  revision: 942a2b43383fd04c0434ca4b27379a114cb28a50
+  specs:
+    paperclip (2.3.6)
+      activerecord
+      activesupport
+
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.3)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -74,7 +83,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   haml
+  paperclip!
   rails (= 3.0.0)
   sqlite3-ruby
   will_paginate (~> 3.0.pre2)

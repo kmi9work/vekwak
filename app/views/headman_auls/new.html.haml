@@ -1,0 +1,17 @@
+= form_for :headman_aul, {:url => headman_auls_path, :remote => true, :html => { :id => "new_headman_aul", :style => "display: none;" } } do |f|
+  %p= f.text_area :content, :cols => 40, :rows => 5
+  %p
+    = submit_tag 'Готово'
+    .close 
+      %a{:href => "#", :onclick => "$('#new_headman_aul').slideUp().remove(); $('#headman_aul_content').slideDown()"} x
+
+/ 
+/ ActionView::Template::Error (Inconsistent indentation: 26 spaces were used for indentation, but the rest of the document was indented using 36 spaces.):
+/     3:                           :html => { :id => "new_headman_aul", 
+/     4:                                      :style => "display: none;" 
+/     5:                                     }
+/     6:                           } do |f|
+/     7:   %p= f.text_area :content, :cols => 40, :rows => 5
+/     8:   %p
+/     9:     = submit_tag 'Готово'
+/   app/views/headman_auls/new.html:6

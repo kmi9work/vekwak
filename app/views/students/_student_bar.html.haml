@@ -1,0 +1,16 @@
+-if logged_in?
+  #student-bar-greeting= link_to_current_student :content_method => :login
+  #student-bar-greeting
+    = @student[:name]
+    = @student[:second_name]
+  #student-bar-greeting= @student[:last_name]
+  #student-bar-greeting 
+    Рейтинг 
+    =@student[:rating]
+  #student-bar-action= link_to "Выйти", logout_path, {:title => "Log out"}
+-else
+  #student-bar-greeting= link_to_login_with_IP 'Not logged in', :style => 'border: none;'
+  #student-bar-action= link_to "Log in",  login_path,  { :title => "Log in" } 
+    \/
+    = link_to "Sign up", signup_path, { :title => "Create an account" }
+

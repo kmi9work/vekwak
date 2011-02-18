@@ -1,0 +1,51 @@
+!!! 5
+%html
+  %head
+    %title Vekwak
+    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'markitup/skins/markitup/style', 'markitup/sets/textile/style'
+    = javascript_include_tag 'jquery.min', 'rails', 'application', 'markitup/jquery.markitup', 'markitup/sets/textile/set'
+    = csrf_meta_tag
+  %body
+    #top
+      #top_line
+      #top_students
+        .my_avatar.inline
+          = link_to image_tag(@student.avatar ? @student.avatar.url : "noavatar.png", :width => 100, :height => 100), '/'
+          .stud_bar.inline  
+          = link_to "#{@new_message}", messages_path, :class => "message_info"
+          = link_to '', logout_path, :class => "logout"
+        - @students.each do |student|
+          =render :partial => "students/avatar", :locals => {:div_class => @students_online.include?(student) ? "online" : "",
+                                                             :student => student,
+                                                             :id => student.id,
+                                                             :path => 'top'}
+    #info_bg
+      .wave_top
+        
+      #info_center
+        .info.inline
+          %h1
+            = link_to "Новости", news_index_path
+          #new_content.info_content
+            = render :partial => 'news/news'
+          
+        .info.inline
+          %h1 Последние комментарии
+          #last_comments.info_content
+            = render :partial => 'comments/last_comments'
+        .info.inline
+          %h1
+            = link_to "Староста", headman_auls_path
+          #headman_aul_content.info_content
+            = render :partial => 'headman_auls/headman_aul'
+      #info_line
+        #calendar
+          = render :partial => "days/week"
+      #info_sections
+        -@sections.each do |section|
+          .info_sect.inline{:style => "background-color:##{section.color}; width: #{100.0/@sections.size}%;"}
+            %h2
+              = link_to section.title, "/posts?section_id=#{section.id}" 
+      .shadow
+  = yield

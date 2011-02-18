@@ -1,2 +1,2 @@
-$('#new_day_<%= params[:date].match(/(\d+)_(\d+)_(\d+)/)[1] %>').hide();
+$('#new_day_<%= params[:date] %>').hide();
 $('#calendar').html("<%= escape_javascript(render :partial => 'days/week') %>"); 

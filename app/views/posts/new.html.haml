@@ -1,0 +1,25 @@
+#new_post.post.inline{:style =>"display: none;"}
+  .wave_top
+    .wave_border_t
+  = form_for @post, :remote => true, :id => "new_post_form" do |f|
+    .post_content
+      .post_title
+        %h2= f.text_field :title, :id => "new_post_title", :maxlength => 60, :class => 'title'
+      %br
+      = f.text_area :annotation, :maxlength => 256, :id => "new_post_annotation", :class => 'annotation'
+      %br
+      #blinds{:style =>"display: none;"}
+        -@students_list.each do |stud|
+          = check_box_tag(stud[1])
+          = label_tag(stud[1], stud[0])
+    .post_bottom
+      .post_bottom_line{:style => "text-align:center;"}
+        = f.select 'section_id', @sections, :id => "new_post_section"
+      #blinds_button
+        = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
+      = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
+      = f.submit 'Создать', :style => "border-radius:5px;"
+      .close
+        %a(href="#" onclick="$('#new_post').slideUp().remove();") x
+  .wave_bottom
+    .wave_border_b

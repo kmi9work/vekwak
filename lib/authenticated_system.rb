@@ -3,8 +3,8 @@ module AuthenticatedSystem
     # Returns true or false if the student is logged in.
     # Preloads @current_student with the student model if they're logged in.
     def logged_in?
-      if  @current_student != nil
-      @current_student.record_last_visit unless @last_visit_already_recorded
+      if  current_student != nil
+      current_student.record_last_visit unless @last_visit_already_recorded
       @last_visit_already_recorded = true
       true
     end
@@ -14,7 +14,8 @@ module AuthenticatedSystem
     # Accesses the current student from the session.
     # Future calls avoid the database because nil is not equal to false.
     def current_student
-      @current_student ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_student == false
+     # @current_student ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_student == false
+      @current_user ||= login_from_session unless @current_user == false
     end
 
     # Store the given student id in the session.
@@ -127,7 +128,7 @@ module AuthenticatedSystem
     # Called from #current_student.  Finaly, attempt to login by an expiring token in the cookie.
     # for the paranoid: we _should_ be storing student_token = hash(cookie_token, request IP)
     def login_from_cookie
-      student = cookies[:auth_token] && Student.find_by_remember_token(cookies[:auth_token].value)
+      student = cookies[:auth_token].blank? && Student.find_by_remember_token(cookies[:auth_token].value)
       if student && student.remember_token?
         self.current_student = student
         handle_remember_cookie! false # freshen cookie token (keeping date)

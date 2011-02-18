@@ -1,0 +1,7 @@
+-@sections.each do |section|
+	= textilize(section.content).html_safe  
+	| 
+	= link_to 'Edit', edit_section_path(section) 
+	| 
+	= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+	%br

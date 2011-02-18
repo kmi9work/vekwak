@@ -1,0 +1,14 @@
+- if @last_comments
+  - @last_comments.each do |comment|
+    %h3-orange
+      =comment.student.login
+      &#8658
+    %h3
+      -if comment.comment
+        = link_to comment.comment.post.title, comment.comment.post
+      -else
+        = link_to comment.post.title, comment.post
+    %br
+    = comment.content
+    = comment.content
+    %br

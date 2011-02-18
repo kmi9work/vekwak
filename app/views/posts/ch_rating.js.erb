@@ -1,1 +1,3 @@
-$("#post_rating_<%= @id %>.rating").html("<%= escape_javascript(link_to(@rating, raters_path(:post_id => @id, :format => :js), :remote => true)) %>");
+$("#post_rating_<%= @id %>").html("<%= @rating %>");
+$("#post_rating_and_section_<%= @id %>").css('background-color', '<%= "##{ @rating >= 0 ? "ade400" : "ff6262"}" %>');
+$('#raters_<%= @id %>').append('<%= escape_javascript ( render :partial => "rater", :locals => {:rater => @post_rating_student})%>');

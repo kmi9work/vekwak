@@ -74,4 +74,57 @@ class CommentsController < ApplicationController
       end
     end
   end
+  def plus
+    comment = Comment.find(params[:comment_id])
+    if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
+      respond_to do |format|
+        format.html {render :nothing => true}
+        format.js {render :nothing => true}
+      end
+    else
+      @comment_rating_student = CommentRatingStudent.new
+      comment[:rating] +=1
+      @rating = comment[:rating]
+      @id = comment.id
+      comment_rating_student.mark = 1
+      @comment.comment_rating_students << @comment_rating_student
+      comment.save
+      @student.comment_rating_students << @comment_rating_student
+      @student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render 'ch_rating.js.erb'}
+      end
+    end
+  end
+  
+  def minus
+    comment = Comment.find(params[:comment_id])
+    if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
+      respond_to do |format|
+        format.html {render :nothing => true}
+        format.js {render :nothing => true}
+      end
+    else
+      @comment_rating_student = CommentRatingStudent.new
+      comment[:rating] -=1
+      @rating = comment[:rating]
+      @id = comment.id
+      @comment_rating_student.mark = -1
+      comment.comment_rating_students << @comment_rating_student
+      comment.save
+      @student.comment_rating_students << @comment_rating_student
+      @student.save
+      respond_to do |format|
+        format.html {render :refresh}
+        format.js {render 'ch_rating.js.erb'}
+      end
+    end
+  end
+  def raters
+    comment = Comment.find(params[:comment_id])
+    @id = comment.id
+    @raters = comment.comment_rating_students
+    render :template => 'comments/raters', :layout => false
+  end
 end

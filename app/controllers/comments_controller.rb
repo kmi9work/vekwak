@@ -82,14 +82,14 @@ class CommentsController < ApplicationController
         format.js {render :nothing => true}
       end
     else
-      comment_rating_student = CommentRatingStudent.new
+      @comment_rating_student = CommentRatingStudent.new
       comment[:rating] +=1
       @rating = comment[:rating]
       @id = comment.id
       comment_rating_student.mark = 1
-      comment.comment_rating_students << comment_rating_student
+      @comment.comment_rating_students << @comment_rating_student
       comment.save
-      @student.comment_rating_students << comment_rating_student
+      @student.comment_rating_students << @comment_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -106,14 +106,14 @@ class CommentsController < ApplicationController
         format.js {render :nothing => true}
       end
     else
-      comment_rating_student = CommentRatingStudent.new
+      @comment_rating_student = CommentRatingStudent.new
       comment[:rating] -=1
       @rating = comment[:rating]
       @id = comment.id
-      comment_rating_student.mark = -1
-      comment.comment_rating_students << comment_rating_student
+      @comment_rating_student.mark = -1
+      comment.comment_rating_students << @comment_rating_student
       comment.save
-      @student.comment_rating_students << comment_rating_student
+      @student.comment_rating_students << @comment_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}

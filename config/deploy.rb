@@ -19,7 +19,7 @@ role :web, "lithium.locum.ru"                          # Your HTTP server, Apach
 role :app, "lithium.locum.ru"                          # This may be the same as your `Web` server
 role :db,  "lithium.locum.ru", :primary => true # This is where Rails migrations will run
 
-after "deploy:update_code", :copy_database_config
+#after "deploy:update_code", :copy_database_config
 
 task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
@@ -27,8 +27,8 @@ task :copy_database_config, roles => :app do
 end
 
 set :unicorn_rails, "/var/lib/gems/1.8/bin/unicorn_rails"
-set :unicorn_conf, "/etc/unicorn/_your_project_._your_login_.rb"
-set :unicorn_pid, "/var/run/unicorn/_your_project_._your_login_.pid"
+set :unicorn_conf, "/etc/unicorn/vekwak.kmi9.rb"
+set :unicorn_pid, "/var/run/unicorn/vekwak.kmi9.pid"
 
 # - for unicorn - #
 namespace :deploy do

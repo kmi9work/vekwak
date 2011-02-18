@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.string :content
       t.integer :student_id
       t.integer :student_from_id
-      t.boolean :new, :default => 1
+      t.boolean :new, :default => true
       
       t.timestamps
     end

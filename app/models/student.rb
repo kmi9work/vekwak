@@ -38,7 +38,9 @@ class Student < ActiveRecord::Base
   has_many :news
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
-                                 :medium => "60x60>"  }
+                                 :medium => "60x60>"  },
+                    :url => "/images/:class/:attachment/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/images/:class/:attachment/:id/:style/:basename.:extension"                    
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -62,7 +64,7 @@ class Student < ActiveRecord::Base
   
   def record_last_visit
     ActiveRecord::Base.connection.execute("update students set last_visit =
-    datetime() where id = #{id}")    
+    now() where id = #{id}")    
   end  
   
   def online?(max_delay=5.minutes)

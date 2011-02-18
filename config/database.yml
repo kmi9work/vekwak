@@ -1,10 +1,7 @@
 development:
-  host: mysql0.locum.ru
-  adapter: mysql
-  database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
-  encoding: utf8
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
   timeout: 5000
 
 test:

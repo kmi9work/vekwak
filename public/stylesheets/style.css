@@ -35,7 +35,26 @@ A:hover {text-decoration: underline; color: #fba822;}
 }
 
 .online{
-  border-bottom:8px solid #11FF23;
+  border-bottom:4px solid #11FF23;
+  height:50px;
+}
+
+.offline{
+  position:absolute;
+  top:0px;
+  height:50px;
+  width:50px;
+  background-color:black;
+  opacity:0.5;  
+}
+.offline_text{
+  position:absolute;
+  top:0px;  
+  width:50px;  
+  font-size:12px;
+  background-color:black;
+  color:#FFF;
+  opacity:0.6;
 }
 
 h1{
@@ -115,6 +134,7 @@ h3-orange{
 .my_avatar{
   height: 100px;
   width: 100px;
+  float:center;
 }
 
 .stud_bar{
@@ -158,6 +178,11 @@ a.logout{
   background-color:#FFF;
   border-top: 1px solid #DDD;
 }
+
+#message_button{
+  color:black;
+}
+
 .message_open{
   background-color:#F0F0F0;
 }
@@ -675,12 +700,16 @@ a.rating_comment{
   z-index: 11;
   border-radius: 5px;
   background: #c3c3c3;
+  text-align:center;
 }
 
-.close{
-  position: absolute;
+.close{  
+  position: absolute;  
   left: 5px;
-  top: 0px;
+  top: 0px;    
+}
+.close a{
+  color:red;  
 }
 /*
 .student{

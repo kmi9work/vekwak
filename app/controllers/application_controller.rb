@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def week (fday = 0)
-    @month_arr=["янв", "фев", "мар", "апр"]
+    @month_arr=["янв", "фев", "мар", "апр", "май", "июнь", "июль", "авг", "сент", "окт", "нояб", "дек"]
     t = Time.now - 1.day + fday.days
     @wdays = []
     20.times do

@@ -12,7 +12,7 @@ module Paperclip
         :path              => ":rails_root/public:url",
         :styles            => {},
         :processors        => [:thumbnail],
-        :convert_options   => {:limit => 'area 1'},
+        :convert_options   => {},
         :default_url       => "/:attachment/:style/missing.png",
         :default_style     => :original,
         :storage           => :filesystem,

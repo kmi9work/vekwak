@@ -36,9 +36,9 @@ class Student < ActiveRecord::Base
   has_many :news
   has_attached_file :avatar, 
                     :styles => { :small => "50x50>",
-                                 :medium => "60x60>"  },
-                    :url => "/images/:class/:attachment/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/system:url",
+                                 :offline => "50x50>"  },
+                    :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/:url",
                     :convert_options => {:limit => 'threads 1'}
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

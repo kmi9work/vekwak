@@ -38,7 +38,7 @@ class Student < ActiveRecord::Base
                     :styles => { :small => "50x50>",
                                  :medium => "60x60>"  },
                     :url => "/images/:class/:attachment/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/images/:class/:attachment/:id/:style/:basename.:extension"                    
+                    :path => ":rails_root/public/system:url"                    
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -39,7 +39,7 @@ class Student < ActiveRecord::Base
                                  :medium => "60x60>"  },
                     :url => "/images/:class/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system:url",
-                    :convert_options => {:limit => 'threads 1'}
+                    :convert_options => {:limit => 'thread 1'}
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

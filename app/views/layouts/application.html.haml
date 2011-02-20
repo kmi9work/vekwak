@@ -19,6 +19,7 @@
           =render :partial => "students/avatar", :locals => {:div_class => @students_online.include?(student) ? "online" : "",
                                                              :student => student,
                                                              :id => student.id,
+                                                             :online => @students_online.include?(student),
                                                              :path => 'top'}
     #info_bg
       .wave_top

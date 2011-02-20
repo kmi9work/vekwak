@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
   def index  
     if params[:section_id]
-      @posts1=Post.all :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+<<<<<<< HEAD
+      @posts1=Post.where(:section_id => params[:section_id]).order('created_at DESC')
+=======
+      @posts1=Post.where(:section_id => params[:section_id]).order('id desc')
+>>>>>>> 06c76d8eb821511c6a91b8da1b8d1f97bec9ab1a
     else
-      @posts1=Post.all :order => 'created_at DESC'
+      @posts1=Post.all.order('created_at DESC')
     end
     @posts2=[]
     @posts1.each do |post|
@@ -49,13 +53,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
-<<<<<<< HEAD
-    # Blind.new(params[:post])
-    # Blind.save
-=======
     (Student.all-[@student]).each do |stud|
-      puts "this------------"
-      puts params["#{stud.id}"]
       if params["#{stud.id}"]=="1"
         a=Blind.new        
         a.student_id=stud.id
@@ -63,7 +61,6 @@ class PostsController < ApplicationController
         a.save
       end
     end
->>>>>>> qaa12
     if @post.save
       respond_to do |rt|
         rt.html {redirect_to(@post)}
@@ -80,6 +77,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @student.admin or @student.id == @post.student.id
+      blinds = @post.blinds
+      (Student.all-[@student]).each do |stud|
+        if params["#{stud.id}"] == "1"
+          if blinds.select{|i| i.post_id == @post.id and i.student_id == stud.id}.empty?
+            a = Blind.new        
+            a.student_id = stud.id
+            @post.blinds << a
+            a.save
+          end
+        else
+          unless (b = blinds.select{|i| i.post_id == @post.id and i.student_id == stud.id}).empty?
+            b.each{|i| i.delete}
+          end
+        end
+      end
       if @post.update_attributes(params[:post])
         redirect_to @post
       else
@@ -100,6 +112,11 @@ class PostsController < ApplicationController
     end
   end
 #AJAX
+  def preview
+    @data = params[:content]
+    render :file => 'posts/preview.html', :layout => false
+  end
+  
   def write_comment
     render :text => "lalala", :layout => false
   end
@@ -107,21 +124,19 @@ class PostsController < ApplicationController
   def plus
     post = Post.find(params[:post_id])
     if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      post_rating_student.mark += 1
-      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
       end
     else
-      post_rating_student = PostRatingStudent.new
+      @post_rating_student = PostRatingStudent.new
       post[:rating] +=1
       @rating = post[:rating]
       @id = post.id
-      post_rating_student.mark = 1
-      post.post_rating_students << post_rating_student
+      @post_rating_student.mark = 1
+      post.post_rating_students << @post_rating_student
       post.save
-      @student.post_rating_students << post_rating_student
+      @student.post_rating_students << @post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -133,21 +148,19 @@ class PostsController < ApplicationController
   def minus
     post = Post.find(params[:post_id])
     if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      post_rating_student.mark -= 1
-      post_rating_student.save
       respond_to do |format|
         format.html {render :refresh}
         format.js {render :nothing => true}
       end
     else
-      post_rating_student = PostRatingStudent.new
+      @post_rating_student = PostRatingStudent.new
       post[:rating] -=1
       @rating = post[:rating]
       @id = post.id
-      post_rating_student.mark = -1
-      post.post_rating_students << post_rating_student
+      @post_rating_student.mark = -1
+      post.post_rating_students << @post_rating_student
       post.save
-      @student.post_rating_students << post_rating_student
+      @student.post_rating_students << @post_rating_student
       @student.save
       respond_to do |format|
         format.html {render :refresh}
@@ -158,7 +171,7 @@ class PostsController < ApplicationController
   def raters
     post = Post.find(params[:post_id])
     @id = post.id
-    @raters = post.post_rating_students
+    @raters = post.post_rating_students.sort{|i, j| i.mark <=> j.mark}
     render :template => 'posts/raters', :layout => false
   end
   

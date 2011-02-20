@@ -1,55 +1,27 @@
 development:
 <<<<<<< HEAD
-  adapter: mysql2
-  sencoding: utf8
-  reconnect: false
-  database: vekwak_development
-  pool: 5
-  username: student
-  password: 5o7TvF_ehjWp
-  socket: /tmp/mysql.sock
-=======
-  host: mysql0.locum.ru
+  host: 127.0.0.1
   adapter: mysql
   database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
+  username: root
   encoding: utf8
+=======
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+>>>>>>> 06c76d8eb821511c6a91b8da1b8d1f97bec9ab1a
   timeout: 5000
->>>>>>> qaa12
 
 test:
-<<<<<<< HEAD
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: vekwak_test
-  pool: 5
-  username: student
-  password: 5o7TvF_ehjWp
-  socket: /tmp/mysql.sock
-
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: vekwak_production
-  pool: 5
-  username: student
-  password: 5o7TvF_ehjWp
-  socket: /tmp/mysql.sock
-=======
   adapter: sqlite3
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
 
 production:
-  host: mysql0.locum.ru	
+  host: 127.0.0.1
   adapter: mysql
   database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
+  username: root
   encoding: utf8
   timeout: 5000
->>>>>>> qaa12

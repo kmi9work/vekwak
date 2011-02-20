@@ -1,2 +1,2 @@
-$("<%= escape_javascript render(:file => 'comments/raters.html') %>").insertAfter('#comment_rating_and_section_<%= @id %>');
+$("<%= escape_javascript render(:file => 'comments/raters.html') %>").appendTo('#comment_content_<%= @id %>');
 $('#raters_<%= @id %>').fadeToggle();

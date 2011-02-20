@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def stud_online
-    @students_online=Student.find(:all, :conditions => ["last_visit >=?", 5.minutes.ago])
+    @students_online = Student.where('last_visit >= ?', 5.minutes.ago + 3.hours)
   end
   
   def new_message

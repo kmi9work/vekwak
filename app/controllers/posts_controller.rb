@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   def index  
     if params[:section_id]
-      @posts1=Post.all :order => 'created_at DESC', :conditions => ["section_id ==?", params[:section_id]]
+      @posts1=Post.where(:section_id => params[:section_id]).order('created_at DESC')
     else
-      @posts1=Post.all :order => 'created_at DESC'
+      @posts1=Post.all.order('created_at DESC')
     end
     @posts2=[]
     @posts1.each do |post|

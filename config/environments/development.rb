@@ -1,5 +1,4 @@
 Vekwak::Application.configure do
-  Paperclip.options[:command_path] = "~/.gem"
   
   # Settings specified here will take precedence over those in config/environment.rb
 

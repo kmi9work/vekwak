@@ -86,8 +86,8 @@ class CommentsController < ApplicationController
       comment[:rating] +=1
       @rating = comment[:rating]
       @id = comment.id
-      comment_rating_student.mark = 1
-      @comment.comment_rating_students << @comment_rating_student
+      @comment_rating_student.mark = 1
+      comment.comment_rating_students << @comment_rating_student
       comment.save
       @student.comment_rating_students << @comment_rating_student
       @student.save

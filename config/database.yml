@@ -1,9 +1,8 @@
 development:
-  host: mysql0.locum.ru
+  host: 127.0.0.1
   adapter: mysql
   database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
+  username: root
   encoding: utf8
   timeout: 5000
 
@@ -14,10 +13,9 @@ test:
   timeout: 5000
 
 production:
-  host: mysql0.locum.ru	
+  host: 127.0.0.1
   adapter: mysql
   database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
+  username: root
   encoding: utf8
   timeout: 5000

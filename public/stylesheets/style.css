@@ -545,9 +545,9 @@ a.rating_comment{
 }
 
 .comment_raters{
-/*  top: 0px;
-  left: 40px;
-*/  z-index: 10;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
 }
 
 

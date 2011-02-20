@@ -26,8 +26,6 @@ class Student < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :group, :last_name, :second_name, :karma, :rating, :avatar
 
-  attr_accessor :mmarks
-  has_many :marks, :dependent => :delete_all
   has_many :posts
   has_many :messages, :dependent => :delete_all
   has_many :messages_sent, :class_name => 'Message'

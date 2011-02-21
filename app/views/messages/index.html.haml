@@ -2,7 +2,7 @@
 .wave_top
 #white_bg
   %h1 Входящие сообщения:
-  =render :partial => "mes"
+  = render :partial => "mes", :collection => @messages if @messages 
   %br
   = will_paginate @messages
 .shadow

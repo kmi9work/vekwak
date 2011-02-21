@@ -189,7 +189,8 @@ a.logout{
 
 #white_bg{
   background-color: #FFF;
-  width: 100%;  
+  width: 90%;
+  padding: 0% 5%;  
 }
 #white_bg h1{
     text-shadow: none;  

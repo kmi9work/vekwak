@@ -6,7 +6,7 @@ class CreateStudents < ActiveRecord::Migration
       t.column :email,                     :string, :limit => 100
       t.column :crypted_password,          :string, :limit => 40
       t.column :salt,                      :string, :limit => 40
-      t.column :group,                     :string, :limit => 40
+      t.column :group,                     :string, :limit => 40, :default => 6361
       t.column :last_visit,                :datetime      
       t.column :created_at,                :datetime
       t.column :updated_at,                :datetime

@@ -6,6 +6,7 @@
     = stylesheet_link_tag 'markitup/skins/markitup/style', 'markitup/sets/textile/style'
     = javascript_include_tag 'jquery.min', 'rails', 'application', 'markitup/jquery.markitup', 'markitup/sets/textile/set'
     = csrf_meta_tag
+    = render :partial => "layouts/google_analytics"
   %body
     #top
       #top_line

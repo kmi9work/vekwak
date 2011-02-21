@@ -8,7 +8,7 @@
     = post[:annotation]
   .post_bottom
     .post_bottom_line.inline
-    .post_rating_and_section.inline{:id => "post_rating_and_section_#{post.id}", :style => "background-color: ##{ post.rating >= 0 ? "ade400" : "ff6262"}"}
+    .inline{:id => "post_rating_and_section_#{post.id}", :class => "#{ post.rating >= 0 ? 'post_rating_green' : 'post_rating_red'}"}
       = link_to "", post_plus_path(:post_id => post.id, :format => :js), 
                     :remote => true, :class => "rating_plus"
       .rating              

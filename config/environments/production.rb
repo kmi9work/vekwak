@@ -4,6 +4,8 @@ Vekwak::Application.configure do
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
+  
+  Paperclip.options[:command_path]="/home/hosting_kmi9/bin/bin"
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false

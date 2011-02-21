@@ -39,7 +39,7 @@ class Student < ActiveRecord::Base
                                  :offline => "50x50>"  },
                     :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/:url"
-                    #:convert_options => {:offline => "-modulate 100, 0", :all => '-limit thread 1'}
+                    :convert_options => {:offline => "-modulate 100, 0"}
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

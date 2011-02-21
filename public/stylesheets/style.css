@@ -279,7 +279,7 @@ a.logout{
   height: 41px;
   border-top: 1px solid #555; 
   border-bottom: 1px solid #555; 
-  background-color: #ffde00;
+  background-image:url('img/bg_orange.gif');
 }
 
 #info_sections{
@@ -327,24 +327,24 @@ a.logout{
   left: -100%;
 }
 #prev_button{
-  background-image:url('img/button_left.gif');
+  background-image:url('img/arrow_left.gif');
   display: inline-block;
-  width: 15px;
+  width: 61px;
   height: 41px;
 }
 #prev_button:hover{
-  background-image:url('img/button_left_a.gif');
+  background-image:url('img/arrow_left_a.gif');
 }
 
 #next_button{
-  background-image:url('img/button_right.gif');
+  background-image:url('img/arrow_right.gif');
   display: inline-block;
-  width: 15px;
+  width: 61px;
   height: 41px;
 }
 
 #next_button:hover{
-  background-image:url('img/button_right_a.gif');
+  background-image:url('img/arrow_right_a.gif');
 }
 .button_spinner{
   margin-top: 10px;

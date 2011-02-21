@@ -1,14 +1,16 @@
 .inline{:id => "avatar_#{id}_#{path}", :class => div_class,#@students_online.include?(student) ? "online" : "",
         :onMouseOver => "over_student('#{id}', '#{path}');",
         :onMouseOut => "over_student('#{id}', '#{path}');"}
-  = link_to image_tag(student.avatar.url(:small)),
+  - if path=='top' && !online
+    = link_to image_tag(student.avatar.url(:offline)),
             student_info_path(:id => student.id, :format => :js, :path => path, :div_id => id),
             :remote => true
-  - if path=='top' && !online
-    = link_to student_info_path(:id => student.id, :format => :js, :path => path, :div_id => id), :remote => true do 
-      .offline
     .offline_text
       нЭту
+  - else 
+    = link_to image_tag(student.avatar.url(:small)),
+            student_info_path(:id => student.id, :format => :js, :path => path, :div_id => id),
+            :remote => true
   .student_login{:id => "student_#{id}_login_#{path}", :style => "display: none;"}= student.login
   
 / student, div_class, id, path, 

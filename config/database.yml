@@ -1,9 +1,7 @@
 development:
-  host: 127.0.0.1
-  adapter: mysql
-  database: kmi9_vekwak90
-  username: root
-  encoding: utf8
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
   timeout: 5000
 
 test:

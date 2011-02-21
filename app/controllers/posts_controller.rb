@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PostsController < ApplicationController
   def index  
     if params[:section_id]

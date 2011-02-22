@@ -6,6 +6,12 @@ Vekwak::Application.configure do
   config.cache_classes = true
   
   Paperclip.options[:command_path]="/home/hosting_kmi9/bin/bin"
+    SIZES = {
+  :original => "100x100>",
+  :small => "50x50#",
+  :offline => "50x50#",
+  :micro => "30x30#"
+}
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false

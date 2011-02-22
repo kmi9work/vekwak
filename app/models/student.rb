@@ -33,13 +33,12 @@ class Student < ActiveRecord::Base
   has_many :comment_rating_students, :dependent => :delete_all
   has_many :days
   has_many :comments
-  has_many :news
+  has_many :news  
   has_attached_file :avatar, 
-                    :styles => { :small => "50x50>",
-                                 :offline => "50x50>"  },
+                    :styles => SIZES,
                     :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/:url",
-                    :convert_options => {:offline => "-modulate 100, 0"}
+                    :convert_options => {:offline => "-auto-orient -modulate 100,0"}
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -9,8 +9,7 @@ Vekwak::Application.configure do
     SIZES = {
   :original => "100x100>",
   :small => "50x50#",
-  :offline => "50x50#",
-  :micro => "30x30#"
+  :offline => "50x50#"
 }
 
   # Full error reports are disabled and caching is turned on

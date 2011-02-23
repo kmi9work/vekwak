@@ -66,6 +66,13 @@ A:hover {text-decoration: underline; color: #fba822;}
   opacity:0.6;
 }
 
+.h8{
+  font-size: 0.6em;
+  color:#000;
+  text-align:right; 
+  margin-right:10px;
+}
+
 h1{
   font-family: 'Arial Black', Gadget, sans-serif;
   text-shadow: #000 1px 1px 2px;
@@ -380,10 +387,10 @@ a.logout{
 
 .calendar_day_full{
   color: #555;
-  background-color: #BCE324;
+  background-color: #feab25;
 }
 .calendar_day_full:hover{
-  background-color: #daea6a;
+  background-color: #feba4c;
 }
 
 .calendar_day_sunday{

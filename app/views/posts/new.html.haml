@@ -14,7 +14,7 @@
           = label_tag(stud[1], stud[0])
     .post_bottom
       .post_bottom_line{:style => "text-align:center;"}
-        = f.select 'section_id', @sections, :id => "new_post_section"
+        = f.select 'section_id', @sections, :selected => params[:section_id], :id => "new_post_section"
       #blinds_button
         = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
       = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true, :id => "write_moar", :onclick => "$('#write_moar').remove();"

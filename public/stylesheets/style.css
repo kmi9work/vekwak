@@ -43,9 +43,16 @@ A:hover {text-decoration: underline; color: #fba822;}
   width:80%;
 }
 
-.online{
-  border-bottom:4px solid #11FF23;
+.online{  
   height:50px;
+}
+
+.offline_text{  
+  width:50px;  
+  font-size:12px;
+  background-color:black;
+  color:#FFF;
+  opacity:0.6;
 }
 
 .offline{
@@ -56,15 +63,7 @@ A:hover {text-decoration: underline; color: #fba822;}
   background-color:black;
   opacity:0.5;  
 }
-.offline_text{
-  position:absolute;
-  top:0px;  
-  width:50px;  
-  font-size:12px;
-  background-color:black;
-  color:#FFF;
-  opacity:0.6;
-}
+
 
 .h8{
   font-size: 0.6em;

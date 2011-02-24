@@ -17,8 +17,8 @@
         = f.select 'section_id', @sections, :id => "new_post_section"
       #blinds_button
         = link_to "Ослепить", new_blind_path(:format => :js), :remote => true
-      = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true
-      = f.submit 'Создать', :style => "border-radius:5px;"
+      = link_to "Написать побольше", new_big_post_path(:format => :js), :remote => true, :id => "write_moar", :onclick => "$('#write_moar').remove();"
+      = f.submit 'Создать', :style => "border-radius:5px;", :onclick => "$(this).hide('fast');"
       .close
         %a(href="#" onclick="$('#new_post').slideUp().remove();") x
   .wave_bottom

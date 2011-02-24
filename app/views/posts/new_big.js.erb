@@ -1,6 +1,6 @@
 var ann = $('#new_post_annotation').val();
 var title = $('#new_post_title').val();
-$('#new_post').slideUp(); 
+$('#new_post').remove();
 $("<%= escape_javascript render(:file => 'posts/new_big.html') %>").insertAfter('#posts');
 $('#new_big_post').slideDown();
 $('#new_big_post_annotation').val(ann);

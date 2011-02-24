@@ -1,2 +1,7 @@
+$('div[id*="new_day_"]').each(function(){
+  if ($(this).attr('id') != "new_day_<%= params[:date] %>"){
+    $(this).slideUp();
+  }
+});
 $('#calendar').append("<%= escape_javascript render(:file => 'days/new.html') %>");
 $('#new_day_<%= params[:date] %>').slideToggle("fast");

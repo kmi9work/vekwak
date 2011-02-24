@@ -20,7 +20,11 @@
           = password_field_tag 'password', nil
         %br
         %p= submit_tag 'Войти'
-
+<<<<<<< HEAD
+    %h3-orange 
+      = link_to "регистрация", "/signup"
+=======
     %h3-orange
       = link_to "регистрация", signup_path
+>>>>>>> 687ab2bcff57fe0b4a94736b8d36035dfa6db4bf
 

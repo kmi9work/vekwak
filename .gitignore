@@ -2,7 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-public/system/avatars/*
+public/system/students/*
 public/images/*
 tags
 .redcar/

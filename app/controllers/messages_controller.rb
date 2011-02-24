@@ -5,10 +5,11 @@ class MessagesController < ApplicationController
   end
 
   def create    
-    @message = Message.new(params[:message])
-    puts "-------------------"
-    puts "-------------------"
+    @message = Message.new(params[:message])    
     @message.student_from = @student    
+    if @message.student_from==@message.student
+      @message.content="Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе!"
+    end
     if @message.save
       respond_to do |format|
         format.html {redirect_back_or_default('/')}

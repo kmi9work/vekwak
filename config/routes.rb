@@ -6,8 +6,9 @@ Vekwak::Application.routes.draw do
   match 'register' => 'students#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
+  match 'chpass' => 'students#edit', :as => :chpass
   
-  resources :students, :only => [:new, :create, :show] 
+  resources :students, :only => [:new, :create, :show, :edit, :update] 
   match 'student_info/:id(.:format)' => 'students#info', :as => :student_info
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus

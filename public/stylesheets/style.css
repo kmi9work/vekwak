@@ -163,10 +163,26 @@ h3-orange{
   border-bottom: 1px solid #555;
 }
 
+.left_avatars{
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
 .my_avatar{
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
   height: 100px;
   width: 100px;
   float:center;
+  z-index: 9;
+}
+
+.right_avatars{
+  width: 50%;
+  height: 100%;
+  float: right;
 }
 
 .stud_bar{
@@ -343,7 +359,8 @@ a.logout{
 }
 
 #calendar_days{
-  width: 98%;
+  padding-left: 1%;
+  width: 100%;
 }
 
 .new_calendar_days{
@@ -359,12 +376,19 @@ a.logout{
 #new_calendar_days_prev{
   left: -100%;
 }
-#prev_button{
-  background-image:url('img/arrow_left.gif');
-  display: inline-block;
+
+.button_div{
   width: 61px;
   height: 41px;
 }
+
+#prev_button{
+  background-image:url('img/arrow_left.gif');
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
 #prev_button:hover{
   background-image:url('img/arrow_left_a.gif');
 }
@@ -372,14 +396,16 @@ a.logout{
 #next_button{
   background-image:url('img/arrow_right.gif');
   display: inline-block;
-  width: 61px;
-  height: 41px;
+  width: 100%;
+  height: 100%;
 }
 
 #next_button:hover{
   background-image:url('img/arrow_right_a.gif');
 }
 .button_spinner{
+  width: 61px;
+  height: 41px;
   margin-top: 10px;
   position: absolute;
   display: none;

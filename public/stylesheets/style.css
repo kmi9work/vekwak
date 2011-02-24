@@ -111,6 +111,17 @@ h3-orange{
   font-family: 'Arial Black', Gadget, sans-serif;
 }
 
+.welcome{
+  padding-left: 10%;
+  margin-top: 10%;
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 40%;
+  background-color: #fff;
+  text-shadow: #000 1px 1px 2px;
+  font-family: 'Arial Black', Gadget, sans-serif;
+}
 
 .shadow{
   border-top:1px solid #555;

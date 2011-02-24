@@ -91,6 +91,12 @@ h3{
   display: inline-block;
 }
 
+h4{
+  font-family: 'Arial Black', Gadget, sans-serif;
+  font-size: 0.7em;
+  display: inline-block;
+}
+
 h3-orange{
   color: #feab25;
   font-family: 'Arial Black', Gadget, sans-serif;

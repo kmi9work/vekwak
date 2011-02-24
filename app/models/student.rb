@@ -26,14 +26,13 @@ class Student < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :group, :last_name, :second_name, :karma, :rating, :avatar
 
-  has_many :posts
+  has_many :posts, :dependent => :delete_all
   has_many :messages, :dependent => :delete_all
-  has_many :messages_sent, :class_name => 'Message'
   has_many :post_rating_students, :dependent => :delete_all
   has_many :comment_rating_students, :dependent => :delete_all
-  has_many :days
-  has_many :comments
-  has_many :news  
+  has_many :days, :dependent => :delete_all
+  has_many :comments, :dependent => :delete_all
+  has_many :news, :dependent => :delete_all  
   has_attached_file :avatar, 
                     :styles => SIZES,
                     :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",

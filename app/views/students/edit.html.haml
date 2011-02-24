@@ -1,23 +1,13 @@
-%h1 Sign up as a new user
+%h1 Смена Аватарки
 -@student.password = @student.password_confirmation = nil
 
 = error_messages_for :student
 
-%p
-  = label_tag 'Старый пароль'
-  %br
-  = password_field 'old password', :old_password
-
-=form_for :student, {:url => students_path, :html => { :multipart => true }} do |f| 
+=form_for :student, {:url => student_change_avatar_path, :html => { :multipart => true }} do |f| 
 
   %p
-    = label_tag 'Пароль'
+    = label_tag 'Аватар'
     %br
-    = f.password_field :password
-
-  %p
-    = label_tag 'Подтверждение пароля'
-    %br
-    = f.password_field :password_confirmation
+    = f.file_field :avatar
   
-  %p= submit_tag 'Sign up'
+  %p= submit_tag 'Сменить'

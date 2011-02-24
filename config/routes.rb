@@ -10,6 +10,7 @@ Vekwak::Application.routes.draw do
   
   resources :students, :only => [:new, :create, :show, :edit, :update] 
   match 'student_info/:id(.:format)' => 'students#info', :as => :student_info
+  match 'student_change_avatar/:id(.:format)' => 'students#change_avatar', :as => :student_change_avatar
   match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
   match 'posts/:post_id/raters(.:fomat)' => 'posts#raters', :as => :post_raters

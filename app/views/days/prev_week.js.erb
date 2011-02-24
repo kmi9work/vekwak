@@ -7,6 +7,7 @@ $('#calendar_days').animate({
 $('#new_calendar_days_prev').animate({
   left: '0%'
 }, 200, function() {
+    $('#new_calendar_days_prev').removeClass('new_calendar_days');
     $('#new_calendar_days_prev').attr('id', 'calendar_days');
     $('#calendar_week').prepend('<div id="new_calendar_days_prev" class="new_calendar_days inline"></div>'); 
     var fday = Number($('#prev_button').attr('href').split('=')[1]);

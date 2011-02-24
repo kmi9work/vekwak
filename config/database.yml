@@ -1,20 +1,23 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
+  host: 127.0.0.1
+  adapter: mysql
+  database: kmi9_vekwak90_dev
+  username: root
+  encoding: utf8
   timeout: 5000
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
+  host: 127.0.0.1
+  adapter: mysql
+  database: kmi9_vekwak90_test
+  username: root
+  encoding: utf8
   timeout: 5000
 
 production:
-  host: mysql0.locum.ru	
+  host: 127.0.0.1
   adapter: mysql
-  database: kmi9_vekwak90
-  username: kmi9_vekwak90
-  password: MTjNrEQi
+  database: kmi9_vekwak90_prod
+  username: root
   encoding: utf8
   timeout: 5000

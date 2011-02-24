@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(:version => 20110214130218) do
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
-    t.string   "group",                     :limit => 40
+    t.string   "group",                     :limit => 40,  :default => "6361"
     t.datetime "last_visit"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -553,6 +553,7 @@ a.logout{
 
 
 .post_rating_green{
+  text-align: center;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
   margin-left: -1px;
@@ -564,6 +565,7 @@ a.logout{
   background-repeat: repeat-x;
 }
 .post_rating_red{
+  text-align: center;
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;
   margin-left: -1px;
@@ -576,17 +578,24 @@ a.logout{
 }
 
 .rating_comment{
-  display: block;
+  float: center;
   color:#000;
 }
 a.rating_comment{  
   color:#555;
 }
 
+.plus{
+  float: left;
+}
+
+.minus{
+  float: right;
+}
+
 .rating{
   display: inline-block;
   vertical-align: top;
-  padding-left: 25%;
   color:#000;
 }
 

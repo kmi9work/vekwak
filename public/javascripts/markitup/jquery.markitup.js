@@ -465,6 +465,7 @@
 					if (!template) {
 						$.ajax( {
 							url: options.previewTemplatePath,
+							type: "POST",
 							data: 'content=' + $$.val(),
 							success: function(data) {
 								writeInPreview( localize(data, 1) );

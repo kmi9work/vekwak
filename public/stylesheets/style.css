@@ -19,6 +19,10 @@ body{
   color: #555;
 }
 
+li{
+  margin-left: 1em;
+}
+
 textarea{
   background-color: #FFF8C2;
   border-radius:4px;

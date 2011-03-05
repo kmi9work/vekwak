@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = @student.messages.reverse
+    @messages = @student.messages.reverse    
     @messages = @messages.paginate :page => params[:page], :per_page => 20  
   end
 

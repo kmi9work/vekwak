@@ -1,10 +1,13 @@
+- student_from_name= (mes.student_from==nil ? "Сообщение от неведомой " : mes.student_from.name )
+- student_from_second_name= (mes.student_from==nil ? "хуйни" : mes.student_from.second_name )
 - if mes.new
   .message_new{:id  => "message_#{mes.id}"}
-    = link_to mes.created_at.strftime("%d.%m.%Y %H:%M #{mes.student_from.name} #{mes.student_from.second_name}"), message_path(:id => mes.id), :remote => true 
+    = link_to mes.created_at.strftime("%d.%m.%Y %H:%M #{student_from_name} #{student_from_second_name}"), message_path(:id => mes.id), :remote => true 
 - else
   .message{:id  => "message_#{mes.id}"}
-    = link_to mes.created_at.strftime("%d.%m.%Y %H:%M #{mes.student_from.name} #{mes.student_from.second_name}"), message_path(:id => mes.id), :remote => true
+    = link_to mes.created_at.strftime("%d.%m.%Y %H:%M #{student_from_name} #{student_from_second_name}"), message_path(:id => mes.id), :remote => true
 %div{:id => "message_show_#{mes.id}", :style => "display: none;"}
   = mes.content
   %br
-  =link_to "Ответить", new_message_path(:format => :js, :student_id => mes.student_from.id), :remote => true, :id => "message_button"
+  - if mes.student_from!=nil
+    =link_to "Ответить", new_message_path(:format => :js, :student_id => mes.student_from.id), :remote => true, :id => "message_button"

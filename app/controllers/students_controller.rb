@@ -14,9 +14,12 @@ class StudentsController < ApplicationController
     @id = params[:div_id]
   end
   
-  def edit
+  def edit    
   end
   
+  def change_avatar
+    redirect_to "/" if @student.update_attributes(params[:student])
+  end
   
   def update
     login = @student.login

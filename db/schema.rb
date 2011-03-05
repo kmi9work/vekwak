@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20110214130218) do
 
   create_table "posts", :force => true do |t|
     t.integer  "student_id"
-    t.string   "content"
+    t.text     "content"
     t.integer  "rating"
     t.string   "title",                     :default => "Title"
     t.string   "annotation", :limit => 256, :default => "Annotation"

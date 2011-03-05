@@ -2,7 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
       t.integer :student_id
-      t.string :content
+      t.text :content
       t.integer :rating
       t.string :title, :default => "Title"
       t.string :annotation, :limit => 256, :default => "Annotation"

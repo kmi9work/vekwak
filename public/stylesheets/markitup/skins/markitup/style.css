@@ -21,6 +21,7 @@
 	background:#FFF url(images/bg-container.png) repeat-x top left;
 	padding:5px 5px 2px 5px;
 	font:11px Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
 }
 .markItUpEditor {
 	font:12px 'Courier New', Courier, monospace;
@@ -55,6 +56,10 @@
 }
 /***************************************************************************************/
 /* first row of buttons */
+.markItUpHeader{
+  height: 30px;
+  display: block;
+}
 .markItUpHeader ul li	{
 	list-style:none;
 	float:left;

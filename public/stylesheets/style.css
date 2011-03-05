@@ -514,6 +514,7 @@ a.logout{
 }
 
 .post_content{
+  padding: 0px 5px;
   color:#555;
   height: 300px;
   background-color: white;

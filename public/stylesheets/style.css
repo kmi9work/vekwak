@@ -17,6 +17,7 @@ body{
   font-size: 1.2em;
   background-color:#d3d3d3;
   color: #555;
+  background-image:url('img/flower_bg.jpg');
 }
 
 li{
@@ -52,9 +53,9 @@ A:hover {text-decoration: underline; color: #fba822;}
 }
 
 .logo{
-  height:73px;
-  width:275px;
-  background-image:url('img/logo.png');
+  height:125px;
+  width:354px;
+  background-image:url('img/logo_8m.png');
   float:right;
 }
 
@@ -143,7 +144,7 @@ h3-orange{
   border-top:1px solid #555;
   width:100%;
   background-image: url('img/shadow.png');
-  height: 9px;
+  height: 8px;
   clear:both;
 }
 
@@ -153,7 +154,8 @@ h3-orange{
 #top{
 	height: 120px;
   width: 100%;
-  background-image:url('img/bg_top.gif');
+/*  background-image:url('img/bg_top.gif');*/
+
 }
 
 #top_students{

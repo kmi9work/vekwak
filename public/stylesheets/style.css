@@ -5,6 +5,7 @@
 
 img{
   border: 0px;
+  float: left;
 }
 
 div{
@@ -675,7 +676,7 @@ a.rating_comment{
   background-color: white;  
   float:left;
   width: 97%;
-  padding-left: 3%;  
+  padding: 0px 0px 1em 3%;  
 }
 
 #post_show a{

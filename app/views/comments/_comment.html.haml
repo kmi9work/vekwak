@@ -15,7 +15,7 @@
                                               :path => 'comment'}
     .comment_content.inline{:id => "comment_content_#{comment.id}"}
       - puts (comment.content), "\n\n\n\n\n\\n\n\n"
-      = raw RedCloth.new(h comment.content).to_html
+      = raw RedCloth.new(comment.content).to_html
       %span{:id => "comment_button"}
         %font{:size => "2"}
           = link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true

@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def list
+    @comments = Comment.all.reverse    
+    @comments = @comments.paginate :page => params[:page], :per_page => 10  
+  end
+    
   def create
     @comment = Comment.new(params[:comment])
     @comment.student = @student

@@ -52,6 +52,16 @@ A:hover {text-decoration: underline; color: #fba822;}
   width:80%;
 }
 
+.wow{
+  background-color: #BBB;
+  font-size:20px;
+  color:#FFF;
+  border-radius:6px;
+  border: 3px solid #3C769D;
+  margin-left:45%;
+  margin-bottom:10px;
+}
+
 .online{  
   height:50px;
 }
@@ -525,6 +535,7 @@ a.logout{
 
 .post_content{
   padding: 0px 5px;
+  overflow:hidden;
   color:#555;
   height: 300px;
   background-color: white;
@@ -780,6 +791,7 @@ a.rating_comment{
   margin-left:10px;
 }
 .comment_content{
+  overflow:hidden;
   width:80%;
 }
 

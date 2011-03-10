@@ -6,7 +6,7 @@
     %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
     %p
       - if @post.content and !@post.content.strip.empty?
-        = raw(RedCloth.new(@post.content).to_html)
+        = raw(RedCloth.new(h @post.content).to_html)
       - else 
         = @post.annotation
   .post_right_part{:style => "background-color: ##{@post.section.color};"}

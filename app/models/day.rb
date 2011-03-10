@@ -1,7 +1,7 @@
 class Day < ActiveRecord::Base
   belongs_to :student
-  has_many :comments#, :dependent => :delete_all
-  has_many :events#, :dependent => :delete_all
+  has_many :comments#, :dependent => :destroy
+  has_many :events#, :dependent => :destroy
   def date
     "#{self[:day]}_#{self[:month]}_#{self[:year]}"
   end

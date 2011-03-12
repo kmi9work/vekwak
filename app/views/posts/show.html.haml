@@ -4,6 +4,7 @@
 #post_show
   .post_left_part.inline
     %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
+    %hr
     %p
       - if @post.content and !@post.content.strip.empty?
         = raw(RedCloth.new(@post.content).to_html)

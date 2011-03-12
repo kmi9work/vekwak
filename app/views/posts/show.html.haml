@@ -3,7 +3,7 @@
 
 #post_show
   .post_left_part.inline
-    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
+    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title     
     %p
       - if @post.content and !@post.content.strip.empty?
         = raw(RedCloth.new(@post.content).to_html)
@@ -18,6 +18,8 @@
     
 .post_show_bottom
   .post_line
+    .left_align 
+      =@post.created_at.strftime("%d #{@month_arr[@post.created_at.month-1]} %H:%M")
     %span#comment_button
       = link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true
       - if @student.admin or @student.id == @post.student.id

@@ -578,6 +578,7 @@ a.logout{
   border-top: 1px solid #555;
   border-bottom: 1px solid #555;  
   float: left;
+  text-align:center;
 }
 
 .big_post_bottom_line{
@@ -741,6 +742,12 @@ a.rating_comment{
 }
 .post_line a{
   color:#555;
+}
+
+.left_align{
+  float:left;
+  display: inline-block;
+  margin-left:70px;
 }
 
 .post_show_bottom{

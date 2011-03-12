@@ -24,7 +24,10 @@ class HeadmanAulsController < ApplicationController
         end  
       end
     else
-      flash[:error] = "You are not a Headman!"
+      respond_to do |format|
+        format.html {redirect_back_or_default('/')}
+        format.js {render 'fail_create.js.erb'}
+      end
     end
   end
 end

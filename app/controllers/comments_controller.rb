@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   def list
     @comments = Comment.all.reverse    
-    @comments = @comments.paginate :page => params[:page], :per_page => 10  
+    @comments = @comments.paginate :page => params[:page], :per_page => 16  
   end
     
   def create

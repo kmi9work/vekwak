@@ -45,7 +45,8 @@
             = render :partial => 'news/news'
           
         .info.inline
-          %h1 Последние комментарии
+          %h1 
+            = link_to "Последние комментарии", comments_list_path
           #last_comments.info_content
             = render :partial => 'comments/last_comments'
         .info.inline

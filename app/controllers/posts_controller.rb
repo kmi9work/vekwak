@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       end
     end
     @posts1=@posts1-@posts2            
-    @posts = @posts1.paginate :page => params[:page], :per_page => 6    
+    @posts = @posts1.paginate :page => params[:page], :per_page => 9    
   end
 
   def show

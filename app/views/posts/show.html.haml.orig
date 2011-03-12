@@ -3,7 +3,12 @@
 
 #post_show
   .post_left_part.inline
+<<<<<<< HEAD
+    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
+    %hr
+=======
     %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title     
+>>>>>>> 62f7e87c43d10a204feb57f52cb5a74fdcc3fd63
     %p
       - if @post.content and !@post.content.strip.empty?
         = raw(RedCloth.new(@post.content).to_html)

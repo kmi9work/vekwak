@@ -1,0 +1,11 @@
+%h3-orange
+  =all.student.login
+  &#8658
+%h3
+  -if all.comment
+    = link_to all.comment.post.title, all.comment.post
+  -else
+    = link_to all.post.title, all.post
+%br
+= all.content
+%br

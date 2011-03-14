@@ -2,17 +2,17 @@
 class PostsController < ApplicationController
   def index  
     if params[:section_id]
-      @posts1=Post.where(:section_id => params[:section_id]).order('created_at DESC')
+      @posts1 = Post.where(:section_id => params[:section_id]).order('created_at DESC')
     else
-      @posts1=Post.order('created_at DESC')
+      @posts1 = Post.order('created_at DESC')
     end
-    @posts2=[]
+    @posts2 = []
     @posts1.each do |post|
       post.blinds.each do |blind|
-        (@posts2<<post) if blind.student_id==@student.id
+        (@posts2 << post) if blind.student_id == @student.id
       end
     end
-    @posts1=@posts1-@posts2            
+    @posts1 = @posts1 - @posts2            
     @posts = @posts1.paginate :page => params[:page], :per_page => 9    
   end
 

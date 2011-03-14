@@ -26,9 +26,19 @@ class ApplicationController < ActionController::Base
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
     @new_message=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
   end
+  
   def info_msg
     @headman_msg = HeadmanAul.order('created_at desc').first(5)
-    @last_comments = Comment.order('created_at desc').first(5)
+    @last_comments = []
+    i = 0
+    Comment.order('created_at desc').each do |comment|
+      break if i >= 5
+      post = comment.post || comment.comment.post
+      if post.blinds.each {|blind| break false if @student.id == blind.student_id}
+        @last_comments << comment
+        i += 1
+      end
+    end
     @new_msg = New.order('created_at desc').first(5)
   end
   

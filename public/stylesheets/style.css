@@ -25,7 +25,7 @@ body{
 }
 
 li{
-  margin-left: 1em;
+  margin-left: 2em;
 }
 
 textarea{
@@ -107,6 +107,7 @@ h1{
   font-family: 'Arial Black', Gadget, sans-serif;
   text-shadow: #000 1px 1px 2px;
   font-size: 1.2em;
+  text-align: center;
 }
 
 h2{

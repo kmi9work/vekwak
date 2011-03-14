@@ -1,0 +1,45 @@
+%br
+.wave_top
+
+#post_show
+  .post_left_part.inline
+<<<<<<< HEAD
+    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title
+    %hr
+=======
+    %h1= link_to(@post.section.title, '/') + raw(' &#8658 ') + @post.title     
+>>>>>>> 62f7e87c43d10a204feb57f52cb5a74fdcc3fd63
+    %p
+      - if @post.content and !@post.content.strip.empty?
+        = raw(RedCloth.new(@post.content).to_html)
+      - else 
+        = @post.annotation
+  .post_right_part{:style => "background-color: ##{@post.section.color};"}
+    %br
+    Пост скрыт для:
+    = @blinds.join(", ")
+    %br
+    %br
+    
+.post_show_bottom
+  .post_line
+    .left_align 
+      =@post.created_at.strftime("%d #{@month_arr[@post.created_at.month-1]} %H:%M")
+    %span#comment_button
+      = link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true
+      - if @student.admin or @student.id == @post.student.id
+        | 
+        = link_to 'Удалить', post_path(@post.id), :method => :delete
+
+      - if @student.id == @post.student.id
+        | 
+        = link_to 'Редактировать', edit_post_path(@post.id)
+  =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',
+                                                      :student => @post.student,
+                                                      :id => @post.id,
+                                                      :path => 'post_show'}
+.shadow
+
+#comments
+  = render :partial => 'comments/comment', :collection => @comments, :locals => {:top_level => true}
+<br><br>

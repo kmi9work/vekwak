@@ -21,7 +21,7 @@ body{
   font-size: 1.2em;
   background-color:#d3d3d3;
   color: #555;
-  background-image:url('img/flower_bg.jpg');
+  background-image:url('img/spring.gif');
 }
 
 li{
@@ -72,9 +72,9 @@ A:hover {text-decoration: underline; color: #fba822;}
 }
 
 .logo{
-  height:125px;
-  width:354px;
-  background-image:url('img/logo_8m.png');
+  height:68px;
+  width:287px;
+  background-image:url('img/spring_logo.png');
   float:right;
 }
 

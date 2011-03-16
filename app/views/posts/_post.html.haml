@@ -9,7 +9,7 @@
     = link_to "подробнее", post
   .post_bottom
     .post_bottom_line.inline
-      = post.created_at.strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M")
+      = post.created_at.strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M")  
     .inline{:id => "post_rating_and_section_#{post.id}", :class => "#{ post.rating >= 0 ? 'post_rating_green' : 'post_rating_red'}"}
       .plus.inline
         = link_to "", post_plus_path(:post_id => post.id, :format => :js), 

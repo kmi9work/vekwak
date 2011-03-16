@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def stud_online
-    @students_online = Student.where('last_visit >= ?', 5.minutes.ago + 3.hours)
+    @students_online = Student.where('last_visit >= ?', 10.minutes.ago + 3.hours)
   end
   
   def new_message
@@ -34,12 +34,12 @@ class ApplicationController < ActionController::Base
     Comment.order('created_at desc').each do |comment|
       break if i >= 5
       post = comment.post || comment.comment.post
-      if post.blinds.each {|blind| break false if @student.id == blind.student_id}
+      if post.blinds.all? {|blind| @student.id != blind.student_id}
         @last_comments << comment
         i += 1
       end
     end
-    @new_msg = New.order('created_at desc').first(5)
+    @new_msg = Novelty.order('created_at desc').first(5)
   end
   
   protected

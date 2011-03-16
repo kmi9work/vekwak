@@ -32,7 +32,7 @@ class Student < ActiveRecord::Base
   has_many :comment_rating_students, :dependent => :destroy
   has_many :days, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :news, :dependent => :destroy  
+  has_many :novelties, :dependent => :destroy  
   has_attached_file :avatar, 
                     :styles => SIZES,
                     :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",

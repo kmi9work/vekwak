@@ -4,6 +4,6 @@
   = msg.content
   %br
 %br
-= link_to "Написать", new_news_path(:format => :js), :remote => true, :id => "new_new_link", :class => "new_link"
+= link_to "Написать", new_novelty_path(:format => :js), :remote => true, :id => "novelty_new_link", :class => "new_link"
 /=javascript_tag("$('#new_new_link').click(function (event) { alert('lol'); event.preventDefault()});")
 

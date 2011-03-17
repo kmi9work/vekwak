@@ -20,13 +20,13 @@ class HeadmanAulsController < ApplicationController
       else
         respond_to do |format|
           format.html {render :action => 'new'}
-          format.js {render 'fail_create.js.erb'}
+          format.js {render 'fail.js.erb', :locals => {:msg => "Can't create :("}}
         end  
       end
     else
       respond_to do |format|
         format.html {redirect_back_or_default('/')}
-        format.js {render 'fail_create.js.erb'}
+        format.js {render 'fail.js.erb', :locals => {:msg => "Only headman can do that."}}
       end
     end
   end

@@ -35,6 +35,7 @@ class Student < ActiveRecord::Base
   has_many :novelties, :dependent => :destroy  
   has_attached_file :avatar, 
                     :styles => SIZES,
+                    :default_url => "/system/images/missing_:style.png",
                     :url => "/system/images/:class/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/:url",
                     :convert_options => {:offline => "-auto-orient -modulate 100,0"}

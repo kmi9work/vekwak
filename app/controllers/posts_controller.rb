@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     else
       respond_to do |rt|
         rt.html {render :action => "new"}
-        rt.js {render 'fail_create.js.erb'}
+        rt.js {render 'fail.js.erb', :locals => {:msg => "Can't save!"}}
       end
     end
   end

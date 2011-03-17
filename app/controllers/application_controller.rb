@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
-    @new_message=@student.messages.collect{|p| p.new}.select{|x| x==true}.size    
+    @new_message = @student.messages.collect{|p| p.new}.select{|x| x==true}.size unless @student.nil?
   end
   
   def info_msg
@@ -34,12 +34,19 @@ class ApplicationController < ActionController::Base
     Comment.order('created_at desc').each do |comment|
       break if i >= 5
       post = comment.post || comment.comment.post
-      if post.blinds.all? {|blind| @student.id != blind.student_id}
-        @last_comments << comment
-        i += 1
+      unless @stundent.nil?
+        if post.blinds.all? {|blind| @student.id != blind.student_id}
+          @last_comments << comment
+          i += 1
+        end
+      else
+        if post.blinds.empty?
+          @last_comments << comment
+          i += 1
+        end
       end
     end
-    @new_msg = Novelty.order('created_at desc').first(5)
+    @novelty_msg = Novelty.order('created_at desc').first(5)
   end
   
   protected

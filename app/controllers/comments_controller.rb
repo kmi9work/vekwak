@@ -15,6 +15,13 @@ class CommentsController < ApplicationController
   end
     
   def create
+    if @student.nil?
+      respond_to do |format|
+        format.html{redirect_back_or_default '/'}
+        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
+      end
+      return
+    end
     @comment = Comment.new(params[:comment])
     @comment.student = @student
     unless @comment.content.strip.empty?
@@ -28,10 +35,9 @@ class CommentsController < ApplicationController
         post = Post.find(params[:post_id]) 
         top_level = true
       else 
-        puts "error!"#error
         respond_to do |format|
           format.html{redirect_to :action => :new}
-          format.js{render 'fail_create.js.erb', :locals => {:msg => "Wrong params!"}}
+          format.js{render 'fail.js.erb', :locals => {:msg => "Wrong params!"}}
         end
         return
       end
@@ -45,18 +51,25 @@ class CommentsController < ApplicationController
       else
         respond_to do |format|
           format.html{redirect_to :action => :new}
-          format.js{render 'fail_create.js.erb', :locals => {:msg => "Fail save."}}
+          format.js{render 'fail.js.erb', :locals => {:msg => "Fail save."}}
         end
       end
     else
       respond_to do |format|
         format.html{redirect_to :action => :new}
-        format.js{render 'fail_create.js.erb', :locals => {:msg => "Empty!"}}
+        format.js{render 'fail.js.erb', :locals => {:msg => "Empty!"}}
       end
     end
   end
 
   def destroy
+    if @student.nil?
+      respond_to do |format|
+        format.html{redirect_back_or_default '/'}
+        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
+      end
+      return
+    end
     comment = Comment.find(params[:id])
     if @student.admin or comment.student.id == @student.id
       if comment.post
@@ -75,11 +88,18 @@ class CommentsController < ApplicationController
     else
       respond_to do |format| 
         format.html{render :nothing, :status => 403} 
-        format.js{render 'fail_destroy.js.erb'}
+        format.js{render 'fail.js.erb'}
       end
     end
   end
   def plus
+    if @student.nil?
+      respond_to do |format|
+        format.html{redirect_back_or_default '/'}
+        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
+      end
+      return
+    end
     comment = Comment.find(params[:comment_id])
     if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
       respond_to do |format|
@@ -104,6 +124,13 @@ class CommentsController < ApplicationController
   end
   
   def minus
+    if @student.nil?
+      respond_to do |format|
+        format.html{redirect_back_or_default '/'}
+        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
+      end
+      return
+    end
     comment = Comment.find(params[:comment_id])
     if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
       respond_to do |format|

@@ -19,11 +19,10 @@ class EventsController < ApplicationController
           format.js
         end
       end
-      
     else
       respond_to do |format| 
         format.html{render :nothing, :status => 403} 
-        format.js{render 'fail_destroy.js.erb'}
+        format.js{render 'fail.js.erb', :locals => {:msg => "U r not admin!"}}
       end
     end
   end

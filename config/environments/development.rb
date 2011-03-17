@@ -6,12 +6,12 @@ Vekwak::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   SIZES = {
-  :original => "100x100>",
-  :small => "50x50#",
-  :offline => "50x50#",
-  :micro => "30x30#"
-}
-  
+    :original => "100x100>",
+    :small => "50x50#",
+    :offline => "50x50#",
+    :micro => "30x30#"
+  }
+
   config.cache_classes = false
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true

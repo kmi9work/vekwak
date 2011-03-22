@@ -3,18 +3,23 @@ class PostsController < ApplicationController
   before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
   def index  
     if params[:section_id]
-      @posts1 = Post.where(:section_id => params[:section_id]).order('created_at DESC')
+      posts = Post.where(:section_id => params[:section_id]).order('created_at DESC')
     else
-      @posts1 = Post.order('created_at DESC')
+      posts = Post.order('created_at DESC')
     end
-    @posts2 = []
-    @posts1.each do |post|
-      post.blinds.each do |blind|
-        (@posts2 << post) if blind.student_id == @student.id
+    @posts = []
+    posts.each do |post|
+      unless @stundent.nil?
+        if post.blinds.all? {|blind| @student.id != blind.student_id}
+          @posts << post
+        end
+      else
+        if post.blinds.empty?
+          @posts << post
+        end
       end
     end
-    @posts1 = @posts1 - @posts2            
-    @posts = @posts1.paginate :page => params[:page], :per_page => 9    
+    @posts = @posts.paginate :page => params[:page], :per_page => 9    
   end
 
   def show

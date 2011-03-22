@@ -14,7 +14,6 @@
                                               :id => comment.id,
                                               :path => 'comment'}
     .comment_content.inline{:id => "comment_content_#{comment.id}"}
-      - puts (comment.content), "\n\n\n\n\n\\n\n\n"
       = raw RedCloth.new(comment.content).to_html
       %span{:id => "comment_button"}
         %font{:size => "2"}

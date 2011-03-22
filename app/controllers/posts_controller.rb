@@ -121,7 +121,6 @@ class PostsController < ApplicationController
 #AJAX
   def preview
     @data = params[:content]
-    puts @data, "\n\n\n\n\n\n\n\n"
     render :file => 'posts/preview.html', :layout => false
   end
     

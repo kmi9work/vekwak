@@ -1,8 +1,0 @@
-%br
-.wave_top
-#white_bg
-  %h1 Последние комментарии:
-  = render :partial => "all", :collection => @comments if @comments
-  %br
-  = will_paginate @comments
-.shadow

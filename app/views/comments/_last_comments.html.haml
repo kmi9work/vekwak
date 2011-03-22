@@ -10,5 +10,5 @@
       -else
         = link_to post.title, post
     %br
-    = comment.content
+    = comment.content.gsub(/!http:\/\/.*\(.*\)!/, "[img]")
     %br

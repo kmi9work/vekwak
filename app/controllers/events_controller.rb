@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     day = event.day
-    if @student.admin
+    if !@student.nil? and @student.admin
       @id = params[:id]
       event.destroy
       if day.events.empty?

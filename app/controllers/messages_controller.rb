@@ -1,5 +1,6 @@
 #encoding: utf-8
 class MessagesController < ApplicationController
+  before_filter :is_student
   def new   
     @student_to = Student.find(params[:student_id])
   end
@@ -37,5 +38,8 @@ class MessagesController < ApplicationController
       format.js
     end  
   end
-
+  protected
+  def is_student
+    !!@student
+  end
 end

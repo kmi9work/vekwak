@@ -139,7 +139,7 @@ h3-orange{
 
 .yellow-block{
   padding-left: 10%;
-  margin-top: 10%;
+  margin-top: 2em;
   border-right: 1px solid #000;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
@@ -525,6 +525,7 @@ a.logout{
 	height: 100%;
 	width:32%;
   margin-left:1%;
+  overflow:hidden;
 }
 #new_big_post{
 	height: 100%;
@@ -572,6 +573,7 @@ a.logout{
   background-color: white;
   border-left: 1px solid #555;
   border-right: 1px solid #555; 
+  overflow:hidden;
 }
 
 .post_bottom_line{

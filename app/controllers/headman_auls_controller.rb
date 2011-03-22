@@ -8,7 +8,7 @@ class HeadmanAulsController < ApplicationController
   end
   
   def create
-    if @student and @student.headman
+    if !@student.nil? and @student.headman
       @headman_aul = HeadmanAul.create(params[:headman_aul])
       success = @headman_aul && @headman_aul.save
       info_msg

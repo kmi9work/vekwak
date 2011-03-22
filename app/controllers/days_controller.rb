@@ -16,6 +16,12 @@ class DaysController < ApplicationController
   def add
   end
   def create
+    if @student.nil?
+      respond_to do |format|
+        format.html {redirect_back_or_default '/'}
+        format.js {render 'fail.js.erb', :locals => {:msg => "You are now allowed!"}}
+      end
+    end
     if params[:id]
       @day = Day.find(params[:id])
       day_success = true

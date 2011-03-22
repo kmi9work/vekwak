@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
-  before_filter :admin_check, :only => [:new, :edit, :create, :destroy, :update]
+  before_filter :login_required, :only => [:new, :edit, :create, :destroy, :update]
+  before_filter :is_admin, :only => [:new, :edit, :create, :destroy, :update]
   def index
     @sections = Section.all
   end
@@ -42,11 +43,5 @@ class SectionsController < ApplicationController
     @section.destroy
     redirect_back_or_default('/') 
   end  
-
-  private
-
-  def admin_check
-    @student.admin == true
-  end
 
 end

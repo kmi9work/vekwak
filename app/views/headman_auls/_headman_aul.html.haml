@@ -4,6 +4,6 @@
     = msg.content
     %br
 %br
--if @student and @student.headman
+-if headman?
   = link_to "Написать", new_headman_aul_path(:format => :js), :remote => true, :id => "new_headman_aul_link", :class => "new_link"
 

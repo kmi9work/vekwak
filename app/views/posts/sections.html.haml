@@ -1,3 +1,3 @@
 = render :partial => "section", :collection => @sections
-- if @student.admin or @student.headman
+- if admin_or_headman?
   = link_to "Добавить раздел", :controller => :sections, :action => :new

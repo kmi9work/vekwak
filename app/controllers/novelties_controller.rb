@@ -1,4 +1,5 @@
 class NoveltiesController < ApplicationController
+  before_filter :login_required, :only => [:create, :new]
   def index
     @novelties = Novelty.order('created_at desc').all
   end

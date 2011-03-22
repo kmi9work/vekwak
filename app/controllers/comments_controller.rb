@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_filter :login_required, :only => [:create, :destroy, :plus, :minus, :new]
   def new
     @comment = Comment.new
     if params[:post_id]
@@ -15,13 +15,6 @@ class CommentsController < ApplicationController
   end
     
   def create
-    if @student.nil?
-      respond_to do |format|
-        format.html{redirect_back_or_default '/'}
-        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
-      end
-      return
-    end
     @comment = Comment.new(params[:comment])
     @comment.student = @student
     unless @comment.content.strip.empty?
@@ -63,13 +56,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @student.nil?
-      respond_to do |format|
-        format.html{redirect_back_or_default '/'}
-        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
-      end
-      return
-    end
     comment = Comment.find(params[:id])
     if @student.admin or comment.student.id == @student.id
       if comment.post
@@ -93,13 +79,6 @@ class CommentsController < ApplicationController
     end
   end
   def plus
-    if @student.nil?
-      respond_to do |format|
-        format.html{redirect_back_or_default '/'}
-        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
-      end
-      return
-    end
     comment = Comment.find(params[:comment_id])
     if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
       respond_to do |format|
@@ -124,13 +103,6 @@ class CommentsController < ApplicationController
   end
   
   def minus
-    if @student.nil?
-      respond_to do |format|
-        format.html{redirect_back_or_default '/'}
-        format.js{render 'fail.js.erb', :locals => {:msg => "Guests can't do that."}}
-      end
-      return
-    end
     comment = Comment.find(params[:comment_id])
     if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
       respond_to do |format|

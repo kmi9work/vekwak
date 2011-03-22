@@ -80,6 +80,9 @@ module AuthenticatedSystem
         format.any(:json, :xml) do
           request_http_basic_authentication 'Web Password'
         end
+        format.js do
+          render '/layouts/fail.js.erb', :locals => {:msg => "Guests can't do that."}
+        end
       end
     end
 

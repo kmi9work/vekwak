@@ -19,7 +19,7 @@
       %span{:id => "comment_button"}
         %font{:size => "2"}
           = link_to 'Комментировать', new_comment_comment_path(comment.id, :format => :js), :remote => true
-          - if @student.admin or @student.id == comment.student.id 
+          - if admin_or_me?(comment.student.id)
             |
             = link_to('х', post_comment_path((comment.post_id or comment.comment_id), comment.id), 
                                  :method => :delete, :remote => true)
@@ -35,7 +35,7 @@
                                               :path => 'comment'}
     .comment_content.inline  
       = raw(RedCloth.new(comment.content).to_html)
-      -if @student.admin or @student.id == comment.student.id
+      -if admin_or_me?(comment.student.id)
         = link_to('х', post_comment_path((comment.post_id or comment.comment_id), comment.id), 
                        :method => :delete, :remote => true)
         %br

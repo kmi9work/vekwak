@@ -248,6 +248,16 @@ a.logout{
   background-repeat: no-repeat;  
   display:inline-block;  
 }
+
+a.login{
+  position:absolute;
+  bottom:5px;
+  height: 20px;
+  width: 100px;
+  background: #000;
+}
+
+
 /*____________________________________________________________________________________ END TOP  */
 
 /* ==================================================================================== MESSAGES    */

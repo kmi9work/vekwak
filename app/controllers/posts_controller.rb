@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PostsController < ApplicationController
+  before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
   def index  
     if params[:section_id]
       @posts1 = Post.where(:section_id => params[:section_id]).order('created_at DESC')
@@ -108,17 +109,17 @@ class PostsController < ApplicationController
       render :status => 403
     end
   end
+  def sections
+    @sections = Section.find(:all)
+  end
+
 #AJAX
   def preview
     @data = params[:content]
     puts @data, "\n\n\n\n\n\n\n\n"
     render :file => 'posts/preview.html', :layout => false
   end
-  
-  def write_comment
-    render :text => "lalala", :layout => false
-  end
-  
+    
   def plus
     post = Post.find(params[:post_id])
     if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
@@ -171,10 +172,6 @@ class PostsController < ApplicationController
     @id = post.id
     @raters = post.post_rating_students.sort{|i, j| i.mark <=> j.mark}
     render :template => 'posts/raters', :layout => false
-  end
-  
-  def sections
-    @sections = Section.find(:all)
   end
 end
 

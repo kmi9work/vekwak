@@ -4,7 +4,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :login_required, :stud, :new_message, :stud_online, :week, :info_msg
+  before_filter :stud, :new_message, :stud_online, :week, :info_msg
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
-    @new_message = @student.nil? ? @student.messages.collect{|p| p.new}.select{|x| x==true}.size : 0
+    @new_message = @student.nil? ? 0 : @student.messages.collect{|p| p.new}.select{|x| x==true}.size
   end
   
   def info_msg
@@ -63,5 +63,10 @@ class ApplicationController < ActionController::Base
       t += 1.day
     end
   end
-  
+  def is_student
+    !!@student
+  end
+  def is_admin
+    !!@student.admin
+  end
 end

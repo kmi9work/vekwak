@@ -21,11 +21,13 @@
                                                                :online => @students_online.include?(student),
                                                                :path => 'top'}
         .my_avatar
-          = link_to image_tag(@student.nil? ? "system/images/guest.png" : @student.avatar.url, :width => 100, :height => 100), '/'
+          = link_to image_tag(@student.nil? ? "/system/images/guest.png" : @student.avatar.url, :width => 100, :height => 100), '/'
           - unless @student.nil?
             .stud_bar.inline  
             = link_to "#{@new_message}", messages_path, :class => "message_info"
             = link_to '', logout_path, :class => "logout"
+          - else
+            =link_to 'login', login_path, :class => "login"
         .right_avatars.inline
           - for i in size/2...size
             -student = @students[i]

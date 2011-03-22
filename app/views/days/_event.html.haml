@@ -3,5 +3,5 @@
     = event.title
   %br 
   = event.content
-  -if @student.admin
+  -if admin?
     = link_to "x", event_path(event.id), :method => :delete, :remote => true

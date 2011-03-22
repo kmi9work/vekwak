@@ -1,5 +1,6 @@
 #encoding: utf-8
 class HeadmanAulsController < ApplicationController
+  before_filter :login_required, :only => [:create, :new]
   def index
     @auls = HeadmanAul.order('created_at desc').all
   end
@@ -8,7 +9,7 @@ class HeadmanAulsController < ApplicationController
   end
   
   def create
-    if !@student.nil? and @student.headman
+    if @student.headman
       @headman_aul = HeadmanAul.create(params[:headman_aul])
       success = @headman_aul && @headman_aul.save
       info_msg

@@ -1,6 +1,6 @@
 #encoding: utf-8
 class MessagesController < ApplicationController
-  before_filter :is_student
+  before_filter :login_required
   def new   
     @student_to = Student.find(params[:student_id])
   end
@@ -8,8 +8,8 @@ class MessagesController < ApplicationController
   def create    
     @message = Message.new(params[:message])    
     @message.student_from = @student    
-    if @message.student_from==@message.student
-      @message.content="Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе!"
+    if @message.student_from == @message.student
+      @message.content = "Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе! Я никогда больше не буду писать сам себе!"
     end
     if @message.save
       respond_to do |format|
@@ -37,9 +37,5 @@ class MessagesController < ApplicationController
       format.html
       format.js
     end  
-  end
-  protected
-  def is_student
-    !!@student
   end
 end

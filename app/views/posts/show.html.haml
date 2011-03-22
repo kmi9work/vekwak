@@ -22,11 +22,11 @@
       =@post.created_at.strftime("%d #{@month_arr[@post.created_at.month-1]} %H:%M")
     %span#comment_button
       = link_to 'Комментировать', new_post_comment_path(@post.id, :format => :js), :remote => true
-      - if @student.admin or @student.id == @post.student.id
+      - if admin_or_me?(@post.student.id)
         | 
         = link_to 'Удалить', post_path(@post.id), :method => :delete
 
-      - if @student.id == @post.student.id
+      - if me?(@post.student.id)
         | 
         = link_to 'Редактировать', edit_post_path(@post.id)
   =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',

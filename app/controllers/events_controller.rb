@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
+  before_filter :login_required, :only => [:destroy]
   def destroy
     event = Event.find(params[:id])
     day = event.day
-    if !@student.nil? and @student.admin
+    if @student.admin
       @id = params[:id]
       event.destroy
       if day.events.empty?

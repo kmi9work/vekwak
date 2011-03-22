@@ -2,6 +2,7 @@
   %br
   .comment_top{:id => "comment_top_#{comment.id}"}
     
+    
     .comment_rating.inline{:id => "comment_rating_and_section_#{comment.id}", :class => "#{ comment.rating < 0 ? "comment_rating_bad" : "" }"}
       = link_to "", comment_plus_path(:comment_id => comment.id, :format => :js),
                   :remote => true, :class => "rating_plus"      
@@ -28,6 +29,7 @@
 -else
   %hr
   .comment_bottom{:id => "comment_bottom_#{comment.id}"}
+    
     =render :partial => "students/avatar", :locals => {:div_class => 'comment_avatar',
                                               :student => comment.student,
                                               :id => comment.id,

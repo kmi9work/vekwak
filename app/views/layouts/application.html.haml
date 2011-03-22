@@ -27,7 +27,7 @@
             = link_to "#{@new_message}", messages_path, :class => "message_info"
             = link_to '', logout_path, :class => "logout"
           - else
-            =link_to 'login', login_path, :class => "login"
+            =link_to 'Войти', login_path, :class => "login"
         .right_avatars.inline
           - for i in size/2...size
             -student = @students[i]

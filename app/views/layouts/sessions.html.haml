@@ -2,6 +2,8 @@
 %html
   %head
     %title Vekwak
+    %meta(http-equiv="Content-Language" content="ru")
+    %meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     = stylesheet_link_tag :all
     = javascript_include_tag 'jquery.min', 'rails', 'application'
     = csrf_meta_tag
@@ -12,11 +14,11 @@
       = form_tag session_path do
         %br
         %p
-          = label_tag 'login', 'Логин :'
+          = label_tag 'login', 'Логин:'
           = text_field_tag 'login', @login
         %br
         %p
-          = label_tag 'password', 'Пароль'
+          = label_tag 'password', 'Пароль:'
           = password_field_tag 'password', nil
         %br
         %p= submit_tag 'Войти'

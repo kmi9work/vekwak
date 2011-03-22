@@ -4,11 +4,11 @@ module AuthenticatedSystem
     # Preloads @current_student with the student model if they're logged in.
     def logged_in?
       if  current_student != nil
-      current_student.record_last_visit unless @last_visit_already_recorded
-      @last_visit_already_recorded = true
-      true
-    end
-    !!current_student
+        current_student.record_last_visit unless @last_visit_already_recorded
+        @last_visit_already_recorded = true
+        true
+      end
+      !!current_student
     end
 
     # Accesses the current student from the session.

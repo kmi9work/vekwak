@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   
   def new_message
     #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
-    @new_message = @student.messages.collect{|p| p.new}.select{|x| x==true}.size unless @student.nil?
+    @new_message = @student.nil? ? @student.messages.collect{|p| p.new}.select{|x| x==true}.size : 0
   end
   
   def info_msg

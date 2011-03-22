@@ -10,6 +10,12 @@
   .post_bottom
     .post_bottom_line.inline
       = post.created_at.strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M")  
+      - unless @student.nil?
+        - if post.updated_at > @student.prev_visit
+          - if @student.login == "byr1"
+            <font color='red'> Nouvelle </font>
+          - else
+            <font color='red'> New </font>
     .inline{:id => "post_rating_and_section_#{post.id}", :class => "#{ post.rating >= 0 ? 'post_rating_green' : 'post_rating_red'}"}
       .plus.inline
         = link_to "", post_plus_path(:post_id => post.id, :format => :js), 
@@ -24,3 +30,4 @@
                                                          :path => 'post'}
   .wave_bottom
     .wave_border_b
+

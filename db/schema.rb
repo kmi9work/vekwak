@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110316124648) do
+ActiveRecord::Schema.define(:version => 20110322134000) do
 
   create_table "blinds", :force => true do |t|
     t.integer  "student_id"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20110316124648) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.datetime "prev_visit"
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true

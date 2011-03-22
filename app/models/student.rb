@@ -61,8 +61,8 @@ class Student < ActiveRecord::Base
   end
   
   def record_last_visit
-    ActiveRecord::Base.connection.execute("update students set last_visit =
-    now() where id = #{id}")    
+    ActiveRecord::Base.connection.execute("update students set prev_visit = students.last_visit where id = #{id}")    
+    ActiveRecord::Base.connection.execute("update students set last_visit = now() where id = #{id}")    
   end  
   
   def online?(max_delay=5.minutes)

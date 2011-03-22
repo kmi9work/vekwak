@@ -58,13 +58,8 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     if @student.admin or comment.student.id == @student.id
-      if comment.post
-        post = comment.post
-        @top_level = true
-      else
-        post = comment.comment.post
-        @top_level = false
-      end
+      post = comment.post
+      @top_level = !comment.comment
       @id = params[:id]
       comment.destroy
       respond_to do |format| 

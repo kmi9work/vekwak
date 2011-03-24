@@ -11,20 +11,21 @@
     .post_bottom_line.inline
       - unless @student.nil?
         - if post.updated_at > @student.prev_visit
-          - if @student.login == "byr1"
-            <font color='red'> Nouvelle </font>
-          - else
-            <font color='red'> New </font>
+          %font{:color => 'red'}
+            - if @student.login == "byr1"
+              Nouvelle
+            - else
+              New
         - else
           = post.created_at.strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M") 
     .inline{:id => "post_rating_and_section_#{post.id}", :class => "#{ post.rating >= 0 ? 'post_rating_green' : 'post_rating_red'}"}
       .plus.inline
-        = link_to "", post_plus_path(:post_id => post.id, :format => :js), 
+        = link_to "", post_plus_path(:id => post.id, :format => :js), 
                     :remote => true, :class => "rating_plus"
       .rating.inline              
-        = link_to post.rating, post_raters_path(:post_id => post.id, :format => :js), :id => "post_rating_link_#{post.id}", :remote => true, :id => "post_rating_#{post.id}"
+        = link_to post.rating, post_raters_path(:id => post.id, :format => :js), :id => "post_rating_link_#{post.id}", :remote => true, :id => "post_rating_#{post.id}"
       .minus.inline
-        = link_to "", post_minus_path(:post_id => post.id, :format => :js), :remote => true, :class => "rating_minus"
+        = link_to "", post_minus_path(:id => post.id, :format => :js), :remote => true, :class => "rating_minus"
     =render :partial => "students/avatar", :locals => {:div_class => 'post_bottom_avatar',
                                                          :student => post.student,
                                                          :id => post.id,

@@ -11,12 +11,12 @@ Vekwak::Application.routes.draw do
   resources :students, :only => [:new, :create, :show, :edit, :update] 
   match 'student_info/:id(.:format)' => 'students#info', :as => :student_info
   match 'student_change_avatar/:id(.:format)' => 'students#change_avatar', :as => :student_change_avatar
-  match 'posts/:post_id/plus(.:format)' => 'posts#plus', :as => :post_plus
-  match 'posts/:post_id/minus(.:format)' => 'posts#minus', :as => :post_minus
-  match 'posts/:post_id/raters(.:fomat)' => 'posts#raters', :as => :post_raters
-  match 'comments/:comment_id/plus(.:format)' => 'comments#plus', :as => :comment_plus
-  match 'comments/:comment_id/minus(.:format)' => 'comments#minus', :as => :comment_minus
-  match 'comments/:comment_id/raters(.:fomat)' => 'comments#raters', :as => :comment_raters
+  match 'posts/:id/plus(.:format)' => 'posts#plus', :as => :post_plus
+  match 'posts/:id/minus(.:format)' => 'posts#minus', :as => :post_minus
+  match 'posts/:id/raters(.:fomat)' => 'posts#raters', :as => :post_raters
+  match 'comments/:id/plus(.:format)' => 'comments#plus', :as => :comment_plus
+  match 'comments/:id/minus(.:format)' => 'comments#minus', :as => :comment_minus
+  match 'comments/:id/raters(.:fomat)' => 'comments#raters', :as => :comment_raters
   match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
   match 'comments/list(.:format)' => 'comments#list', :as => :comments_list
   match 'posts/preview' => 'posts#preview'

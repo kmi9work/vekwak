@@ -20,7 +20,7 @@ class NoveltiesController < ApplicationController
     else
       respond_to do |format|
         format.html {render :action => 'new'}
-        format.js {render 'fail.js.erb', :locals => {:msg => "Can't save novelty."}}
+        format.js {render 'layouts/fail.js.erb', :locals => {:msg => "Can't save novelty."}}
       end  
     end
   end

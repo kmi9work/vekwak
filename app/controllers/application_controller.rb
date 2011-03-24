@@ -63,10 +63,23 @@ class ApplicationController < ActionController::Base
       t += 1.day
     end
   end
-  def is_student
+  def student?
     !!@student
   end
-  def is_admin
+  
+  def admin?
     !!@student.admin
   end
+  
+  def headman?
+    !!@student.headman
+  end
 end
+
+
+
+
+
+
+
+

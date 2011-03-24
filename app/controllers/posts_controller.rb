@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class PostsController < ApplicationController
   before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
+  before_filter :post_find, :only => [:edit, :show, :plus, :minus, :destroy, :raters, :update]
+  before_filter :voted?, :only => [:plus, :minus]
   def index  
     if params[:section_id]
       posts = Post.where(:section_id => params[:section_id]).order('created_at DESC')
@@ -23,11 +25,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @blinds=[]
+    @blinds = []
     @post.blinds.each do |blind|
-      redirect_to "/" if blind.student_id==@student.id
-      @blinds<<Student.find_by_id(blind.student_id).name
+      redirect_to "/" if blind.student_id == @student.id
+      @blinds << Student.find_by_id(blind.student_id).name
     end
     @comments = @post.comments.reject{|i| i.comment_id}
   end
@@ -45,7 +46,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @students_list = Student.all.collect {|s| [ s.name, s.id ] }
     unless @student.admin or @student.id == @post.student.id
       render :status => 403
@@ -56,10 +56,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.student = @student
     @post.rating = 0
-    (Student.all-[@student]).each do |stud|
-      if params["#{stud.id}"]=="1"
-        a=Blind.new        
-        a.student_id=stud.id
+    (Student.all - [@student]).each do |stud|
+      if params["#{stud.id}"] == "1"
+        a = Blind.new
+        a.student_id = stud.id
         @post.blinds << a
         a.save
       end
@@ -72,13 +72,12 @@ class PostsController < ApplicationController
     else
       respond_to do |rt|
         rt.html {render :action => "new"}
-        rt.js {render 'fail.js.erb', :locals => {:msg => "Can't save!"}}
+        rt.js {render 'layouts/fail.js.erb', :locals => {:msg => "Can't save!"}}
       end
     end
   end
 
   def update
-    @post = Post.find(params[:id])
     if @student.admin or @student.id == @post.student.id
       blinds = @post.blinds
       (Student.all-[@student]).each do |stud|
@@ -106,7 +105,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @student.admin or @student.id == @post.student.id
       @post.destroy
       redirect_back_or_default("/")
@@ -125,57 +123,47 @@ class PostsController < ApplicationController
   end
     
   def plus
-    post = Post.find(params[:post_id])
-    if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render :nothing => true}
-      end
-    else
-      @post_rating_student = PostRatingStudent.new
-      post[:rating] +=1
-      @rating = post[:rating]
-      @id = post.id
-      @post_rating_student.mark = 1
-      post.post_rating_students << @post_rating_student
-      post.save
-      @student.post_rating_students << @post_rating_student
-      @student.save
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render 'ch_rating.js.erb'}
-      end
+    @post_rating_student = PostRatingStudent.new
+    @post[:rating] +=1
+    @rating = @post[:rating]
+    @id = @post.id
+    @post_rating_student.mark = 1
+    @post.post_rating_students << @post_rating_student
+    @post.save
+    @student.post_rating_students << @post_rating_student
+    @student.save
+    respond_to do |format|
+      format.html {render :refresh}
+      format.js {render 'ch_rating.js.erb'}
     end
   end
-  
+
   def minus
-    post = Post.find(params[:post_id])
-    if post_rating_student = PostRatingStudent.where(:post_id => post.id, :student_id => @student.id).first
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render :nothing => true}
-      end
-    else
-      @post_rating_student = PostRatingStudent.new
-      post[:rating] -=1
-      @rating = post[:rating]
-      @id = post.id
-      @post_rating_student.mark = -1
-      post.post_rating_students << @post_rating_student
-      post.save
-      @student.post_rating_students << @post_rating_student
-      @student.save
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render 'ch_rating.js.erb'}
-      end
+    @post_rating_student = PostRatingStudent.new
+    @post[:rating] -=1
+    @rating = @post[:rating]
+    @id = @post.id
+    @post_rating_student.mark = -1
+    @post.post_rating_students << @post_rating_student
+    @post.save
+    @student.post_rating_students << @post_rating_student
+    @student.save
+    respond_to do |format|
+      format.html {render :refresh}
+      format.js {render 'ch_rating.js.erb'}
     end
   end
   def raters
-    post = Post.find(params[:post_id])
-    @id = post.id
-    @raters = post.post_rating_students.sort{|i, j| i.mark <=> j.mark}
+    @id = @post.id
+    @raters = @post.post_rating_students.sort{|i, j| i.mark <=> j.mark}
     render :template => 'posts/raters', :layout => false
+  end
+  protected
+  def post_find
+    @post = Post.find(params[:id])
+  end
+  def voted?
+    !(PostRatingStudent.where(:post_id => @post.id, :student_id => @student.id).first)
   end
 end
 

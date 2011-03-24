@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
   before_filter :login_required, :only => [:create, :destroy, :plus, :minus, :new]
+  before_filter :comment_find, :only => [:plus, :minus, :destroy, :raters]
+  before_filter :voted?, :only => [:plus, :minus]
+  
   def new
     @comment = Comment.new
     if params[:post_id]
@@ -30,7 +33,7 @@ class CommentsController < ApplicationController
       else 
         respond_to do |format|
           format.html{redirect_to :action => :new}
-          format.js{render 'fail.js.erb', :locals => {:msg => "Wrong params!"}}
+          format.js{render 'layouts/fail.js.erb', :locals => {:msg => "Wrong params!"}}
         end
         return
       end
@@ -44,24 +47,23 @@ class CommentsController < ApplicationController
       else
         respond_to do |format|
           format.html{redirect_to :action => :new}
-          format.js{render 'fail.js.erb', :locals => {:msg => "Fail save."}}
+          format.js{render 'layouts/fail.js.erb', :locals => {:msg => "Fail save."}}
         end
       end
     else
       respond_to do |format|
         format.html{redirect_to :action => :new}
-        format.js{render 'fail.js.erb', :locals => {:msg => "Empty!"}}
+        format.js{render 'layouts/fail.js.erb', :locals => {:msg => "Empty!"}}
       end
     end
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    if @student.admin or comment.student.id == @student.id
-      post = comment.post
-      @top_level = !comment.comment
+    if @student.admin or @comment.student.id == @student.id
+      post = @comment.post
+      @top_level = !@comment.comment
       @id = params[:id]
-      comment.destroy
+      @comment.destroy
       respond_to do |format| 
         format.html{redirect_to post} 
         format.js 
@@ -69,61 +71,57 @@ class CommentsController < ApplicationController
     else
       respond_to do |format| 
         format.html{render :nothing, :status => 403} 
-        format.js{render 'fail.js.erb'}
-      end
-    end
-  end
-  def plus
-    comment = Comment.find(params[:comment_id])
-    if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
-      respond_to do |format|
-        format.html {render :nothing => true}
-        format.js {render :nothing => true}
-      end
-    else
-      @comment_rating_student = CommentRatingStudent.new
-      comment[:rating] +=1
-      @rating = comment[:rating]
-      @id = comment.id
-      @comment_rating_student.mark = 1
-      comment.comment_rating_students << @comment_rating_student
-      comment.save
-      @student.comment_rating_students << @comment_rating_student
-      @student.save
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render 'ch_rating.js.erb'}
+        format.js{render 'layouts/fail.js.erb'}
       end
     end
   end
   
-  def minus
-    comment = Comment.find(params[:comment_id])
-    if comment_rating_student = CommentRatingStudent.where(:comment_id => comment.id, :student_id => @student.id).first
-      respond_to do |format|
-        format.html {render :nothing => true}
-        format.js {render :nothing => true}
-      end
-    else
-      @comment_rating_student = CommentRatingStudent.new
-      comment[:rating] -=1
-      @rating = comment[:rating]
-      @id = comment.id
-      @comment_rating_student.mark = -1
-      comment.comment_rating_students << @comment_rating_student
-      comment.save
-      @student.comment_rating_students << @comment_rating_student
-      @student.save
-      respond_to do |format|
-        format.html {render :refresh}
-        format.js {render 'ch_rating.js.erb'}
-      end
+  def plus
+    @comment_rating_student = CommentRatingStudent.new
+    @comment[:rating] += 1
+    @rating = @comment[:rating]
+    @id = @comment.id
+    @comment_rating_student.mark = 1
+    @comment_rating_student.student = @student
+    @comment_rating_student.comment = @comment
+    @comment_rating_student.save
+    respond_to do |format|
+      # format.html {render :refresh}
+      format.js {render 'ch_rating.js.erb', :layout => false}
     end
   end
+
+  def minus
+    @comment_rating_student = CommentRatingStudent.new
+    @comment[:rating] -= 1
+    @rating = @comment[:rating]
+    @id = @comment.id
+    @comment_rating_student.mark = -1
+    @comment_rating_student.student = @student
+    @comment_rating_student.comment = @comment
+    @comment_rating_student.save
+    respond_to do |format|
+      # format.html {render :refresh}
+      format.js {render 'ch_rating.js.erb', :layout => false}
+    end
+  end
+    
   def raters
-    comment = Comment.find(params[:comment_id])
-    @id = comment.id
-    @raters = comment.comment_rating_students
+    @id = @comment.id
+    @raters = @comment.comment_rating_students
     render :template => 'comments/raters', :layout => false
   end
+  
+  protected
+  
+  def voted?
+    !(CommentRatingStudent.where(:comment_id => @comment.id, :student_id => @student.id).first)
+  end
+  
+  def comment_find
+    @comment = Comment.find(params[:id])
+  end
 end
+
+
+

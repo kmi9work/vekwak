@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     else
       respond_to do |format|
         format.html {render :action => 'new'}
-        format.js {render 'fail.js.erb', :locals => {:msg => "Can't create."}}
+        format.js {render 'layouts/fail.js.erb', :locals => {:msg => "Can't create."}}
       end  
     end
   end

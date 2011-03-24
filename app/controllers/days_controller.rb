@@ -3,6 +3,7 @@ class DaysController < ApplicationController
   def index
     @days = Day.order("created_at desc").all
   end
+  
   def show
     day = Day.find(params[:id])
     @events = day.events
@@ -12,10 +13,13 @@ class DaysController < ApplicationController
       format.js
     end
   end
+  
   def new
   end
+  
   def add
   end
+  
   def create
     if params[:id]
       @day = Day.find(params[:id])
@@ -38,7 +42,7 @@ class DaysController < ApplicationController
     else
       respond_to do |format|
         format.html {render :action => 'new'}
-        format.js {render 'fail.js.erb', :locals => {:msg => "Error when creating."}}
+        format.js {render 'layouts/fail.js.erb', :locals => {:msg => "Error when creating."}}
       end
     end
   end
@@ -58,5 +62,5 @@ class DaysController < ApplicationController
       format.js
     end
   end
-  
+    
 end

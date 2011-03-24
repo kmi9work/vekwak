@@ -4,27 +4,25 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :stud, :new_message, :stud_online, :week, :info_msg
+  before_filter :layout_work, :stud
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password  
   
-
-  def stud
-    @student = current_student
+  protected
+  def layout_work
     @students = Student.all
     @sections = Section.all
-  end
-
-  def stud_online
     @students_online = Student.where('last_visit >= ?', 10.minutes.ago + 3.hours)
+    @new_message = @student.nil? ? 0 : @student.messages.collect{|p| p.new}.select{|x| x==true}.size
+    info_msg
+    week
   end
   
-  def new_message
-    #@msg_count=Message.find_all_by_student_to(@student.login, :conditions => "new=1").size    
-    @new_message = @student.nil? ? 0 : @student.messages.collect{|p| p.new}.select{|x| x==true}.size
+  def stud
+    @student = current_student
   end
   
   def info_msg
@@ -49,7 +47,6 @@ class ApplicationController < ActionController::Base
     @novelty_msg = Novelty.order('created_at desc').first(5)
   end
   
-  protected
   def week (fday = 0)
     @month_arr=["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "нояб", "дек"]
     t = Time.now - 1.day + fday.days

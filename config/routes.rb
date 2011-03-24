@@ -14,9 +14,9 @@ Vekwak::Application.routes.draw do
   match 'posts/:id/plus(.:format)' => 'posts#plus', :as => :post_plus
   match 'posts/:id/minus(.:format)' => 'posts#minus', :as => :post_minus
   match 'posts/:id/raters(.:fomat)' => 'posts#raters', :as => :post_raters
-  match 'comments/:id/plus(.:format)' => 'comments#plus', :as => :comment_plus
-  match 'comments/:id/minus(.:format)' => 'comments#minus', :as => :comment_minus
-  match 'comments/:id/raters(.:fomat)' => 'comments#raters', :as => :comment_raters
+  match 'comments/:id/plus.:format' => 'comments#plus', :as => :comment_plus
+  match 'comments/:id/minus.:format' => 'comments#minus', :as => :comment_minus
+  match 'comments/:id/raters.:format' => 'comments#raters', :as => :comment_raters
   match 'posts/new_big(.:format)' => 'posts#new_big', :as => :new_big_post
   match 'comments/list(.:format)' => 'comments#list', :as => :comments_list
   match 'posts/preview' => 'posts#preview'

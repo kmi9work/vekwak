@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  skip_before_filter :layout_work, :except => [:list]
   before_filter :login_required, :only => [:create, :destroy, :plus, :minus, :new]
   before_filter :comment_find, :only => [:plus, :minus, :destroy, :raters]
-  before_filter :voted?, :only => [:plus, :minus]
-  
+  before_filter :voted?, :only => [:plus, :minus]  
   def new
     @comment = Comment.new
     if params[:post_id]
@@ -85,8 +85,9 @@ class CommentsController < ApplicationController
     @comment_rating_student.student = @student
     @comment_rating_student.comment = @comment
     @comment_rating_student.save
+    @comment.save
     respond_to do |format|
-      # format.html {render :refresh}
+      format.html {render :nothing => true}
       format.js {render 'ch_rating.js.erb', :layout => false}
     end
   end
@@ -100,6 +101,7 @@ class CommentsController < ApplicationController
     @comment_rating_student.student = @student
     @comment_rating_student.comment = @comment
     @comment_rating_student.save
+    @comment.save
     respond_to do |format|
       # format.html {render :refresh}
       format.js {render 'ch_rating.js.erb', :layout => false}
@@ -115,7 +117,9 @@ class CommentsController < ApplicationController
   protected
   
   def voted?
-    !(CommentRatingStudent.where(:comment_id => @comment.id, :student_id => @student.id).first)
+    if CommentRatingStudent.where(:comment_id => @comment.id, :student_id => @student.id).first
+      render :nothing => true
+    end
   end
   
   def comment_find

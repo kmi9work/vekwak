@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PostsController < ApplicationController
+  skip_before_filter :layout_work, :only => [:new, :new_big, :create, :preview, :plus, :minus, :raters]
   before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
   before_filter :post_find, :only => [:edit, :show, :plus, :minus, :destroy, :raters, :update]
   before_filter :voted?, :only => [:plus, :minus]
@@ -163,7 +164,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   def voted?
-    !(PostRatingStudent.where(:post_id => @post.id, :student_id => @student.id).first)
+    if PostRatingStudent.where(:post_id => @post.id, :student_id => @student.id).first
+      render :nothing => true
+    end
   end
 end
 

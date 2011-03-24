@@ -61,7 +61,7 @@ class Student < ActiveRecord::Base
   end
   
   def record_last_visit
-    ActiveRecord::Base.connection.execute("update students set prev_visit = students.last_visit where id = #{id}")    
+    self.prev_visit = self.last_visit
     ActiveRecord::Base.connection.execute("update students set last_visit = now() where id = #{id}")    
   end  
   

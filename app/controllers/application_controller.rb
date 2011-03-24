@@ -4,7 +4,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  before_filter :layout_work, :stud
+  before_filter :stud, :layout_work
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -12,17 +12,18 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password  
   
   protected
+  def stud
+    @student = current_student
+  end
+  
   def layout_work
     @students = Student.all
     @sections = Section.all
     @students_online = Student.where('last_visit >= ?', 10.minutes.ago)
     @new_message = @student.nil? ? 0 : @student.messages.collect{|p| p.new}.select{|x| x==true}.size
+    @student.record_last_visit if @student
     info_msg
     week
-  end
-  
-  def stud
-    @student = current_student
   end
   
   def info_msg

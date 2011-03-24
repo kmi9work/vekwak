@@ -129,15 +129,15 @@ class PostsController < ApplicationController
     @rating = @post[:rating]
     @id = @post.id
     @post_rating_student.mark = 1
-    @post.post_rating_students << @post_rating_student
-    @post.save
-    @student.post_rating_students << @post_rating_student
-    @student.save
+    @post_rating_student.student = @student
+    @post_rating_student.post = @post
+    @post_rating_student.save
     respond_to do |format|
       format.html {render :refresh}
       format.js {render 'ch_rating.js.erb'}
     end
   end
+  
 
   def minus
     @post_rating_student = PostRatingStudent.new
@@ -145,11 +145,9 @@ class PostsController < ApplicationController
     @rating = @post[:rating]
     @id = @post.id
     @post_rating_student.mark = -1
-    @post.post_rating_students << @post_rating_student
-    @post.save
-    @student.post_rating_students << @post_rating_student
-    @student.save
-    respond_to do |format|
+    @post_rating_student.student = @student
+    @post_rating_student.post = @post
+    @post_rating_student.save    respond_to do |format|
       format.html {render :refresh}
       format.js {render 'ch_rating.js.erb'}
     end

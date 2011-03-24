@@ -10,14 +10,14 @@
   .post_bottom
     .post_bottom_line.inline
       - unless @student.nil?
-        - if post.updated_at > @student.prev_visit
+        - if post.updated_at + 3.hours > @student.prev_visit
           %font{:color => 'red'}
             - if @student.login == "byr1"
               Nouvelle
             - else
               New
         - else
-          = post.created_at.strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M") 
+          = (post.created_at + 3.hours).strftime("%d #{@month_arr[post.created_at.month-1]} %H:%M") 
     .inline{:id => "post_rating_and_section_#{post.id}", :class => "#{ post.rating >= 0 ? 'post_rating_green' : 'post_rating_red'}"}
       .plus.inline
         = link_to "", post_plus_path(:id => post.id, :format => :js), 

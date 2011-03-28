@@ -1,6 +1,6 @@
 - if @headman_msg 
   - @headman_msg.each do |msg|
-    %h3= msg.created_at.strftime("%d.%m %H:%M") 
+    %h3= msg.created_at.localtime.strftime("%d.%m %H:%M") 
     = msg.content
     %br
 %br

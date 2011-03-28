@@ -1,4 +1,4 @@
 %tr
-  %td= novelty.created_at.strftime("%d.%m %H:%M")
+  %td= novelty.created_at.localtime.strftime("%d.%m %H:%M")
   %td= novelty.title
   %td= novelty.content

@@ -1,6 +1,6 @@
 %h1 Вход
 
-= form_tag session_path do
+= form_tag session_path, :remote => true do
   %p
     = label_tag 'login'
     %br

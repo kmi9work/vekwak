@@ -6,3 +6,8 @@
 function over_student(id, position){
   $('#student_'+ id + '_login_' + position).toggle();
 }
+
+function close_shadow(){
+  $('#shadow_login').remove();
+  $('#shadow_div').remove();
+}

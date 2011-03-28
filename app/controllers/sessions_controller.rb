@@ -14,10 +14,17 @@ class SessionsController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset_session
       self.current_student = student
+      @student = student
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/')
-      flash[:notice] = "Logged in successfully"
+      respond_to do |format|
+        format.html do
+          redirect_back_or_default('/')
+          flash[:notice] = "Logged in successfully"
+        end
+        format.js
+      end
+      
     else
       note_failed_signin
       @login       = params[:login]

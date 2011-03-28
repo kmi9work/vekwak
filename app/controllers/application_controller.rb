@@ -35,11 +35,19 @@ class ApplicationController < ActionController::Base
       post = comment.post || comment.comment.post
       unless @stundent.nil?
         if post.blinds.all? {|blind| @student.id != blind.student_id}
+          if comment.content =~ /<([^\s]+)\s.*>(.*)<\/\1>/
+            comment.content = comment.content.gsub(/<([^\s]+)\s.*>(.*)<\/\1>/, "[#{$1}]")
+          end
+          comment.content = comment.content.gsub(/!http:\/\/.*\(.*\)!/, "[img]")
           @last_comments << comment
           i += 1
         end
       else
         if post.blinds.empty?
+          if comment.content =~ /<([^\s]+)\s.*>(.*)<\/\1>/
+            comment.content = comment.content.gsub(/<([^\s]+)\s.*>(.*)<\/\1>/, "[#{$1}]")
+          end
+          comment.content = comment.content.gsub(/!http:\/\/.*\(.*\)!/, "[img]")
           @last_comments << comment
           i += 1
         end

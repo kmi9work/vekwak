@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def layout_work
     @students = Student.all
     @sections = Section.all
-    @students_online = Student.where('last_visit >= ?', 10.minutes.ago.utc)
+    @students_online = Student.where('last_visit >= ?', Time.zone.now - 10.minutes)
     @new_message = @student.nil? ? 0 : @student.messages.collect{|p| p.new}.select{|x| x==true}.size
     @student.record_last_visit if @student
     info_msg

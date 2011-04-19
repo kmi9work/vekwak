@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
   before_filter :post_find, :only => [:edit, :show, :plus, :minus, :destroy, :raters, :update]
   before_filter :voted?, :only => [:plus, :minus]
-  def index  
+  def index 
     if params[:section_id]
       posts = Post.where(:section_id => params[:section_id]).order('created_at DESC')
     else

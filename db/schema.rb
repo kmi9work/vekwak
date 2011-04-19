@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322134000) do
+ActiveRecord::Schema.define(:version => 20110417102519) do
 
   create_table "blinds", :force => true do |t|
     t.integer  "student_id"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20110322134000) do
 
   create_table "headman_auls", :force => true do |t|
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "husers", :force => true do |t|
+    t.string   "login"
+    t.string   "password"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20110322134000) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "prev_visit"
+    t.datetime "prev_visit",                               :default => '2011-04-18 18:45:13'
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true

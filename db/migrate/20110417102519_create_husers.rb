@@ -1,6 +1,7 @@
 class CreateHusers < ActiveRecord::Migration
   def self.up
     create_table :husers do |t|
+      t.integer :uploaded
       t.string :login
       t.string :password
       t.string :name

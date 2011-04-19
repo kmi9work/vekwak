@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110417102519) do
   end
 
   create_table "husers", :force => true do |t|
+    t.integer  "uploaded"
     t.string   "login"
     t.string   "password"
     t.string   "name"
@@ -132,7 +133,7 @@ ActiveRecord::Schema.define(:version => 20110417102519) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "prev_visit",                               :default => '2011-04-18 18:45:13'
+    t.datetime "prev_visit",                               :default => '2011-04-19 12:03:54'
   end
 
   add_index "students", ["login"], :name => "index_students_on_login", :unique => true

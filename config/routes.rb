@@ -41,8 +41,11 @@ Vekwak::Application.routes.draw do
   match 'history' => 'history#index'#, :format => :js
   match 'history/login' => 'history#new', :as => :new
   match 'history/huser_login' => 'history#huser_login', :as => :huser_login
+  match 'history/huser_logout' => 'history#huser_logout', :as => :huser_logout
   match 'history/register' => 'history#register', :as => :hregister
   match 'history/create' => 'history#create', :as => :husers
+  match 'history/huser_fadd' => 'history#huser_fadd', :as => :huser_fadd
+  
   root :to => "posts#index"
 
   # The priority is based upon order of creation:

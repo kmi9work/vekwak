@@ -1,7 +1,12 @@
--if @huser
-  =render :file => 'history/list'
+%body
+  %p=link_to "Выйти", huser_logout_path
+  %p="Логин: #{@huser.login}"
+  %p="Имя: #{@huser.name}"
+  %p="Загружено файлов: #{@huser.uploaded}"
   %br
   Добавить:
-  %input{:type => 'file'}
--else
-  
+  =form_tag(huser_fadd_path, :multipart => true) do
+    =file_field_tag "fadd"
+    =submit_tag
+
+  %p="Обработка результатов планируется по достижении необходимой базы."

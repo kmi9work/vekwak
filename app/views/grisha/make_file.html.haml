@@ -1,5 +1,5 @@
 %table
-  -@str.to_a.each do |a|
+  -@str.to_a.sort{|i,j| i[0].size <=> j[0].size}.each do |a|
     %tr
       %td
         =a[0]

@@ -43,7 +43,11 @@ Vekwak::Application.routes.draw do
   match 'history/huser_login' => 'history#huser_login', :as => :huser_login
   match 'history/register' => 'history#register', :as => :hregister
   match 'history/create' => 'history#create', :as => :husers
+  match 'grisha' => 'grisha#index', :as => :grisha
+  match 'grisha/make_file' => 'grisha#make_file', :as => :make_file
   root :to => "posts#index"
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

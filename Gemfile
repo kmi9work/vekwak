@@ -6,7 +6,7 @@ gem 'haml'
 gem 'RedCloth'
 gem 'paperclip', :git => 'http://github.com/patshaughnessy/paperclip.git'
 gem 'r18n-rails'
-
+gem 'iconv'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'aws-s3', :require => 'aws/s3'

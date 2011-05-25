@@ -4,9 +4,11 @@ class GrishaController < ApplicationController
   def index
   end
   def make_file
-    str = params[:file].read
+    require 'iconv'
+    str = Iconv.iconv('UTF-8', 'CP1251', params[:file].read)[0]
     @str = {}
-    str.split(/[\s\.\,!:"';\?\d\(\)=\-\+ ]/).each do |word|
+    str.split(/[\s\.\,!:"';\?\d\(\)=\-\+ ]/u).each do |word|
+      puts word
       @str[word] ||= 0
       @str[word] += 1
     end

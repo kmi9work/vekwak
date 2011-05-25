@@ -44,6 +44,7 @@ GEM
       abstract (>= 1.0.0)
     haml (3.0.25)
     i18n (0.4.2)
+    iconv (0.1)
     kgio (2.3.3)
     mail (2.2.16)
       activesupport (>= 2.3.6)
@@ -85,6 +86,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
+    unicode (0.4.0)
     unicorn (3.5.0)
       kgio (~> 2.3)
       rack
@@ -96,10 +98,12 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   haml
+  iconv
   mysql
   paperclip!
   r18n-rails
   rails (= 3.0.0)
   sqlite3-ruby
+  unicode
   unicorn
   will_paginate (~> 3.0.pre2)

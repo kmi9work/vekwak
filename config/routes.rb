@@ -38,8 +38,16 @@ Vekwak::Application.routes.draw do
   match 'next_week(.:format)' => 'days#next_week', :as => :next_week
   match 'prev_week(.:format)' => 'days#prev_week', :as => :prev_week
   resources :events, :only => [:destroy]
-
+  match 'history' => 'history#index'#, :format => :js
+  match 'history/login' => 'history#new', :as => :new
+  match 'history/huser_login' => 'history#huser_login', :as => :huser_login
+  match 'history/register' => 'history#register', :as => :hregister
+  match 'history/create' => 'history#create', :as => :husers
+  match 'grisha' => 'grisha#index', :as => :grisha
+  match 'grisha/make_file' => 'grisha#make_file', :as => :make_file
   root :to => "posts#index"
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

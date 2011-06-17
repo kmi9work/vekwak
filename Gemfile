@@ -5,7 +5,9 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'haml'
 gem 'RedCloth'
 gem 'paperclip', :git => 'http://github.com/patshaughnessy/paperclip.git'
-
+gem 'r18n-rails'
+gem 'iconv'
+gem 'unicode'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'aws-s3', :require => 'aws/s3'

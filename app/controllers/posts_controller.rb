@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :only => [:create, :update, :destroy, :plus, :minus, :new, :new_big, :edit]
   before_filter :post_find, :only => [:edit, :show, :plus, :minus, :destroy, :raters, :update]
   before_filter :voted?, :only => [:plus, :minus]
-  def index  
+  def index 
     if params[:section_id]
       posts = Post.where(:section_id => params[:section_id]).order('created_at DESC')
     else
@@ -126,6 +126,7 @@ class PostsController < ApplicationController
   def plus
     @post_rating_student = PostRatingStudent.new
     @post[:rating] +=1
+    @post.save
     @rating = @post[:rating]
     @id = @post.id
     @post_rating_student.mark = 1
@@ -142,12 +143,14 @@ class PostsController < ApplicationController
   def minus
     @post_rating_student = PostRatingStudent.new
     @post[:rating] -=1
+    @post.save
     @rating = @post[:rating]
     @id = @post.id
     @post_rating_student.mark = -1
     @post_rating_student.student = @student
     @post_rating_student.post = @post
-    @post_rating_student.save    respond_to do |format|
+    @post_rating_student.save    
+    respond_to do |format|
       format.html {render :refresh}
       format.js {render 'ch_rating.js.erb'}
     end

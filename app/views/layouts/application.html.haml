@@ -39,18 +39,18 @@
       #info_center
         .info.inline
           %h1
-            = link_to "Новости", novelties_path
+            = link_to t(:novelties), novelties_path
           #novelty_content.info_content
             = render :partial => 'novelties/novelties'
           
         .info.inline
           %h1 
-            = link_to "Последние комментарии", comments_list_path
+            = link_to t(:comments_list), comments_list_path
           #last_comments.info_content
             = render :partial => 'comments/last_comments'
         .info.inline
           %h1
-            = link_to "Староста", headman_auls_path
+            = link_to t(:headman_aul), headman_auls_path
           #headman_aul_content.info_content
             = render :partial => 'headman_auls/headman_aul'
       #info_line

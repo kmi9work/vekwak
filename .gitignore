@@ -7,3 +7,4 @@ public/system/images/*
 public/images/*
 tags
 .redcar/
+.DS_Store

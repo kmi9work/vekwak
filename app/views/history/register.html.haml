@@ -1,0 +1,26 @@
+%h1 Sign up as a new user
+
+= error_messages_for :huser
+
+=form_for @huser do |f| 
+  %p
+    = label_tag 'Логин'
+    %br
+    = f.text_field :login
+
+  %p
+    = label_tag 'Пароль'
+    %br
+    = f.password_field :password
+
+  %p
+    = label_tag 'Подтверждение пароля'
+    %br
+    = password_field :huser, :password_confirmation
+
+  %p
+    = label_tag 'Имя'
+    %br
+    = f.text_field :name
+
+  %p= submit_tag 'Sign up'

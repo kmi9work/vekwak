@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   before_filter :login_required, :only => [:new, :edit, :create, :destroy, :update]
-  before_filter :is_admin, :only => [:new, :edit, :create, :destroy, :update]
+  before_filter :admin?, :only => [:new, :edit, :create, :destroy, :update]
   def index
     @sections = Section.all
   end

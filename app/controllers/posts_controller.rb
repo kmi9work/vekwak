@@ -167,9 +167,14 @@ class PostsController < ApplicationController
   def voted?
     if PostRatingStudent.where(:post_id => @post.id, :student_id => @student.id).first
       render :nothing => true
+    else
+      true
     end
   end
 end
+
+#Post.all.each{|post| r = 0; post.post_rating_students.each{|prs| r += prs.mark}; post.rating = r; post.save} 
+  
 
 
 
